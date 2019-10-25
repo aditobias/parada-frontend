@@ -18,6 +18,11 @@ class Login extends Component {
         this.setState({ passWord: event.target.value });
     }
 
+    dispatch = () => {
+        this.props.onLogin(this.state);
+        // this.setState({inputValue: ''})
+      };
+
     render() {
         return (
             <div>
@@ -27,7 +32,7 @@ class Login extends Component {
                 <div>
                     <span>Password: </span><input type="text" value={this.state.passWord} onChange={this.handlePasswordChange}></input>
                 </div>
-                <button>LOGIN</button>
+                <button onClick={this.dispatch}>LOGIN</button>
                 <button>SIGNUP</button>
             </div>
 

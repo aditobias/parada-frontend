@@ -1,10 +1,11 @@
 import React from 'react';
 import Login from './components/Login/Login';
+import LoginContainer from './containers/LoginContainer';
 
 function App() {
   return (
     <div>
-      <Login/>
+      <LoginContainer/>
     </div>
   );
 }
