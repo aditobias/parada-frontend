@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Login from './Login';
-import LoginResource from '../../api/LoginResource'
 
 export default class TodoWrapper extends Component {
 
