@@ -1,7 +1,9 @@
+const logInApi = "http://localhost:8080/drivers/credentials";
+
 export default {
     getCredentials: (credentials) =>
         fetch(
-            "http://localhost:8080/drivers/credentials",
+            logInApi,
             {
                 mode: 'cors',
                 method: 'POST',
