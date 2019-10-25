@@ -3,12 +3,12 @@ const initialState = {
 }   
 
 
-export default (state = initialState, {action, payload}) => {
-    switch (action) {
+export default (state = initialState, {type, payload}) => {
+    switch (type) {
       case 'LOG_IN':
         return {
             ...state,
-            isLogin: !!state.isLogin
+            isLogin: true
         };
       default:
         return state;

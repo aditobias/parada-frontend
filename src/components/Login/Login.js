@@ -5,17 +5,17 @@ class Login extends Component {
         super(props)
 
         this.state = {
-            userName: "",
-            passWord: ""
+            username: "",
+            password: ""
         }
     }
 
     handleUserNameChange = (event) => {
-        this.setState({ userName: event.target.value });
+        this.setState({ username: event.target.value });
     }
 
     handlePasswordChange = (event) => {
-        this.setState({ passWord: event.target.value });
+        this.setState({ password: event.target.value });
     }
 
     dispatch = () => {
@@ -27,10 +27,10 @@ class Login extends Component {
         return (
             <div>
                 <div>
-                    <span>Username: </span><input type="text" value={this.state.userName} onChange={this.handleUserNameChange}></input>
+                    <span>Username: </span><input type="text" value={this.state.username} onChange={this.handleUserNameChange}></input>
                 </div>
                 <div>
-                    <span>Password: </span><input type="text" value={this.state.passWord} onChange={this.handlePasswordChange}></input>
+                    <span>Password: </span><input type="text" value={this.state.password} onChange={this.handlePasswordChange}></input>
                 </div>
                 <button onClick={this.dispatch}>LOGIN</button>
                 <button>SIGNUP</button>
