@@ -1,5 +1,6 @@
 const initialState = {
-    isLogin : false
+    isLogin : false,
+    userName : ""
 }   
 
 
@@ -8,7 +9,8 @@ export default (state = initialState, {type, payload}) => {
       case 'LOG_IN':
         return {
             ...state,
-            isLogin: true
+            isLogin: true,
+            userName: payload.username
         };
       default:
         return state;
