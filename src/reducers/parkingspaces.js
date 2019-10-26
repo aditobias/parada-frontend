@@ -9,6 +9,11 @@ export default (state = initialState, { type, payload }) => {
                 ...state,
                 parkingSpaceList: payload
             };
+        // case 'UPDATE_SELECTED_PARKING_LOT':
+        //     return {
+        //         state,
+        //         parkingSpaceList: payload
+        //     };
         default:
             return state;
     }

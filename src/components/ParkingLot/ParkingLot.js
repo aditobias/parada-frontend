@@ -1,17 +1,43 @@
 import React from 'react'
 import 'antd/dist/antd.css'
 import {Button} from 'antd'
+import {Redirect} from "react-router-dom";
+import './ParkingLot.css';
 
 class ParkingLot extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirectTo : false
+        }
+    }
+
+    updateRedirectState = () => {
+      this.setState({
+            redirectTo: true
+        })
+    };
+
     render(){
+        const parkingLotFromProps = this.props.parkingLot;
+        console.log("parkingLotFromProps ", parkingLotFromProps);
         return (
             <div>
-                <Button type="primary" style = {{height: "100px", width: "200px"}}>
-                    <span>Capacity: <p>{this.props.parkingLot.capacity}</p></span>
-                    <br/>
-                    <span>Available Space: <p>{this.props.parkingLot.availableSpace}</p></span>
-                </Button>
-                <p>{this.props.parkingLot.parkingLotName}</p>
+                {this.state.redirectTo ? <Redirect to={{
+                    pathname: "/parkingSpaces",
+                    state : {parkingLot: parkingLotFromProps}
+                }}/> : false}
+
+                <div>
+                    <Button type="primary" className="parkingLotButton" onClick={this.updateRedirectState}>
+                        <span>Total Capacity: <p>{this.props.parkingLot.capacity}</p></span>
+                        <br/>
+                        <span>Available Space: <p>{this.props.parkingLot.availableSpaces}</p></span>
+                        <br />
+                        <span><p>{this.props.parkingLot.parkingLotName}</p></span>
+                    </Button>
+                    <p></p>
+                </div>
             </div>
         )
     }
