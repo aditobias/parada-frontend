@@ -9,18 +9,28 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-    getAllSpaces : (id) => {
+    getAllSpaces: (id) => {
         ParkingSpaceResource.getAllAvailableParkingSpace(id)
-        .then(res=>res.json())
-        .then(res=>{
-            console.log(res);
-            dispatch({
-                type: "GET_ALL_PARKING_LOT_SPACES",
-                payload: res.parkingSpaceList  //todo check correct object name   
+            .then(res => res.json())
+            .then(res => {
+                // console.log(res);
+                dispatch({
+                    type: "GET_ALL_PARKING_LOT_SPACES",
+                    payload: res.parkingSpaceList  //todo check correct object name
+                })
             })
-        })
+    },
+    updateSelectedParkingLot: (parkingLotName) => {
+        // ParkingSpaceResource.updateSelectedParkingLot(parkingLotName)
+        //     .then(res => res.json())
+        //     .then(res => {
+                dispatch({
+                    type: "UPDATE_SELECTED_PARKING_LOT",
+                    payload: parkingLotName
+                })
+            // })
     }
-})
+});
 
 export default connect(
     mapStateToProps,

@@ -1,6 +1,7 @@
 const initialState = {
     parkingLotList : [],
-    selectedParkingLot : "parkingLot1"
+    // selectedParkingLot : "ParkingLot1"
+    selectedParkingLot : ""
 };
 
 export default (state = initialState, {type, payload}) => {
@@ -9,6 +10,11 @@ export default (state = initialState, {type, payload}) => {
             return {
                 ...state,
                 parkingLotList: payload
+            };
+        case 'UPDATE_SELECTED_PARKING_LOT':
+            return {
+                ...state,
+                selectedParkingLot: payload
             };
         default:
             return state;

@@ -38,7 +38,7 @@ class ParkingSpace extends Component {
         );
         return (
             <div>
-                <Button type="primary" style={{ height: "100px", width: "200px" }} onClick={this.showModal}>
+                <Button type="primary" className="parkingLotSpaceButton" onClick={this.showModal}>
                     {description}
                 </Button>
                 <Modal

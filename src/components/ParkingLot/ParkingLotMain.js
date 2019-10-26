@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ParkingLot from './ParkingLot';
 import {connect} from "react-redux";
 import ParkingLotResource from "../../api/ParkingLotResource";
+import './ParkingLot.css';
+import HeaderPage from '../Header/Header';
 
 class ParkingLotMain extends Component {
     constructor(props) {
@@ -27,15 +29,21 @@ class ParkingLotMain extends Component {
         console.log("state.parkingLotReducer.parkingLotList ", this.props.parkingLotAvailableList);
         const listParkingLot = this.props.parkingLotAvailableList;
         return (
-            <div>{
-                listParkingLot.map((parkingLot, index) =>
-                    <ParkingLot key={index}
-                                id={index}
-                                parkingLot={parkingLot}
-                    />
-                )
-            }
-
+            <div>
+                <HeaderPage />
+                <div className="parkingLot">{
+                    listParkingLot.map((parkingLot, index) =>
+                        <ParkingLot key={index}
+                                    id={index}
+                                    parkingLot={parkingLot}
+                        />
+                    )
+                }
+                </div>
+                <div className="pagination">
+                    <a href="#">❮</a>
+                    <a href="#">❯</a>
+                </div>
             </div>
         )
     }
