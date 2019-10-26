@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import UserProfile from './UserProfile';
-import UserResource from '../../api/UserProfileResource'
 
 export default class UserWrapper extends Component {
     

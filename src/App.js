@@ -4,8 +4,7 @@ import UserContainer from './containers/UserContainer';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 
@@ -17,7 +16,7 @@ function App() {
           <Route exact path="/">
           <LoginContainer />
           </Route>
-          <Route path="/userProfile">
+          <Route exact path="/userProfile">
           <UserContainer/>
           </Route>
         </Switch>

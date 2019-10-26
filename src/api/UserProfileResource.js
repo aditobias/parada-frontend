@@ -1,4 +1,4 @@
-const userProfileApi = "http://ITAMNL15-W10:8080/drivers/";
+const userProfileApi = "http://localhost:8080/drivers/";
 
 export default {
     getUserProfile: (profile) =>

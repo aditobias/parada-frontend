@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import Button from '@material-ui/core/Button';
-import { TextField, Card } from '@material-ui/core';
+import React, { Component } from 'react';
+import { TextField } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import LockRoundedIcon from '@material-ui/icons/LockRounded';
 import Parada from './logo.png';
 import './login.css';
+import { Button, Card } from 'antd';
 
 class Login extends Component {
     constructor(props) {
@@ -33,8 +33,10 @@ class Login extends Component {
         return (
             <div className="center">
                 <img src={Parada} alt="logo" />
-                <Card className="center">
-                    <div>
+
+
+                <Card bordered={false}>
+                    <div className="center">
                         <AccountCircleIcon style={{ height: "50px", width: "50px", padding: "6px" }} className="icon" />
                         <TextField variant="outlined" label="Username" value={this.state.username} onChange={this.handleUserNameChange} />
                     </div>
@@ -43,8 +45,9 @@ class Login extends Component {
                         <TextField variant="outlined" label="Password" type="password" value={this.state.password} onChange={this.handlePasswordChange} />
                     </div>
                     <div className="center">
-                        <Button variant="contained" color="primary" onClick={this.dispatch}>LOGIN</Button>{" "}
-                        <Button variant="contained" color="primary">SIGNUP</Button>
+                        <Button type="primary" size="large" onClick={this.dispatch}>LOGIN</Button>
+                        
+                        <Button type="primary" size="large">SIGNUP</Button>
                     </div>
                 </Card>
             </div>
