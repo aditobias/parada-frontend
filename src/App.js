@@ -1,14 +1,28 @@
 import React from 'react';
-import Login from './components/Login/Login';
 import LoginContainer from './containers/LoginContainer';
-import ParkingLotMain from './components/ParkingLot/ParkingLotMain';
+import UserContainer from './containers/UserContainer';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 function App() {
   return (
+    <Router>
     <div>
-      <LoginContainer/>
-      <ParkingLotMain/>
+    <Switch>
+          <Route exact path="/">
+          <LoginContainer />
+          </Route>
+          <Route path="/userProfile">
+          <UserContainer/>
+          </Route>
+        </Switch>
     </div>
+    </Router>
   );
 }
 

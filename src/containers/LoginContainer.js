@@ -4,8 +4,10 @@ import LoginResource from '../api/LoginResource';
 
 const mapStateToProps = state => ({
     loginUser: state.username,
-    userPassword: state.password
+    userPassword: state.password,
+    passedLogin: state.logInResource.isLogin
 });
+
 
 const mapDispatchToProps = dispatch => ({
     getUserCredentials: credentials => {
@@ -18,7 +20,11 @@ const mapDispatchToProps = dispatch => ({
                     dispatch({
                         type: 'LOG_IN',
                         payload: credentials
-                    })
+                    })  
+                }
+                else if(res.status == "500")
+                {
+                    alert("You have entered an invalid username/ password.");
                 }
             })
             

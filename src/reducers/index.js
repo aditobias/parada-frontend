@@ -1,10 +1,10 @@
 import {combineReducers} from "redux";
 import loginReducer from "./login";
-import parkingLotReducer from "./parkingLot";
+import userProfileReducer from "./userProfile";
 
 const rootReducer = combineReducers({
   logInResource: loginReducer,
-  parkingLotReducer : parkingLotReducer
+  userProfileResource: userProfileReducer
 });
 
 export default rootReducer;
