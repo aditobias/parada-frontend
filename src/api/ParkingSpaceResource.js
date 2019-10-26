@@ -1,7 +1,7 @@
 export default {
-    getAllAvailableParkingSpaces: (parkingLot) =>
+    getAllAvailableParkingSpace: (id) =>
         fetch(
-            "http://localhost:8080/parkingspaces/" + parkingLot.id,
+            "http://localhost:8080/parkingLots/" + id,
             {
                 mode: 'cors',
                 method: 'GET'

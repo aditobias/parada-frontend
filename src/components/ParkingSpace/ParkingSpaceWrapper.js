@@ -4,7 +4,7 @@ import ParkingSpace from './ParkingSpace';
 export default class ParkingSpaceWrapper extends Component {
 
     componentDidMount() {
-        // this.props.getAllSpaces();
+        this.props.getAllSpaces(this.props.id);
     }
 
     render() {

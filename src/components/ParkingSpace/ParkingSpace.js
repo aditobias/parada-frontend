@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'antd'
+import { Button } from 'antd';
 import { Modal } from 'antd';
 
 class ParkingSpace extends Component {
@@ -30,10 +30,10 @@ class ParkingSpace extends Component {
     render() {
         const description = (
             <div>
-                <span><p>{this.props.parkingSpace.parkingLevel}</p></span>
-                <br />
                 <span><p>{this.props.parkingSpace.parkingPosition}</p></span>
                 <br />
+                {/* <span><p>{this.props.parkingSpace}</p></span>
+                <br /> */}
             </div>
         );
         return (

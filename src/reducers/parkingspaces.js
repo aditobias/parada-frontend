@@ -1,27 +1,5 @@
 const initialState = {
-    parkingSpaceList: [
-        {
-            "id": "1",
-            "parkingLotName": "MOA",
-            "parkingLevel": "level1",
-            "parkingPosition": "testPos1",
-            "isOccupied": "true"
-        },
-        {
-            "id": "2",
-            "parkingLotName": "MOA",
-            "parkingLevel": "level1",
-            "parkingPosition": "testPos2",
-            "isOccupied": "true"
-        },
-        {
-            "id": "3",
-            "parkingLotName": "MOA",
-            "parkingLevel": "level1",
-            "parkingPosition": "testPos3",
-            "isOccupied": "true"
-        }
-    ]
+    parkingSpaceList: []
 };
 
 export default (state = initialState, { type, payload }) => {
