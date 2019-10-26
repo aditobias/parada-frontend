@@ -1,29 +1,34 @@
 import React from 'react';
 import LoginContainer from './containers/LoginContainer';
 import UserContainer from './containers/UserContainer';
+import ParkingLotMain from './components/ParkingLot/ParkingLotMain';
+
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
 } from "react-router-dom";
 
 
 function App() {
-  return (
-    <Router>
-    <div>
-    <Switch>
-          <Route exact path="/">
-          <LoginContainer />
-          </Route>
-          <Route path="/userProfile">
-          <UserContainer/>
-          </Route>
-        </Switch>
-    </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <div>
+                <Switch>
+                    <Route exact path="/">
+                        <LoginContainer/>
+                    </Route>
+                    <Route path="/userProfile">
+                        <UserContainer/>
+                    </Route>
+                    <Route exact path="/parkingLots">
+                        <ParkingLotMain/>
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
