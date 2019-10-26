@@ -5,6 +5,7 @@ import LockRoundedIcon from '@material-ui/icons/LockRounded';
 import Parada from './logo.png';
 import './login.css';
 import { Button, Card } from 'antd';
+import 'antd/dist/antd.less';
 
 class Login extends Component {
     constructor(props) {
@@ -34,17 +35,16 @@ class Login extends Component {
             <div className="center">
                 <img src={Parada} alt="logo" />
 
-
-                <Card bordered={false}>
-                    <div className="center">
+                <Card bordered={true} className="center3">
+                    <div className="margin">
                         <AccountCircleIcon style={{ height: "50px", width: "50px", padding: "6px" }} className="icon" />
                         <TextField variant="outlined" label="Username" value={this.state.username} onChange={this.handleUserNameChange} />
                     </div>
-                    <div>
+                    <div className="margin">
                         <LockRoundedIcon style={{ height: "50px", width: "50px", padding: "6px" }} className="icon" />
                         <TextField variant="outlined" label="Password" type="password" value={this.state.password} onChange={this.handlePasswordChange} />
                     </div>
-                    <div className="center">
+                    <div>
                         <Button type="primary" size="large" onClick={this.dispatch} style={{backgroundColor: "#487DAF"}}>LOGIN</Button>{" "}
                         <Button type="primary" size="large" style={{backgroundColor: "#487DAF"}} >SIGNUP</Button>
                     </div>
