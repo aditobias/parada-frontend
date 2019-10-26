@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import LoginWrapper from '../components/Login/LoginWrapper';
 import LoginResource from '../api/LoginResource';
-import UserProfile from '../components/UserProfile/UserProfile';
 
 const mapStateToProps = state => ({
     loginUser: state.username,
-    userPassword: state.password
+    userPassword: state.password,
+    passedLogin: state.logInResource.isLogin
 });
 
 
@@ -20,11 +20,11 @@ const mapDispatchToProps = dispatch => ({
                     dispatch({
                         type: 'LOG_IN',
                         payload: credentials
-                    })
+                    })  
                 }
                 else if(res.status == "500")
                 {
-                        alert("You have entered an invalid username/ password.");
+                    alert("You have entered an invalid username/ password.");
                 }
             })
             
