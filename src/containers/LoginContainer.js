@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import LoginWrapper from '../components/Login/LoginWrapper';
 import LoginResource from '../api/LoginResource';
+import UserProfile from '../components/UserProfile/UserProfile';
 
 const mapStateToProps = state => ({
     loginUser: state.username,
     userPassword: state.password
 });
+
 
 const mapDispatchToProps = dispatch => ({
     getUserCredentials: credentials => {
