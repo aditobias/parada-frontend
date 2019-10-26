@@ -1,21 +1,21 @@
 import { connect } from 'react-redux';
-import ParkingSpacesWrapper from '../components/ParkingSpaces/ParkingSpacesWrapper';
-import ParkingSpacesResource from '../api/ParkingSpacesResource';
+import ParkingSpaceWrapper from '../components/ParkingSpace/ParkingSpaceWrapper';
+import ParkingSpaceResource from '../api/ParkingSpaceResource';
 
 const mapStateToProps = state => ({
-    spaces: state.parkingLotSpacesResource.parkingLotSpacesList
+    spaces: state.parkingSpaceResource.parkingSpaceList
 });
 
 
 const mapDispatchToProps = dispatch => ({
     getAllSpaces : (parkingLot) => {
-        ParkingSpacesResource.getAllAvailableParkingSpaces(parkingLot)
+        ParkingSpaceResource.getAllAvailableParkingSpace(parkingLot)
         .then(res=>res.json())
         .then(res=>{
             console.log(res);
             dispatch({
                 type: "GET_ALL_PARKING_LOT_SPACES",
-                payload: parkingLot.parkingSpaceslist  //todo check correct object name   
+                payload: parkingLot.parkingSpacelist  //todo check correct object name   
             })
         })
     }
@@ -24,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ParkingSpacesWrapper);
+)(ParkingSpaceWrapper);

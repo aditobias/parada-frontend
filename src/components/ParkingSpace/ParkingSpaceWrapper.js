@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ParkingSpaces from './ParkingSpaces';
+import ParkingSpace from './ParkingSpace';
 
-export default class ParkingSpacesWrapper extends Component {
+export default class ParkingSpaceWrapper extends Component {
 
     componentDidMount() {
         // this.props.getAllSpaces();
@@ -19,10 +19,10 @@ export default class ParkingSpacesWrapper extends Component {
                     {/* {this.props.parkingLot.capacity} */}
                 </div>
                 <div>
-                    {/* <ParkingSpaces /> */}
+                    {/* <ParkingSpace /> */}
                     {
                         this.props.spaces.map((parkingSpace, index) =>
-                            <ParkingSpaces key={index}
+                            <ParkingSpace key={index}
                                 id={index}
                                 parkingSpace={parkingSpace}
                             />

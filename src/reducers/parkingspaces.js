@@ -1,5 +1,5 @@
 const initialState = {
-    parkingLotSpacesList: [
+    parkingSpaceList: [
         {
             "id": "1",
             "parkingLotName": "MOA",
@@ -29,7 +29,7 @@ export default (state = initialState, { type, payload }) => {
         case 'GET_ALL_PARKING_LOT_SPACES':
             return {
                 ...state,
-                parkingLotSpacesList: payload
+                parkingSpaceList: payload
             };
         default:
             return state;

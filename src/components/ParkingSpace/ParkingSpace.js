@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import {Button} from 'antd'
 
-class ParkingSpaces extends Component {
+class ParkingSpace extends Component {
     constructor(props) {
         super(props)
         console.log(props);
     }
-
-
 
     render() {
         return (
@@ -23,4 +21,4 @@ class ParkingSpaces extends Component {
     }
 }
 
-export default ParkingSpaces
+export default ParkingSpace

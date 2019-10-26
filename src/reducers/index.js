@@ -8,8 +8,7 @@ const rootReducer = combineReducers({
   logInResource: loginReducer,
   userProfileResource: userProfileReducer,
   parkingLotReducer : parkingLotReducer,
-  parkingLotSpacesResource: parkingSpacesReducer
-
+  parkingSpaceResource: parkingSpacesReducer
 });
 
 export default rootReducer;
