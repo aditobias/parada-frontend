@@ -45,8 +45,7 @@ class Login extends Component {
                         <TextField variant="outlined" label="Password" type="password" value={this.state.password} onChange={this.handlePasswordChange} />
                     </div>
                     <div className="center">
-                        <Button type="primary" size="large" onClick={this.dispatch}>LOGIN</Button>
-                        
+                        <Button type="primary" size="large" onClick={this.dispatch}>LOGIN</Button>{" "}
                         <Button type="primary" size="large">SIGNUP</Button>
                     </div>
                 </Card>

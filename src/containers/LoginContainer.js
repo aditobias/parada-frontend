@@ -27,7 +27,6 @@ const mapDispatchToProps = dispatch => ({
                     alert("You have entered an invalid username/ password.");
                 }
             })
-            
     }
 })
 

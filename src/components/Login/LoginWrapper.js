@@ -8,7 +8,6 @@ export default class TodoWrapper extends Component {
         this.props.getUserCredentials(credentials);
     }
 
-
     render() {
         return (
         <div>
