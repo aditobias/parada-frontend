@@ -1,5 +1,6 @@
 const initialState = {
-    parkingLotList : []
+    parkingLotList : [],
+    selectedParkingLot : "parkingLot1"
 };
 
 export default (state = initialState, {type, payload}) => {

@@ -2,6 +2,7 @@ import React from 'react';
 import LoginContainer from './containers/LoginContainer';
 import UserContainer from './containers/UserContainer';
 import ParkingLotMain from './components/ParkingLot/ParkingLotMain';
+import ParkingSpacesContainer from './containers/ParkingSpacesContainer';
 
 import {
     BrowserRouter as Router,
@@ -24,6 +25,9 @@ function App() {
                     </Route>
                     <Route exact path="/parkingLots">
                         <ParkingLotMain/>
+                    </Route>
+                    <Route exact path="/parkingSpaces">
+                        <ParkingSpacesContainer/>
                     </Route>
                 </Switch>
             </div>
