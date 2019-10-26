@@ -1,14 +1,27 @@
 import React from 'react';
-import Login from './components/Login/Login';
 import LoginContainer from './containers/LoginContainer';
 import UserContainer from './containers/UserContainer';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 
 function App() {
   return (
+    <Router>
     <div>
-      <LoginContainer/>
-      {/* <UserContainer/> */}
+    <Switch>
+          <Route exact path="/">
+          <LoginContainer />
+          </Route>
+          <Route exact path="/userProfile">
+          <UserContainer/>
+          </Route>
+        </Switch>
     </div>
+    </Router>
   );
 }
 
