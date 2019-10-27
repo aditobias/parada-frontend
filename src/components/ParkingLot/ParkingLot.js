@@ -1,43 +1,47 @@
 import React from 'react'
 import 'antd/dist/antd.css'
-import {Button, Tabs} from 'antd'
+import {Button, Typography, Row, Col, Card} from 'antd'
 import {Redirect} from "react-router-dom";
 import './ParkingLot.css';
-import {TabPane} from "semantic-ui-react";
+
+const {Title} = Typography;
 
 class ParkingLot extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            redirectTo : false
+            redirectTo: false
         }
     }
 
     updateRedirectState = () => {
-      this.setState({
+        this.setState({
             redirectTo: true
         })
     };
 
-    render(){
+    render() {
         const parkingLotFromProps = this.props.parkingLot;
         console.log("parkingLotFromProps ", parkingLotFromProps);
         return (
-            <div>
+            <div className="divStyle">
                 {this.state.redirectTo ? <Redirect to={{
                     pathname: "/parkingSpaces",
-                    state : {parkingLot: parkingLotFromProps}
+                    state: {parkingLot: parkingLotFromProps}
                 }}/> : false}
 
-                <div>
-                    <Button type="primary" className="parkingLotButton" onClick={this.updateRedirectState}>
-                        <span>Total Capacity: <p>{this.props.parkingLot.capacity}</p></span>
-                        <br/>
-                        <span>Available Space: <p>{this.props.parkingLot.availableSpaces}</p></span>
-                        <br />
-                        <span><p>{this.props.parkingLot.parkingLotName}</p></span>
-                    </Button>
-                </div>
+                <Row gutter={20}>
+                    <Col span={12}>
+                        <Card onClick={this.updateRedirectState} className="parkingCards"
+                              title={<span>{this.props.parkingLot.parkingLotName}<br/>
+                                      <p>PHP: {this.props.parkingLot.flatRate}</p></span>}
+                              bordered={true} hoverable={true}>
+                            <p>Location: {this.props.parkingLot.location}</p>
+                            <p>Capacity: {this.props.parkingLot.capacity}</p>
+                            <p>Available Slots: {this.props.parkingLot.availableSpaces}</p>
+                        </Card>
+                    </Col>
+                </Row>
             </div>
         )
     }
