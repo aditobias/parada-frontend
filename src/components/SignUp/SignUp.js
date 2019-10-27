@@ -96,7 +96,7 @@ class RegistrationForm extends React.Component {
 
     return (
         <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+      <Form {...formItemLayout} onSubmit={this.handleSubmit} className="signin-form">
       <Form.Item
           label={
             <span>
