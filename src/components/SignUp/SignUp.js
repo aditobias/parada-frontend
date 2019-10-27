@@ -95,8 +95,18 @@ class RegistrationForm extends React.Component {
 
 
     return (
+        <div>
+            <div>
+            &nbsp;
+            </div>
+            <div>
+            &nbsp;
+            </div>
         <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
       <Form {...formItemLayout} onSubmit={this.handleSubmit} className="signin-form">
+      <div>
+            &nbsp;
+            </div>
       <Form.Item
           label={
             <span>
@@ -196,6 +206,7 @@ class RegistrationForm extends React.Component {
         </div>
       </Form>
       </article>
+      </div>
     );
   }
 }
