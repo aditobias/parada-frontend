@@ -3,7 +3,7 @@ import ParkingSpace from './ParkingSpace';
 import './ParkingLotSpace.css';
 import HeaderPage from "../Header/Header";
 import {Card} from "antd";
-
+import ReservationSteps from "../Steps/ReservationSteps";
 
 export default class ParkingSpaceWrapper extends Component {
 
@@ -18,22 +18,16 @@ export default class ParkingSpaceWrapper extends Component {
         return (
             <div>
                 <HeaderPage/>
-                <Card style={{width: "1100px", margin: "auto"}}>
-                    {/*{console.log("PROPS ", this.props)}*/}
-                    {/*{console.log("props.location.state", this.props.location.state)}*/}
-                    <p style={{
-                        textAlign: "center",
-                        fontSize: "50px",
-                        fontWeight: "fontWeightBold",
-                        fontFamily: "Monospace"
-                    }}> {this.props.id}</p>
-                    {/*Parking lot : {this.props.id}*/}
+                <ReservationSteps current={1}/>
 
-                    <br/>
-                    Parking lot capacity :
-                    {this.props.location.state.parkingLot.capacity}
+                <div className="divStyle">
+                    <Card style={{width: "400px", margin: "auto"}}
+                          title={<h1 style={{textAlign: "center"}}>{this.props.id}</h1>}>
+                        <h3>Available Slots: {this.props.location.state.parkingLot.availableSpaces}</h3>
+                        <h3>Price: {this.props.location.state.parkingLot.flatRate}</h3>
+                    </Card>
+                </div>
 
-                </Card>
                 <div className="main-parkingLotSpace">
                     <div className="parkingLotSpace">
                         {/* <ParkingSpace /> */} {
