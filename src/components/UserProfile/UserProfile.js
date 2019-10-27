@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Menu, Icon, Row, Col, Card } from 'antd';
 import 'antd/dist/antd.css';
 import Parada from './logo2.png';
+import {Link} from "react-router-dom";
+import HeaderPage from '../Header/Header';
 
 class UserProfile extends Component {
     constructor(props) {
@@ -23,20 +25,7 @@ class UserProfile extends Component {
     render() {
         return (
             <div>
-                <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" theme="dark">
-                    <Menu.Item disabled>
-                        <img alt="text" src={Parada}/>
-                    </Menu.Item>
-                    <Menu.Item key="reserve">
-                        <Icon type="car" />
-                        Reserve Parking
-                    </Menu.Item>
-                    <Menu.Item key="profile">
-                        <Icon type="user" />
-                        My Profile
-                    </Menu.Item>
-                </Menu>
-
+                <HeaderPage/>
                 <div style={{padding: '30px' }}>
                     <Row gutter={16}>
                         <Col span={8}>

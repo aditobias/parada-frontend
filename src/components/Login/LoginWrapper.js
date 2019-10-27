@@ -11,7 +11,7 @@ export default class TodoWrapper extends Component {
     render() {
         return (
         <div>
-        {this.props.passedLogin ? <Redirect to="/userProfile" /> : null}
+        {this.props.passedLogin ? <Redirect to="/parkingLots" /> : null}
         <Login onLogin={this.onLogMeIn}/>
         </div>
             )
