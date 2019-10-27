@@ -27,8 +27,22 @@
 }
 
 .parkingLotButton {
+    padding: 20px;
     height: 200px;
     width: 300px;
+    margin-bottom: 40px;
+}
+
+.parkingCards{
+    width: 300px;
+    padding: 20px;
+}
+
+.divStyle{
+    background: #1890FF;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .pagination {
