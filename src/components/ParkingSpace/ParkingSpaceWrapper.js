@@ -22,7 +22,8 @@ export default class ParkingSpaceWrapper extends Component {
 
                 <div className="divStyle">
                     <Card style={{width: "400px", margin: "auto"}}
-                          title={<h1 style={{textAlign: "center"}}>{this.props.id}</h1>}>
+                          title={<span style={{textAlign: "center"}}><h1>{this.props.id}</h1>
+                          <h3>{this.props.location.state.parkingLot.location}</h3></span>}>
                         <h3>Available Slots: {this.props.location.state.parkingLot.availableSpaces}</h3>
                         <h3>Price: {this.props.location.state.parkingLot.flatRate}</h3>
                     </Card>
