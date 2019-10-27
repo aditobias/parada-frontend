@@ -5,6 +5,7 @@ import ParkingLotResource from "../../api/ParkingLotResource";
 import './ParkingLot.css';
 import HeaderPage from '../Header/Header';
 import {Steps} from "antd";
+import ReservationSteps from "../Steps/ReservationSteps";
 
 const {Step} = Steps;
 
@@ -34,13 +35,7 @@ class ParkingLotMain extends Component {
             <div className="header">
                 <HeaderPage/>
 
-                <div className="steps">
-                    <Steps current={0}>
-                        <Step title="Choose Parking Lot"/>
-                        <Step title="Choose Parking Space"/>
-                        <Step title="Confirm Reservation"/>
-                    </Steps>
-                </div>
+                <ReservationSteps current={0}/>
 
                 <div className="parkingLot">{
                     listParkingLot.map((parkingLot, index) =>
