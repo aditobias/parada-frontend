@@ -6,6 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
+// import AdminWrapper from "./components/Admin/AdminWrapper";
+import AdminAddLot from "./components/Admin/AdminAddLot";
+import AdminWrapper from "./components/Admin/AdminWrapper";
 
 const store = createStore(
     rootReducer,
@@ -14,6 +17,7 @@ const store = createStore(
 
 ReactDOM.render(<Provider store={store}>
     <App />
+    <AdminWrapper />
 </Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
