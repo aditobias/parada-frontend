@@ -1,13 +1,11 @@
 import React from 'react'
-// import AdminAddSpaceWrapper from "./AdminAddSpaceWrapper";
 import AdminAddLot from "./AdminAddLot";
-import {Link} from "react-router-dom";
 import 'antd/dist/antd.css';
-import {Button, Icon, Menu} from "antd";
-
+import AdminHeader from "./AdminHeader";
+import HeaderPage from '../Header/Header';
 class AdminWrapper extends React.Component {
     state = {
-        current: 'mail',
+        current: 'addParking',
     };
 
     handleClick = e => {
@@ -19,16 +17,13 @@ class AdminWrapper extends React.Component {
 
     render(){
         return (
-            <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
-                <Menu.Item key="mail">
-                    <Icon type="car" theme="twoTone" />
-                    Add Parking Lot
-                </Menu.Item>
-                <Menu.Item key="app">
-                    <Icon type="appstore" />
-                    Add Parking Lot Space
-                </Menu.Item>
-            </Menu>
+            <div>
+                <AdminHeader />
+                <div>
+                    <AdminAddLot />
+                </div>
+            </div>
+
         )
     }
 }
