@@ -33,9 +33,9 @@ class Login extends Component {
     render() {
         return (
             <div className="center">
-                <img src={Parada} alt="logo" />
+                <img src={Parada} alt="logo" className="margin"/>
 
-                <Card bordered={true} className="center3">
+                <Card bordered={true} className="center" color="black">
                     <div className="margin">
                         <AccountCircleIcon style={{ height: "50px", width: "50px", padding: "6px" }} className="icon" />
                         <TextField variant="outlined" label="Username" value={this.state.username} onChange={this.handleUserNameChange} />
@@ -44,7 +44,7 @@ class Login extends Component {
                         <LockRoundedIcon style={{ height: "50px", width: "50px", padding: "6px" }} className="icon" />
                         <TextField variant="outlined" label="Password" type="password" value={this.state.password} onChange={this.handlePasswordChange} />
                     </div>
-                    <div>
+                    <div className="margin">
                         <Button type="primary" size="large" onClick={this.dispatch} style={{backgroundColor: "#487DAF"}}>LOGIN</Button>{" "}
                         <Button type="primary" size="large" style={{backgroundColor: "#487DAF"}} >SIGNUP</Button>
                     </div>

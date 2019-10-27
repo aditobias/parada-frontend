@@ -1,7 +1,8 @@
 .center {
     text-align: center;
     margin: auto;
-    width: 20%;  
+    width: 20%;
+    padding-bottom: 30px;
   }
 
 .icon{
