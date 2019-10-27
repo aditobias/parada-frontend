@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { TextField } from '@material-ui/core';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import LockRoundedIcon from '@material-ui/icons/LockRounded';
-import Parada from './logo.png';
+import { Form, Icon, Input, Button} from 'antd';
+import Parada from './New Logo.png';
 import './login.css';
-import { Button, Card } from 'antd';
 import 'antd/dist/antd.less';
+import 'antd/dist/antd.css';
+import '../../index.css';
+import 'tachyons';
 
 class Login extends Component {
     constructor(props) {
@@ -30,28 +30,53 @@ class Login extends Component {
         this.setState({ username: '', password: '' });
     };
 
-    render() {
-        return (
-            <div className="center">
-                <img src={Parada} alt="logo" className="margin"/>
 
-                <Card bordered={true} className="center" color="black">
-                    <div className="margin">
-                        <AccountCircleIcon style={{ height: "50px", width: "50px", padding: "6px" }} className="icon" />
-                        <TextField variant="outlined" label="Username" value={this.state.username} onChange={this.handleUserNameChange} />
-                    </div>
-                    <div className="margin">
-                        <LockRoundedIcon style={{ height: "50px", width: "50px", padding: "6px" }} className="icon" />
-                        <TextField variant="outlined" label="Password" type="password" value={this.state.password} onChange={this.handlePasswordChange} />
-                    </div>
-                    <div className="margin">
-                        <Button type="primary" size="large" onClick={this.dispatch} style={{backgroundColor: "#487DAF"}}>LOGIN</Button>{" "}
-                        <Button type="primary" size="large" style={{backgroundColor: "#487DAF"}} >SIGNUP</Button>
-                    </div>
-                </Card>
-            </div>
+    render() {
+        const { getFieldDecorator } = this.props.form;
+        return (
+            <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+                <div align="center">
+                <img src={Parada} alt="logo" />
+                    <Form onSubmit={this.handleSubmit} className="login-form">
+                        <Form.Item>
+                            {getFieldDecorator('username', {
+                                rules: [{ required: true, message: 'Please input your username!' }],
+                            })(
+                                <Input
+                                    value={this.state.username} 
+                                    onChange={this.handleUserNameChange}
+                                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    placeholder="Username"
+                                />,
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('password', {
+                                rules: [{ required: true, message: 'Please input your password!' }],
+                            })(
+                                <Input
+                                    value={this.state.password}
+                                    onChange={this.handlePasswordChange}
+                                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    type="password"
+                                    placeholder="Password"
+                                />,
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            <Button type="primary" className="login-form-button" onClick = {this.dispatch}>
+                                Log in
+                            </Button>
+                            or <a href="/signUp">register now!</a>
+                        </Form.Item>
+                    </Form>
+                </div>
+            </article>
         );
     }
 }
 
-export default Login;
+
+const LoginForm = Form.create({ name: 'register' })(Login);
+
+export default LoginForm;
