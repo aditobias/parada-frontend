@@ -17,7 +17,7 @@ class ReservationSteps extends Component {
             <div className="steps">
                 <Steps current={this.state.current}>
                     <Step title="Choose Parking Lot"/>
-                    <Step title="Choose Parking Space"/>
+                    <Step title="Select Parking Space"/>
                     <Step title="Confirm Reservation"/>
                 </Steps>
             </div>
