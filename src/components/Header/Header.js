@@ -14,7 +14,7 @@ class UserProfile extends Component {
     }
 
     state = {
-        current: '',
+        current: 'reserve',
     };
 
     handleClick = e => {
