@@ -9,16 +9,14 @@ import {
   Select,
   Checkbox,
   Button,
-  AutoComplete,
 } from 'antd';
 
 const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
 
 class RegistrationForm extends React.Component {
   state = {
-    confirmDirty: false,
-    autoCompleteResult: [],
+    username:"",
+    password:""
   };
 
   handleSubmit = e => {
@@ -64,7 +62,6 @@ class RegistrationForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { autoCompleteResult } = this.state;
 
     const formItemLayout = {
       labelCol: {
@@ -93,17 +90,13 @@ class RegistrationForm extends React.Component {
     })(
       <Select style={{ width: 70 }}>
         <Option value="63">+63</Option>
-        <Option value="87">+87</Option>
       </Select>,
     );
 
-    const websiteOptions = autoCompleteResult.map(website => (
-      <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
-    ));
 
     return (
-        <article class="mw6 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+        <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+      <Form {...formItemLayout} onSubmit={this.handleSubmit} className="signin-form">
       <Form.Item
           label={
             <span>
