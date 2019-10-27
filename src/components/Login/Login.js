@@ -34,6 +34,13 @@ class Login extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
+            <div>
+            <div>
+            &nbsp;
+            </div>
+            <div>
+            &nbsp;
+            </div>
             <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
                 <div align="center">
                 <img src={Parada} alt="logo" />
@@ -72,6 +79,7 @@ class Login extends Component {
                     </Form>
                 </div>
             </article>
+            </div>
         );
     }
 }

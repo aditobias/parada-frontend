@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to right, #c0c0aa, #1cefff);
 }
 
 code {
@@ -14,6 +15,7 @@ code {
 
 .login-form {
   max-width: 400px;
+  align-items: center;
 }
 .login-form-forgot {
   float: right;
