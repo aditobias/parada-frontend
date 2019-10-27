@@ -1,8 +1,9 @@
 import React from 'react'
 import 'antd/dist/antd.css'
-import {Button} from 'antd'
+import {Button, Tabs} from 'antd'
 import {Redirect} from "react-router-dom";
 import './ParkingLot.css';
+import {TabPane} from "semantic-ui-react";
 
 class ParkingLot extends React.Component {
     constructor(props) {
@@ -36,7 +37,6 @@ class ParkingLot extends React.Component {
                         <br />
                         <span><p>{this.props.parkingLot.parkingLotName}</p></span>
                     </Button>
-                    <p></p>
                 </div>
             </div>
         )

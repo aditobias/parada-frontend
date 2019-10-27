@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import LoginWrapper from '../components/Login/LoginWrapper';
 import LoginResource from '../api/LoginResource';
+import {message } from 'antd';
 
 const mapStateToProps = state => ({
     loginUser: state.username,
@@ -17,6 +18,8 @@ const mapDispatchToProps = dispatch => ({
                 console.log(res);
                 if(res.status == "200")
                 {
+                    message.loading('You are logging in...',1)
+                    .then(()=> message.success('You are now loged in',1));
                     dispatch({
                         type: 'LOG_IN',
                         payload: credentials
@@ -24,7 +27,7 @@ const mapDispatchToProps = dispatch => ({
                 }
                 else if(res.status == "500")
                 {
-                    alert("You have entered an invalid username/ password.");
+                    message.error("You have entered an invalid username/password.");
                 }
             })
     }
