@@ -4,6 +4,7 @@ import {Card, Input} from 'antd';
 import AdminAddSpace from "./AdminAddSpace";
 import AdminResource from "../../api/AdminResource";
 import AdminHeader from "./AdminHeader";
+import HeaderPage from '../Header/Header';
 
 class AdminAddSpaceWrapper extends React.Component {
     constructor(props) {
@@ -29,6 +30,7 @@ class AdminAddSpaceWrapper extends React.Component {
         const { Search } = Input;
         return (
             <div>
+                <HeaderPage/>
                 <AdminHeader current='addParkingSpace'/>
                 <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '50vh'}}>
                     <Card style={{ width: 600, justifyContent: "center" }}>

@@ -3,6 +3,7 @@ import {Button, Card, Input, Modal} from "antd";
 import AdminResource from "../../api/AdminResource";
 import {Redirect} from "react-router-dom";
 import AdminHeader from "./AdminHeader";
+import HeaderPage from '../Header/Header';
 
 
 class AdminAddLot extends React.Component {
@@ -70,6 +71,7 @@ class AdminAddLot extends React.Component {
     render(){
         return (
             <div>
+                <HeaderPage/>
             <AdminHeader current='addParking'/>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
                 {this.state.redirect ? <Redirect to="/" /> : null}
