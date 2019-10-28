@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import 'tachyons';
+import {message } from 'antd';
 import {
   Form,
   Input,
@@ -24,13 +25,16 @@ class RegistrationForm extends React.Component {
     emailVerificationStatus: "Not yet Verified"
   };
 
-  
+  componentDidMount() {
+    console.log(this.state);
+      }
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        this.props.onSignUp(this.state);
+        this.setState({username:"",password:"",email:"",firstName:"",lastName:"",mobileNumber:""});
       }
     });
   };
@@ -91,10 +95,6 @@ class RegistrationForm extends React.Component {
     this.setState({ mobileNumber: event.target.value });
   };
 
-  dispatch = () => {
-    this.props.onSignUp(this.state);
-    this.setState({username:"",password:"",email:"",firstName:"",lastName:"",mobileNumber:""});
-    };
 
 
   render() {
@@ -238,7 +238,7 @@ class RegistrationForm extends React.Component {
         <div align="left">
         <Form.Item {...tailFormItemLayout}>
           {getFieldDecorator('agreement', {
-            valuePropName: 'checked',
+             rules: [{ required: true, message: 'Please confirm the agreement!' }],
           })(
             <Checkbox>
               I have read the <a href="">agreement</a>
@@ -246,7 +246,9 @@ class RegistrationForm extends React.Component {
           )}
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit" onClick = {this.dispatch}>
+          <Button type="primary" htmlType="submit"
+          //  onClick = {this.dispatch}
+           >
             Register
           </Button>
         </Form.Item>
