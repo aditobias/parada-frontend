@@ -5,7 +5,8 @@ import ParkingTransactionResource from '../api/ParkingTransactionResource';
 
 const mapStateToProps = state => ({
     id: state.parkingLotReducer.selectedParkingLot,
-    spaces: state.parkingSpaceResource.parkingSpaceList
+    spaces: state.parkingSpaceResource.parkingSpaceList,
+    username: state.logInResource.userName
 });
 
 
@@ -32,12 +33,12 @@ const mapDispatchToProps = dispatch => ({
             // })
     },
 
-    getReceipt: (id,parkingLotName) =>{
+    getReceipt: (id,parkingLotName,username) =>{
         ParkingSpaceResource.updateParkingPosition(
             {id: id},
             parkingLotName);
         ParkingTransactionResource.addNewParkingTransaction(parkingLotName,
-            id).then(res => res.json())
+            id, {username: username}).then(res => res.json())
             .then(res => {
                 console.log(res);
                 dispatch({

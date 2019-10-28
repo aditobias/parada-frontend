@@ -33,7 +33,7 @@ class ParkingSpace extends Component {
             redirect : true
         });
         console.log(this.props);
-        this.props.generateReceipt(this.props.parkingSpace.id,this.props.parkingSpace.parkingLotName);
+        this.props.generateReceipt(this.props.parkingSpace.id,this.props.parkingSpace.parkingLotName, this.props.username);
         
     };
 
