@@ -1,10 +1,16 @@
 .center {
-    text-align: center;
-    margin: auto; 
-    width: 50%;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 400px;
+    padding: 10px;
+    text-align: left;
   }
 .flex {
-    text-align: center;
+    text-align: left;
     margin: auto;
-    width: 50%;
   }
+
+.cards {
+    padding: 50px;
+    margin-bottom: 100px;
+}
