@@ -2,6 +2,7 @@ import React from 'react'
 import {Button, Card, Input, Modal} from "antd";
 import AdminResource from "../../api/AdminResource";
 import {Redirect} from "react-router-dom";
+import AdminHeader from "./AdminHeader";
 
 
 class AdminAddLot extends React.Component {
@@ -67,8 +68,9 @@ class AdminAddLot extends React.Component {
     };
 
     render(){
-
         return (
+            <div>
+            <AdminHeader current='addParking'/>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
                 {this.state.redirect ? <Redirect to="/" /> : null}
                 <Card style={{width: 600, justifyContent: "center"}}>
@@ -109,6 +111,7 @@ class AdminAddLot extends React.Component {
                 >
                     <p><h1>Parking Lot {this.state.pName} has been added!</h1></p>
                 </Modal>
+            </div>
             </div>
         );
     }
