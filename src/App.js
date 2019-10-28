@@ -22,7 +22,7 @@ function App() {
                 <Route exact path="/">
                     <LoginContainer/>
                 </Route>
-                <Route exact path="/Admin">
+                <Route exact path="/admin">
                     <AdminWrapper />
                 </Route>
                 <Route path="/userProfile">
@@ -31,10 +31,10 @@ function App() {
                 <Route exact path="/parkingLots">
                     <ParkingLotMain/>
                 </Route>
-                <Route exact path= "/addParkingLot">
+                <Route exact path= "/adminParkingLot">
                     <AdminAddLot />
                 </Route>
-                <Route exact path="/addSpace">
+                <Route exact path="/adminSpace">
                     <AdminAddSpaceWrapper />
                 </Route>
                 {/*<Route exact path="/parkingSpaces" component={ParkingSpacesContainer}/>*/}
