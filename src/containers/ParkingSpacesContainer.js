@@ -4,7 +4,8 @@ import ParkingSpaceResource from '../api/ParkingSpaceResource';
 
 const mapStateToProps = state => ({
     id: state.parkingLotReducer.selectedParkingLot,
-    spaces: state.parkingSpaceResource.parkingSpaceList
+    spaces: state.parkingSpaceResource.parkingSpaceList,
+    username: state.logInResource.userName
 });
 
 
@@ -21,14 +22,10 @@ const mapDispatchToProps = dispatch => ({
             })
     },
     updateSelectedParkingLot: (parkingLotName) => {
-        // ParkingSpaceResource.updateSelectedParkingLot(parkingLotName)
-        //     .then(res => res.json())
-        //     .then(res => {
                 dispatch({
                     type: "UPDATE_SELECTED_PARKING_LOT",
                     payload: parkingLotName
                 })
-            // })
     }
 });
 

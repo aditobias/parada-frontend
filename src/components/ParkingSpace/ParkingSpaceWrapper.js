@@ -36,6 +36,7 @@ export default class ParkingSpaceWrapper extends Component {
                             <ParkingSpace key={index}
                                           id={index}
                                           parkingSpace={parkingSpace}
+                                          userName={this.props.username}
                             />
                         )
                     }

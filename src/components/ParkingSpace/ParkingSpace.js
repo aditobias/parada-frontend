@@ -34,7 +34,7 @@ class ParkingSpace extends Component {
             {id: this.props.parkingSpace.id},
             this.props.parkingSpace.parkingLotName);
         ParkingTransactionResource.addNewParkingTransaction(this.props.parkingSpace.parkingLotName,
-            this.props.parkingSpace.id);
+            this.props.parkingSpace.id, {username: this.props.userName});
     };
 
     handleCancel = e => {
