@@ -24,6 +24,8 @@ class RegistrationForm extends React.Component {
     emailVerificationStatus: "Not yet Verified"
   };
 
+  
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
@@ -87,7 +89,6 @@ class RegistrationForm extends React.Component {
 
   handlePhoneNumChange = (event) => {
     this.setState({ mobileNumber: event.target.value });
-    console.log(this.state.mobileNumber);
   };
 
   dispatch = () => {
