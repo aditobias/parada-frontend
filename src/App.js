@@ -4,6 +4,7 @@ import UserContainer from './containers/UserContainer';
 import ParkingLotMain from './components/ParkingLot/ParkingLotMain';
 import ParkingSpacesContainer from './containers/ParkingSpacesContainer';
 import SignUpContainer from './containers/SignUpContainer';
+import ReceiptContainer from './containers/ReceiptContainer';
 
 import {
     BrowserRouter as Router,
@@ -37,8 +38,12 @@ function App() {
                 <Route exact path="/adminSpace">
                     <AdminAddSpaceWrapper />
                 </Route>
+
                 {/*<Route exact path="/parkingSpaces" component={ParkingSpacesContainer}/>*/}
                 <Route exact path="/parkingSpaces" render={(props) => <ParkingSpacesContainer {...props}/>}/>
+
+                <Route exact path="/parkingReceipt" render={(props) => <ReceiptContainer {...props}/>}/>
+
                 <Route exact path="/signUp">
                     <SignUpContainer/>
                 </Route>

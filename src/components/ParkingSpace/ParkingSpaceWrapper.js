@@ -36,6 +36,8 @@ export default class ParkingSpaceWrapper extends Component {
                             <ParkingSpace key={index}
                                           id={index}
                                           parkingSpace={parkingSpace}
+                                          generateReceipt={this.props.getReceipt}
+                                          {...this.props}
                             />
                         )
                     }

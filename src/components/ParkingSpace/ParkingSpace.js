@@ -3,7 +3,8 @@ import { Button } from 'antd';
 import { Modal } from 'antd';
 import ParkingSpaceResource from "../../api/ParkingSpaceResource";
 import ParkingTransactionResource from "../../api/ParkingTransactionResource";
-import {Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";  
+import receipt from '../../reducers/receipt';
 
 class ParkingSpace extends Component {
     state = {
@@ -25,16 +26,15 @@ class ParkingSpace extends Component {
     };
 
     handleOk = e => {
+        
         console.log(e);
         this.setState({
             visible: false,
             redirect : true
         });
-        ParkingSpaceResource.updateParkingPosition(
-            {id: this.props.parkingSpace.id},
-            this.props.parkingSpace.parkingLotName);
-        ParkingTransactionResource.addNewParkingTransaction(this.props.parkingSpace.parkingLotName,
-            this.props.parkingSpace.id);
+        console.log(this.props);
+        this.props.generateReceipt(this.props.parkingSpace.id,this.props.parkingSpace.parkingLotName);
+        
     };
 
     handleCancel = e => {
@@ -49,7 +49,15 @@ class ParkingSpace extends Component {
     render() {
         return (
             <div>
-                {this.state.redirect ? <Redirect to="/parkingLots" /> : null}
+                {
+                    this.state.redirect ?
+                        <Redirect to={{
+                            pathname:"/parkingReceipt",
+                            state: {parkingLot: this.props.location.state.parkingLot}
+                        }}
+                        />
+                        : false
+                }
                 <Button className={this.props.parkingSpace.occupied ? 'parkingLotSpaceButtonOccupied' : 'parkingLotSpaceButton'}
                         onClick={this.showModal}>
                     <div className="parkingButtonContent">

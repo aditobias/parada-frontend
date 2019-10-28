@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ParkingSpaceWrapper from '../components/ParkingSpace/ParkingSpaceWrapper';
 import ParkingSpaceResource from '../api/ParkingSpaceResource';
+import ParkingTransactionResource from '../api/ParkingTransactionResource';
 
 const mapStateToProps = state => ({
     id: state.parkingLotReducer.selectedParkingLot,
@@ -29,6 +30,21 @@ const mapDispatchToProps = dispatch => ({
                     payload: parkingLotName
                 })
             // })
+    },
+
+    getReceipt: (id,parkingLotName) =>{
+        ParkingSpaceResource.updateParkingPosition(
+            {id: id},
+            parkingLotName);
+        ParkingTransactionResource.addNewParkingTransaction(parkingLotName,
+            id).then(res => res.json())
+            .then(res => {
+                console.log(res);
+                dispatch({
+                    type: "GET_RECEIPT",
+                    payload: res  //todo check correct object name
+                })
+            });
     }
 });
 
