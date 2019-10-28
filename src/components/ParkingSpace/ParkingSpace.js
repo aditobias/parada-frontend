@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import { Modal } from 'antd';
 import ParkingSpaceResource from "../../api/ParkingSpaceResource";
 import ParkingTransactionResource from "../../api/ParkingTransactionResource";
-import {Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";  
 import receipt from '../../reducers/receipt';
 
 class ParkingSpace extends Component {
@@ -26,16 +26,15 @@ class ParkingSpace extends Component {
     };
 
     handleOk = e => {
+        
         console.log(e);
         this.setState({
             visible: false,
             redirect : true
         });
-        ParkingSpaceResource.updateParkingPosition(
-            {id: this.props.parkingSpace.id},
-            this.props.parkingSpace.parkingLotName);
-        ParkingTransactionResource.addNewParkingTransaction(this.props.parkingSpace.parkingLotName,
-            this.props.parkingSpace.id, {username: this.props.userName});
+        console.log(this.props);
+        this.props.generateReceipt(this.props.parkingSpace.id,this.props.parkingSpace.parkingLotName);
+        
     };
 
     handleCancel = e => {

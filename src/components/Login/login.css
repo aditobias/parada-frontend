@@ -1,9 +1,8 @@
 .center {
     text-align: center;
+    margin: auto;
     width: 20%;
-    padding-bottom: 50px;
-    margin-bottom: 50px;
-    margin-top: 50px;
+    padding-bottom: 30px;
   }
 
 .icon{
@@ -13,12 +12,3 @@
 .margin {
   margin-bottom: 20px;
   }
-
-.content {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
