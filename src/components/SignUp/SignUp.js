@@ -2,6 +2,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import 'tachyons';
 import {message } from 'antd';
+
 import {
   Form,
   Input,
@@ -139,7 +140,7 @@ class RegistrationForm extends React.Component {
             <div>
             &nbsp;
             </div>
-        <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+        <article className="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
       <Form {...formItemLayout} onSubmit={this.handleSubmit} className="signin-form">
       <div>
             &nbsp;
@@ -156,7 +157,7 @@ class RegistrationForm extends React.Component {
         >
           {getFieldDecorator('username', {
             rules: [{ required: true, message: 'Please input your username!', whitespace: true }],
-          })(<Input setFieldsValue={this.state.username} 
+          })(<Input setFieldsValue={this.state.username}
                     onChange={this.handleUserNameChange}
                     />)}
         </Form.Item>

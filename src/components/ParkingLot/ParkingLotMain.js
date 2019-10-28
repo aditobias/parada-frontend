@@ -46,10 +46,6 @@ class ParkingLotMain extends Component {
                     )
                 }
                 </div>
-                {/*<div className="pagination">*/}
-                {/*    <a href="#">❮</a>*/}
-                {/*    <a href="#">❯</a>*/}
-                {/*</div>*/}
             </div>
         )
     }

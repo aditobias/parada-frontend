@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import './Header.css';
 import Parada from './logoHeader.png';
 import { Link } from 'react-router-dom';
+import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 
 const { SubMenu } = Menu;
@@ -44,8 +45,11 @@ class UserProfile extends Component {
                             <Menu.Item key="editProfile"><Link to="/admin"/>Administrator Features</Menu.Item>
                     </SubMenu>
                     <Menu.Item key="history">
-                        <Icon type="unordered-list" />
-                        Transaction History
+                        <Link to="/userTransactionHistory"/>Transaction History
+                        {/*<Redirect to={{pathname: "/parkingSpaces", state: {parkingLot: parkingLotFromProps}}}/>*/}
+                    </Menu.Item>
+                    <Menu.Item key="logOut" style={{position:"relative"}}>
+                       Logout
                     </Menu.Item>
                 </Menu>
             </div>

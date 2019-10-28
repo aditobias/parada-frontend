@@ -5,6 +5,7 @@ import ParkingLotMain from './components/ParkingLot/ParkingLotMain';
 import ParkingSpacesContainer from './containers/ParkingSpacesContainer';
 import SignUpContainer from './containers/SignUpContainer';
 import ReceiptContainer from './containers/ReceiptContainer';
+import UserTransactionHistoryMain from './components/UserTransactionHistory/UserTransactionHistoryMain';
 
 import {
     BrowserRouter as Router,
@@ -31,6 +32,9 @@ function App() {
                 </Route>
                 <Route exact path="/parkingLots">
                     <ParkingLotMain/>
+                </Route>
+                <Route exact path="/userTransactionHistory">
+                    <UserTransactionHistoryMain/>
                 </Route>
                 <Route exact path= "/adminParkingLot">
                     <AdminAddLot />
