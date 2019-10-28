@@ -16,7 +16,11 @@ const { Option } = Select;
 class RegistrationForm extends React.Component {
   state = {
     username:"",
-    password:""
+    password:"",
+    email:"",
+    firstname:"",
+    lastname:"",
+    phoneNumber:""
   };
 
   handleSubmit = e => {
@@ -59,6 +63,37 @@ class RegistrationForm extends React.Component {
     }
     this.setState({ autoCompleteResult });
   };
+
+  handleUserNameChange = (event) => {
+    this.setState({ username: event.target.value });
+  };
+
+  handleFirstNameChange = (event) => {
+    this.setState({ firstname: event.target.value });
+  };
+
+  handleLastNameChange = (event) => {
+    this.setState({ lastname: event.target.value });
+  };
+
+  handleEmailChange = (event) => {
+    this.setState({ email: event.target.value });
+  };
+
+  handlePasswordChange = (event) => {
+    this.setState({ password: event.target.value });
+  };
+
+  handlePhoneNumChange = (event) => {
+    this.setState({ phoneNumber: event.target.value });
+    console.log(this.state.phoneNumber);
+  };
+
+  dispatch = () => {
+    this.props.onSignUp(this.state);
+    this.setState({   username:"",password:"",email:"",firstname:"",lastname:"",phoneNumber:""});
+    };
+
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -119,7 +154,9 @@ class RegistrationForm extends React.Component {
         >
           {getFieldDecorator('username', {
             rules: [{ required: true, message: 'Please input your username!', whitespace: true }],
-          })(<Input />)}
+          })(<Input setFieldsValue={this.state.username} 
+                    onChange={this.handleUserNameChange}
+                    />)}
         </Form.Item>
       <Form.Item
           label={
@@ -130,7 +167,8 @@ class RegistrationForm extends React.Component {
         >
           {getFieldDecorator('firstname', {
             rules: [{ required: true, message: 'Please input your firstname!', whitespace: true }],
-          })(<Input />)}
+          })(<Input setFieldsValue={this.state.firstname} 
+                    onChange={this.handleFirstNameChange}/>)}
         </Form.Item>
         <Form.Item
           label={
@@ -141,7 +179,8 @@ class RegistrationForm extends React.Component {
         >
           {getFieldDecorator('lastname', {
             rules: [{ required: true, message: 'Please input your lastname!', whitespace: true }],
-          })(<Input />)}
+          })(<Input setFieldsValue={this.state.lastname} 
+                    onChange={this.handleLastNameChange}/>)}
         </Form.Item>
         <Form.Item label="E-mail">
           {getFieldDecorator('email', {
@@ -155,7 +194,8 @@ class RegistrationForm extends React.Component {
                 message: 'Please input your E-mail!',
               },
             ],
-          })(<Input />)}
+          })(<Input setFieldsValue={this.state.email} 
+                    onChange={this.handleEmailChange}/>)}
         </Form.Item>
         <Form.Item label="Password" hasFeedback>
           {getFieldDecorator('password', {
@@ -168,7 +208,8 @@ class RegistrationForm extends React.Component {
                 validator: this.validateToNextPassword,
               },
             ],
-          })(<Input.Password />)}
+          })(<Input.Password setFieldsValue={this.state.password} 
+                             onChange={this.handlePasswordChange}/>)}
         </Form.Item>
         <Form.Item label="Confirm Password" hasFeedback>
           {getFieldDecorator('confirm', {
@@ -186,7 +227,11 @@ class RegistrationForm extends React.Component {
         <Form.Item label="Phone Number">
           {getFieldDecorator('phone', {
             rules: [{ required: true, message: 'Please input your phone number!' }],
-          })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
+          })(<Input 
+            setFieldsValue={this.state.phoneNumber} 
+            onChange={this.handlePhoneNumChange}
+            addonBefore={prefixSelector} 
+            style={{ width: '100%' }} />)}
         </Form.Item>
         <div align="left">
         <Form.Item {...tailFormItemLayout}>
@@ -199,7 +244,7 @@ class RegistrationForm extends React.Component {
           )}
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick = {this.dispatch}>
             Register
           </Button>
         </Form.Item>
