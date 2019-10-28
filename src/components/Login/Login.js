@@ -38,13 +38,10 @@ class Login extends Component {
             <div>
             &nbsp;
             </div>
-            <div >
+            <div>
             &nbsp;
             </div>
-            <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10" style={{
-                position: 'absolute', left: '50%', top: '50%',
-                transform: 'translate(-50%, -50%)'
-            }}>
+            <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
                 <div align="center">
                 <img src={Parada} alt="logo" />
                     <Form onSubmit={this.handleSubmit} className="login-form">
@@ -57,7 +54,6 @@ class Login extends Component {
                                     onChange={this.handleUserNameChange}
                                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Username"
-                                    size="large"
                                 />,
                             )}
                         </Form.Item>
@@ -71,15 +67,14 @@ class Login extends Component {
                                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     type="password"
                                     placeholder="Password"
-                                    size="large"
                                 />,
                             )}
                         </Form.Item>
                         <Form.Item>
-                            <Button size="large" type="primary" className="login-form-button" onClick = {this.dispatch}>
+                            <Button type="primary" className="login-form-button" onClick = {this.dispatch}>
                                 Log in
                             </Button>
-                            or <h href="/signUp">register now!</h>
+                            or <a href="/signUp">register now!</a>
                         </Form.Item>
                     </Form>
                 </div>

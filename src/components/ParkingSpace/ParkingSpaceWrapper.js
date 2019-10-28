@@ -38,7 +38,6 @@ export default class ParkingSpaceWrapper extends Component {
                                           parkingSpace={parkingSpace}
                                           generateReceipt={this.props.getReceipt}
                                           {...this.props}
-                                          userName={this.props.username}
                             />
                         )
                     }

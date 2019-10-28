@@ -5,7 +5,8 @@
     text-align: center;
     margin: auto;
     width: 50%;
-    padding: 30px;
+    padding: 10px;
+    margin-bottom:10px;
 }
 .flex {
     text-align: center;
@@ -14,8 +15,4 @@
     padding: 20px;
     margin-bottom:10px;
 }
-
-/*.ant-menu{*/
-/*    background: white;*/
-/*}*/
 
