@@ -5,7 +5,8 @@ import ParkingTransactionResource from '../api/ParkingTransactionResource';
 
 const mapStateToProps = state => ({
     id: state.parkingLotReducer.selectedParkingLot,
-    spaces: state.parkingSpaceResource.parkingSpaceList
+    spaces: state.parkingSpaceResource.parkingSpaceList,
+    username: state.logInResource.userName
 });
 
 
