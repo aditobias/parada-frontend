@@ -18,8 +18,16 @@ export default class ParkingSpaceWrapper extends Component {
         return (
             <div>
                 <HeaderPage/>
-                <ReservationSteps current={1} name={this.props.id} location={this.props.location.state.parkingLot.location}
-                                  price={this.props.location.state.parkingLot.flatRate}/>
+                <ReservationSteps current={1}/>
+
+                <div className="divStyle">
+                    <Card style={{width: "400px", margin: "auto"}}
+                          title={<span style={{textAlign: "center"}}><h1>{this.props.id}</h1>
+                          <h3>{this.props.location.state.parkingLot.location}</h3></span>}>
+                        <h3>Available Slots: {this.props.location.state.parkingLot.availableSpaces}</h3>
+                        <h3>Price: {this.props.location.state.parkingLot.flatRate}</h3>
+                    </Card>
+                </div>
 
                 <div className="main-parkingLotSpace">
                     <div className="parkingLotSpace">
@@ -28,7 +36,9 @@ export default class ParkingSpaceWrapper extends Component {
                             <ParkingSpace key={index}
                                           id={index}
                                           parkingSpace={parkingSpace}
-                                          userName={this.props.username}
+                                          username={this.props.username}
+                                          generateReceipt={this.props.getReceipt}
+                                          {...this.props}
                             />
                         )
                     }

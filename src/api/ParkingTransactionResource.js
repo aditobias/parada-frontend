@@ -7,7 +7,7 @@ export default {
             {
                 mode: 'cors',
                 method: 'POST',
-                headers: new Headers({'Content-Type': 'application/json'}),
+                headers: new Headers({ 'Content-Type': 'application/json' }),
                 body: JSON.stringify(parkingTransaction)
             })
 }

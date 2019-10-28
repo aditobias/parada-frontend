@@ -37,10 +37,6 @@
     display: flex;
 }
 
-.cardSteps {
-    width: 1100px;
-}
-
 .parkingLotButton {
     padding: 20px;
     height: 200px;
