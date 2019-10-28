@@ -2,17 +2,17 @@ import React, {Component} from 'react';
 import SignUp from './SignUp';
 import { Redirect } from 'react-router-dom'
 
-export default class TodoWrapper extends Component {
+export default class SignUpWrapper extends Component {
 
-    onLogMeIn = (credentials) => {
-        this.props.getUserCredentials(credentials);
+    onSignUp = (credentials) => {
+        this.props.getUserInfo(credentials);
     }
 
     render() {
         return (
         <div>
-        {/* {this.props.passedLogin ? <Redirect to="/" /> : null} */}
-        <SignUp onLogin={this.onLogMeIn}/>
+        {this.props.passedLogin ? <Redirect to="/parkingLots" /> : null}
+        <SignUp onSignUp={this.onSignUp}/>
         </div>
             )
 }

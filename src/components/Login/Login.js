@@ -53,7 +53,7 @@ class Login extends Component {
                                 rules: [{ required: true, message: 'Please input your username!' }],
                             })(
                                 <Input
-                                    value={this.state.username} 
+                                    setFieldsValue={this.state.username} 
                                     onChange={this.handleUserNameChange}
                                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Username"
@@ -66,7 +66,7 @@ class Login extends Component {
                                 rules: [{ required: true, message: 'Please input your password!' }],
                             })(
                                 <Input
-                                    value={this.state.password}
+                                    setFieldsValue={this.state.password}
                                     onChange={this.handlePasswordChange}
                                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     type="password"
