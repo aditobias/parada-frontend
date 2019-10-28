@@ -18,10 +18,13 @@ class RegistrationForm extends React.Component {
     username:"",
     password:"",
     email:"",
-    firstname:"",
-    lastname:"",
-    phoneNumber:""
+    firstName:"",
+    lastName:"",
+    mobileNumber:"",
+    emailVerificationStatus: "Not yet Verified"
   };
+
+  
 
   handleSubmit = e => {
     e.preventDefault();
@@ -69,11 +72,11 @@ class RegistrationForm extends React.Component {
   };
 
   handleFirstNameChange = (event) => {
-    this.setState({ firstname: event.target.value });
+    this.setState({ firstName: event.target.value });
   };
 
   handleLastNameChange = (event) => {
-    this.setState({ lastname: event.target.value });
+    this.setState({ lastName: event.target.value });
   };
 
   handleEmailChange = (event) => {
@@ -85,13 +88,12 @@ class RegistrationForm extends React.Component {
   };
 
   handlePhoneNumChange = (event) => {
-    this.setState({ phoneNumber: event.target.value });
-    console.log(this.state.phoneNumber);
+    this.setState({ mobileNumber: event.target.value });
   };
 
   dispatch = () => {
     this.props.onSignUp(this.state);
-    this.setState({   username:"",password:"",email:"",firstname:"",lastname:"",phoneNumber:""});
+    this.setState({username:"",password:"",email:"",firstName:"",lastName:"",mobileNumber:""});
     };
 
 
