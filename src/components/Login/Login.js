@@ -30,6 +30,12 @@ class Login extends Component {
         this.setState({ username: '', password: '' });
     };
 
+    keyPressed = (event) => {
+        if (event.key === "Enter") {
+           this.dispatch();
+        }
+    }
+
 
     render() {
         const { getFieldDecorator } = this.props.form;
@@ -57,6 +63,7 @@ class Login extends Component {
                                     onChange={this.handleUserNameChange}
                                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Username"
+                                    onKeyPress={this.keyPressed}
                                 />,
                             )}
                         </Form.Item>
@@ -71,6 +78,7 @@ class Login extends Component {
                                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     type="password"
                                     placeholder="Password"
+                                    onKeyPress={this.keyPressed}
                                 />,
                             )}
                         </Form.Item>
