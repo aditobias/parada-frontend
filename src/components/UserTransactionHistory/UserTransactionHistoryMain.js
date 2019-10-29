@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table} from 'antd';
+import {Button, Table} from 'antd';
 import HeaderPage from '../Header/Header';
 import {Popconfirm} from 'antd';
 import {connect} from "react-redux";
@@ -39,34 +39,14 @@ class UserTransactionHistoryMain extends React.Component {
     render() {
         console.log("state.userTransaction.userTransactionList ", this.state);
         const columns = [
-            {
-                title: 'Parking Lot Name',
-                dataIndex: 'name',
-            },
-            {
-                title: 'Price',
-                dataIndex: 'price',
-            },
-            {
-                title: 'Reserve Date',
-                dataIndex: 'reserveTime',
-            },
-            {
-                title: 'Start Date',
-                dataIndex: 'startTime',
-            },
-            {
-                title: 'End Date',
-                dataIndex: 'endTime',
-            },
-            {
-                title: 'Status',
-                dataIndex: 'status',
-            },
-            {
-                title: 'Action',
-                dataIndex: 'button',
-            },
+            {title: 'Parking Lot Name', dataIndex: 'name'},
+            {title: 'Price', dataIndex: 'price'},
+            {title: 'Reserve Date', dataIndex: 'reserveTime'},
+            {title: 'Start Date', dataIndex: 'startTime'},
+            {title: 'End Date', dataIndex: 'endTime'},
+            {title: 'Status', dataIndex: 'status'},
+            {title: 'Action', dataIndex: 'action'},
+            {title: 'Show Receipt', dataIndex: 'showReceipt'},
         ];
 
         const dataList = [];
@@ -85,9 +65,10 @@ class UserTransactionHistoryMain extends React.Component {
                     startTime: this.handleConversion(startTime),
                     endTime: this.handleConversion(endTime),
                     status: status,
-                    button:  <Popconfirm title="Are you going to cancel this reservation?" >
+                    action:  <Popconfirm title="Are you going to cancel this reservation?" >
                                  <a>Cancel</a>
-                             </Popconfirm>
+                             </Popconfirm>,
+                    showReceipt: <Button>Show Receipt</Button>
                 })
             });
 
