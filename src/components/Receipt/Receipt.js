@@ -3,6 +3,7 @@ import 'antd/dist/antd.css'
 import { Button, Typography, Row, Col, Card } from 'antd'
 import { Redirect } from "react-router-dom";
 import 'tachyons';
+var QRCode = require('qrcode.react');
 
 
 class Receipt extends React.Component {
@@ -33,15 +34,6 @@ class Receipt extends React.Component {
                         /> :
                         null
                 }
-                <div>
-                    &nbsp;
-                </div>
-                <div>
-                    &nbsp;
-                </div>
-                <div>
-                    &nbsp;
-                </div>
                 <div>
                     &nbsp;
                 </div>
@@ -93,6 +85,7 @@ class Receipt extends React.Component {
                     </Row>
                     </Card>
                     <hr></hr>
+                    <QRCode value={this.props.receiptInfo.receiptID.toString()}/>
                     <div align="right">
                     <Button type="primary" htmlType="submit" onClick={this.handleOk}>
                     Confirm
