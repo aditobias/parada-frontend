@@ -44,7 +44,7 @@ class AdminPaymentWrapper extends React.Component {
             <div>
                 <HeaderPage current='adminPayment'/>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: "5%", marginBottom: "0%"}}>
-                    <Card title="Payment"
+                    <Card title="Confirm Payment"
                      style={{ width: "35%", justifyContent: "center" }}>
                         <Search placeholder="Input Receipt ID Here" onSearch={value => this.handleOnClickSearch(value)} enterButton />
                         {this.state.payment === null ? '' : <AdminPayment payment={this.state.payment} />}

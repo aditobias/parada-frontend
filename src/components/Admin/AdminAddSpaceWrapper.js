@@ -29,8 +29,9 @@ class AdminAddSpaceWrapper extends React.Component {
             <div>
                 <HeaderPage current='addParkingSpace'/>
                 {/*<Header />*/}
-                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '50vh'}}>
-                    <Card style={{ width: 600, justifyContent: "center" }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: "5%", marginBottom: "0%"}}>
+                    <Card title="Add Parking Space"
+                     style={{ width: "35%", justifyContent: "center" }}>
                         <Search placeholder="Input Parking Lot Here" onSearch={value => this.handleOnClickSearch(value)} enterButton />
                         {this.state.parkingLot === null ? '' : <AdminAddSpace parkingLot={this.state.parkingLot} />}
                     </Card>

@@ -74,9 +74,11 @@ class AdminAddLot extends React.Component {
                 <HeaderPage current='addParking'/>
             {/*<Header />*/}
 
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
-                {this.state.redirect ? <Redirect to="/" /> : null}
-                <Card style={{width: 600, justifyContent: "center"}}>
+            {this.state.redirect ? <Redirect to="/" /> : null}
+
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: "5%", marginBottom: "0%"}}>
+                    <Card title="Add Parking Lot"
+                     style={{ width: "35%", justifyContent: "center" }}>
                     <div style={{paddingBottom: "10px"}}>
                         <p> Parking Lot Name: </p>
                         <Input placeholder="Enter Parking Lot Name" value={this.state.pName}

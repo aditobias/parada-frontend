@@ -31,8 +31,9 @@ class AdminUserAccessWrapper extends React.Component {
         return(
             <div>
                 <HeaderPage current='adminUser'/>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh' }}>
-                <Card style={{justifyContent: "center", flexDirection: "center", width: "600px"}}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: "5%", marginBottom: "0%"}}>
+                    <Card title="Change Admin User"
+                     style={{ width: "35%", justifyContent: "center" }}>
                     <Search placeholder="Input User Name" onSearch={value => this.handleOnClickSearch(value)} enterButton />
                     {this.state.userProfile === null ? '' : <AdminUserAccess userProfile={this.state.userProfile} />}
                 </Card>

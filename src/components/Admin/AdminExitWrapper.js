@@ -43,8 +43,9 @@ class AdminExitWrapper extends React.Component {
         return (
             <div>
                 <HeaderPage current='adminExit'/>
-                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '50vh'}}>
-                    <Card style={{ width: 600, justifyContent: "center" }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: "5%", marginBottom: "0%"}}>
+                    <Card title="Confirm Exit"
+                        style={{ width: "35%", justifyContent: "center" }}>
                         <Search placeholder="Input Receipt ID Here" onSearch={value => this.handleOnClickSearch(value)} enterButton />
                         {this.state.exit === null ? '' : <AdminExit exit={this.state.exit} />}
                     </Card>
