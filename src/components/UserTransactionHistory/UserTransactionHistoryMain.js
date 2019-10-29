@@ -73,7 +73,7 @@ class UserTransactionHistoryMain extends React.Component {
         this.state.transactionList
             .map((transaction) => {
                 const {
-                    id, parkingLotName, parkingLevel, parkingPosition, price, reserveTime, startTime,endTime, voided
+                    id, parkingLotName, parkingLevel, parkingPosition, price, reserveTime, startTime,endTime, status
                 } = transaction;
 
 
@@ -84,7 +84,7 @@ class UserTransactionHistoryMain extends React.Component {
                     reserveTime: this.handleConversion(reserveTime),
                     startTime: this.handleConversion(startTime),
                     endTime: this.handleConversion(endTime),
-                    status: voided,
+                    status: status,
                     button:  <Popconfirm title="Are you going to cancel this reservation?" >
                                  <a>Cancel</a>
                              </Popconfirm>
