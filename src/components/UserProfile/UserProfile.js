@@ -79,7 +79,7 @@ class UserProfile extends Component {
                         </Col>
                         <Col span={8}>
                             <Card title="E-Mail Verification Status" bordered={false} style={{margin: "5%" }}>
-                                {this.props.userInfo.isVerified}
+                                {this.props.userInfo.verified}
                             </Card>
                         </Col>
                         <Col span={8}>
