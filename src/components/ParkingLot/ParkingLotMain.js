@@ -6,6 +6,7 @@ import './ParkingLot.css';
 import HeaderPage from '../Header/Header';
 import {Steps} from "antd";
 import ReservationSteps from "../Steps/ReservationSteps";
+import UserResource from "../../api/UserProfileResource";
 
 const {Step} = Steps;
 
@@ -16,6 +17,8 @@ class ParkingLotMain extends Component {
     }
 
     componentDidMount() {
+        this.props.getMyProfile(this.props.loginUser);
+
         ParkingLotResource.getAllAvailableParkingLot()
             .then(res => res.json())
             .then(res => {
@@ -33,7 +36,7 @@ class ParkingLotMain extends Component {
         const listParkingLot = this.props.parkingLotAvailableList;
         return (
             <div className="header">
-                <HeaderPage/>
+                <HeaderPage current={"reserve"}/>
 
                 <ReservationSteps current={0}/>
 
@@ -56,10 +59,41 @@ class ParkingLotMain extends Component {
 }
 
 const mapStateToProps = state => ({
-    parkingLotAvailableList: state.parkingLotReducer.parkingLotList
+    parkingLotAvailableList: state.parkingLotReducer.parkingLotList,
+    loginUser: state.logInResource.userName
 });
 
 const mapDispatchToProps = dispatch => ({
+    getMyProfile: (userName) => {
+        UserResource.getUserProfile(userName)
+            .then(res => res.json())
+            .then(({username, firstName, lastName, email, mobileNumber, emailVerificationStatus, profilePicture, driverType}) => {
+                console.log({
+                    username,
+                    firstName,
+                    lastName,
+                    email,
+                    mobileNumber,
+                    emailVerificationStatus,
+                    profilePicture,
+                    driverType
+                });
+
+                dispatch({
+                    type: 'GET_PROFILE',
+                    payload: {
+                        username,
+                        firstName,
+                        lastName,
+                        email,
+                        mobileNumber,
+                        emailVerificationStatus,
+                        profilePicture,
+                        driverType
+                    }
+                })
+            })
+    },
     getAllParkingLots: parkingLots => dispatch({
         type: 'GET_ALL_PARKING_LOTS',
         payload: parkingLots

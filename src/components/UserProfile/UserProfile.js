@@ -35,7 +35,7 @@ class UserProfile extends Component {
     render() {
         return (
             <div>
-                <HeaderPage/>
+                <HeaderPage current={"viewProfile"}/>
 
                 <div style={{textAlign: "center", margin: "auto" }}>
 
@@ -66,6 +66,12 @@ class UserProfile extends Component {
                 <div className="center">
                     <Card title="E-Mail Verification Status" bordered={false}>
                         {this.props.userInfo.emailVerificationStatus}
+                    </Card>
+                </div>
+
+                <div className="center">
+                    <Card title="Driver type" bordered={false}>
+                        {this.props.userInfo.driverType}
                     </Card>
                 </div>
 

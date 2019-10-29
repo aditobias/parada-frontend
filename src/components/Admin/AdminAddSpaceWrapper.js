@@ -3,7 +3,6 @@ import 'antd/dist/antd.css';
 import {Card, Input} from 'antd';
 import AdminAddSpace from "./AdminAddSpace";
 import AdminResource from "../../api/AdminResource";
-import AdminHeader from "./AdminHeader";
 import HeaderPage from '../Header/Header';
 
 class AdminAddSpaceWrapper extends React.Component {
@@ -30,8 +29,8 @@ class AdminAddSpaceWrapper extends React.Component {
         const { Search } = Input;
         return (
             <div>
-                <HeaderPage/>
-                <AdminHeader current='addParkingSpace'/>
+                <HeaderPage current='addParkingSpace'/>
+                {/*<Header />*/}
                 <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '50vh'}}>
                     <Card style={{ width: 600, justifyContent: "center" }}>
                         <Search placeholder="Input Parking Lot Here" onSearch={value => this.handleOnClickSearch(value)} enterButton />
