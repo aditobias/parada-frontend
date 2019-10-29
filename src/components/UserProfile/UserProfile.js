@@ -37,51 +37,57 @@ class UserProfile extends Component {
             <div>
                 <HeaderPage current={"viewProfile"}/>
 
-                <div style={{textAlign: "center", margin: "auto" }}>
+                <div style={{width: "80%", margin: "auto" }}>
 
-                <div className="center">
-                    <Card title="Username" bordered={true}>
-                        {this.props.userInfo.loginUser}
-                    </Card>
-                </div>
+                    <Row>
+                        <Col span={8}/>
+                        <Col span={8}>
+                            <div style={{ margin: "auto" , width: "80%"}}>
+                                <Card
+                                    style={{ margin: "5%"}}
+                                    cover={<img alt="profile" src={this.state.pic} onError={this.onError} />}>
+                                    <Meta title="Profile Photo"/>
+                                </Card>
+                            </div>
+                        </Col>
+                    </Row>
 
-                <div className="center">
-                    <Card title="Name" bordered={true}>
-                        {this.props.userInfo.firstName} {this.props.userInfo.lastName}
-                    </Card>
-                </div>
+                    <Row >
+                        <Col span={8}>
+                            <Card title="Username" bordered={true} style={{margin: "5%" }}>
+                                {this.props.userInfo.loginUser}
+                            </Card>
+                        </Col>
+                        <Col span={8}>
+                            <Card title="Name" bordered={true} style={{margin: "5%" }}>
+                                {this.props.userInfo.firstName} {this.props.userInfo.lastName}
+                            </Card>
+                        </Col>
+                        <Col span={8}>
+                            <Card title="Driver type" bordered={false}  style={{margin: "5%" }}>
+                                {this.props.userInfo.driverType}
+                            </Card>
 
-                <div className="center">
-                    <Card title="Mobile Number" bordered={false}>
-                        {this.props.userInfo.mobileNumber}
-                    </Card>
-                </div>
+                        </Col>
+                    </Row>
 
-                <div className="center">
-                    <Card title="E-Mail Address" bordered={false}>
-                        {this.props.userInfo.email}
-                    </Card>
-                </div>
-
-                <div className="center">
-                    <Card title="E-Mail Verification Status" bordered={false}>
-                        {this.props.userInfo.emailVerificationStatus}
-                    </Card>
-                </div>
-
-                <div className="center">
-                    <Card title="Driver type" bordered={false}>
-                        {this.props.userInfo.driverType}
-                    </Card>
-                </div>
-
-                <div className="center">
-                    <Card
-                        style={{ width: 380}}
-                        cover={<img alt="profile" src={this.state.pic} onError={this.onError} />}>
-                        <Meta title="Profile Photo"/>
-                    </Card>
-                </div>
+                    <Row >
+                        <Col span={8}>
+                            <Card title="E-Mail Address" bordered={false} style={{margin: "5%" }}>
+                                {this.props.userInfo.email}
+                            </Card>
+                        </Col>
+                        <Col span={8}>
+                            <Card title="E-Mail Verification Status" bordered={false} style={{margin: "5%" }}>
+                                {this.props.userInfo.emailVerificationStatus}
+                            </Card>
+                        </Col>
+                        <Col span={8}>
+                            <Card title="Mobile Number" bordered={false} style={{margin: "5%" }}>
+                                {this.props.userInfo.mobileNumber}
+                            </Card>
+                        </Col>
+                    </Row>
                 </div>
 
             </div>

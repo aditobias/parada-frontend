@@ -31,7 +31,8 @@ class HeaderPage extends Component {
     }
 
     userHeader = (
-        <Menu onClick={this.handleClick} selectedKeys={[this.state.current || "reserve"]} mode="horizontal" theme="dark">
+        <Menu onClick={this.handleClick} selectedKeys={[this.state.current || "reserve"]} mode="horizontal"
+              theme="dark">
             <Menu.Item>
                 <Link to="/"/>
                 PARADA
@@ -61,31 +62,27 @@ class HeaderPage extends Component {
         <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" theme="dark">
             <Menu.Item>
                 <Link to="/"/>
-                <img alt="text" src={Parada}/>
+                PARADA
             </Menu.Item>
 
-            <Menu.Item key="addParking">
-                <Link to="/adminParkingLot"/>
-                <Icon type="car"/>
-                Add Parking Lot
-            </Menu.Item>
-            <Menu.Item key="addParkingSpace">
-                <Link to="/adminSpace"/>
-                <Icon type="plus-square"/>
-                Add Parking Lot Space
-            </Menu.Item>
-            <Menu.Item key="adminPayment">
-                <Link to="/adminPayment"/>
-                <Icon type="dollar" />
-                Confirm Payment
-            </Menu.Item>
-            <Menu.Item key="adminExit">
-                <Link to="/adminExit"/>
-                <Icon type="export" />
-                Confirm Driver Exit
-            </Menu.Item>
-
-
+            <SubMenu
+                title={<span className="submenu-title-wrapper"><Icon type="setting" />Administrator Features</span>}>
+                <Menu.Item key="adminUser"><Link to="/adminUser"/>
+                    <Icon type="export"/>Change Admin User
+                </Menu.Item>
+                <Menu.Item key="addParking"><Link to="/adminParkingLot"/>
+                    <Icon type="car"/>Add Parking Lot
+                </Menu.Item>
+                <Menu.Item key="addParkingSpace"><Link to="/adminSpace"/>
+                    <Icon type="plus-square"/>Add Parking Lot Space
+                </Menu.Item>
+                <Menu.Item key="adminPayment"><Link to="/adminPayment"/>
+                    <Icon type="dollar"/>Confirm Payment
+                </Menu.Item>
+                <Menu.Item key="adminExit"><Link to="/adminExit"/>
+                    <Icon type="export"/>Confirm Driver Exit
+                </Menu.Item>
+            </SubMenu>
 
             <Menu.Item key="reserve">
                 <Link to="/parkingLots"/>
@@ -107,7 +104,7 @@ class HeaderPage extends Component {
     )
 }
 
-const mapStateToProps = state=>({
+const mapStateToProps = state => ({
     driver: state.userProfileResource
 });
 export default connect(mapStateToProps)(HeaderPage);
