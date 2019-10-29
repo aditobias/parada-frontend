@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button, Table} from 'antd';
 import HeaderPage from '../Header/Header';
-import {Popconfirm} from 'antd';
+import {Popconfirm, message } from 'antd';
 import {connect} from "react-redux";
 import UserTransactionHistoryResource from "../../api/UserTransactionHistoryResource";
 
@@ -36,6 +36,31 @@ class UserTransactionHistoryMain extends React.Component {
         return `${months[date.getMonth()]} ${date.getDate()} ${date.getFullYear()} ${date.getHours()}:${minutes}`;
     };
 
+    cancelReservation = (parkingLotName, id) => {
+        UserTransactionHistoryResource.updateParkingPosition(parkingLotName,id)
+            .then(res => res.json())
+            .then(res=>{
+                console.log(res); //update this.state.transactionList based on the res. Find by ID, then update
+                message.success("Cancelled reservation from "+parkingLotName);
+
+                const updatedTransactionList = this.state.transactionList
+                    .map(transaction=>{
+                        if(transaction.id===res.id){
+                            return res;
+                        }
+                        else{
+                            return transaction;
+                        }
+                    });
+
+                this.setState({transactionList: updatedTransactionList});
+            })
+            .catch(e => {
+                message.error("Unable to cancel reservation from "+parkingLotName);
+                console.log(e)
+            })
+    };
+
     render() {
         console.log("state.userTransaction.userTransactionList ", this.state);
         const columns = [
@@ -65,9 +90,14 @@ class UserTransactionHistoryMain extends React.Component {
                     startTime: this.handleConversion(startTime),
                     endTime: this.handleConversion(endTime),
                     status: status,
-                    action:  <Popconfirm title="Are you going to cancel this reservation?" >
-                                 <a>Cancel</a>
-                             </Popconfirm>,
+                    action:  <Popconfirm title="Are you going to cancel this reservation?"
+                                onConfirm={()=>this.cancelReservation(parkingLotName, id)}
+                                okText={"Yes"}
+                                cancelText={"No"}
+                            >
+                                <a href="#">Cancel</a>
+                            </Popconfirm>
+                        ,
                     showReceipt: <Button>Show Receipt</Button>
                 })
             });
