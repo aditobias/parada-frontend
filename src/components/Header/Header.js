@@ -35,12 +35,12 @@ class HeaderPage extends Component {
     userHeader = (
         <Menu onClick={this.handleClick} selectedKeys={[this.state.current || "reserve"]} mode="horizontal" theme="dark">
             <Menu.Item>
-                <Link to="/"></Link>
+                <Link to="/"/>
                 <img alt="text" src={Parada}/>
             </Menu.Item>
 
             <Menu.Item key="reserve">
-                <Link to="/parkingLots"></Link>
+                <Link to="/parkingLots"/>
                 <Icon type="car"/>
                 Reserve Parking
             </Menu.Item>
@@ -59,7 +59,7 @@ class HeaderPage extends Component {
     adminHeader = (
         <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" theme="dark">
             <Menu.Item>
-                <Link to="/"></Link>
+                <Link to="/"/>
                 <img alt="text" src={Parada}/>
             </Menu.Item>
 
@@ -76,7 +76,7 @@ class HeaderPage extends Component {
 
 
             <Menu.Item key="reserve">
-                <Link to="/parkingLots"></Link>
+                <Link to="/parkingLots"/>
                 <Icon type="car"/>
                 Reserve Parking
             </Menu.Item>
