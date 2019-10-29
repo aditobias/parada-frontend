@@ -36,6 +36,20 @@ class UserTransactionHistoryMain extends React.Component {
         return `${months[date.getMonth()]} ${date.getDate()} ${date.getFullYear()} ${date.getHours()}:${minutes}`;
     };
 
+    createCancelButton = (status, parkingLotName, id) =>{
+        if(status === "Reserved"){
+            return(
+                <Popconfirm title="Are you going to cancel this reservation?"
+                            onConfirm={()=>this.cancelReservation(parkingLotName, id)}
+                            okText={"Yes"}
+                            cancelText={"No"}>
+                    <a href="#">Cancel</a>
+                </Popconfirm>
+            );
+        }
+        return "";
+    };
+
     cancelReservation = (parkingLotName, id) => {
         UserTransactionHistoryResource.updateParkingPosition(parkingLotName,id)
             .then(res => res.json())
@@ -90,14 +104,7 @@ class UserTransactionHistoryMain extends React.Component {
                     startTime: this.handleConversion(startTime),
                     endTime: this.handleConversion(endTime),
                     status: status,
-                    action:  <Popconfirm title="Are you going to cancel this reservation?"
-                                onConfirm={()=>this.cancelReservation(parkingLotName, id)}
-                                okText={"Yes"}
-                                cancelText={"No"}
-                            >
-                                <a href="#">Cancel</a>
-                            </Popconfirm>
-                        ,
+                    action:  this.createCancelButton(status, parkingLotName, id),
                     showReceipt: <Button>Show Receipt</Button>
                 })
             });
