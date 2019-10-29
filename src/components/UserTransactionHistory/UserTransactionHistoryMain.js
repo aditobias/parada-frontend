@@ -172,6 +172,7 @@ class UserTransactionHistoryMain extends React.Component {
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     footer={ [<Button onClick={this.handleOk}>Done</Button>]}
+                       closable={false}
                        className={{display: "none"}}
                 >
                         <Card title="Parada Reservation Receipt" bordered={false} style={{ width: "100%" }}>
