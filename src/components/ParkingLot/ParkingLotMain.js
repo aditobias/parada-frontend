@@ -63,14 +63,14 @@ const mapDispatchToProps = dispatch => ({
     getMyProfile: (userName) => {
         UserResource.getUserProfile(userName)
             .then(res => res.json())
-            .then(({username, firstName, lastName, email, mobileNumber, emailVerificationStatus, profilePicture, driverType}) => {
+            .then(({username, firstName, lastName, email, mobileNumber, isVerified, profilePicture, driverType}) => {
                 console.log({
                     username,
                     firstName,
                     lastName,
                     email,
                     mobileNumber,
-                    emailVerificationStatus,
+                    isVerified,
                     profilePicture,
                     driverType
                 });
@@ -83,7 +83,7 @@ const mapDispatchToProps = dispatch => ({
                         lastName,
                         email,
                         mobileNumber,
-                        emailVerificationStatus,
+                        isVerified,
                         profilePicture,
                         driverType
                     }
