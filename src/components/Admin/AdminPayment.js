@@ -20,13 +20,9 @@ class AdminPayment extends React.Component {
         message.success('Payment confirmed for Receipt ID:');
     };
 
-    handleCancel = () => {
-        this.setState({ visible: false });
-    };
-
-    saveFormRef = formRef => {
-        this.formRef = formRef;
-    };
+    convertDateTime = dateTime => {
+        return new Date(dateTime).toLocaleString();
+    }
 
     render() {
         return (
@@ -38,9 +34,9 @@ class AdminPayment extends React.Component {
                         <p>Parking Level: {this.props.payment.parkingLevel}</p>
                         <p>Parking Position: {this.props.payment.parkingPosition}</p>
                         <p>Price: Php {this.props.payment.price}</p>
-                        <p>Reservation Time: {this.props.payment.reserveTime}</p>
-                        <p>Arrival Time: {this.props.payment.startTime === null ? 'Waiting for Arrival...': this.props.payment.startTime}</p>
-                        <p>Departure Time: {this.props.payment.endTime === null ? 'Not Yet Departed': this.props.payment.endTime}</p>
+                        <p>Reservation Time: {this.convertDateTime(this.props.payment.reserveTime)}</p>
+                        <p>Arrival Time: {this.props.payment.startTime === null ? 'Waiting for Arrival...': this.convertDateTime(this.props.payment.startTime)}</p>
+                        <p>Departure Time: {this.props.payment.endTime === null ? 'Not Yet Departed': this.convertDateTime(this.props.payment.endTime)}</p>
                         <p>Payment Status: {this.props.payment.isPaid ? 'Paid' : 'Not yet paid'}</p>
                     </div>
                     <div style={{ float: "right" }}>

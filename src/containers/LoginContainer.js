@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => ({
                         payload: credentials
                     })  
                 }
-                else if(res.status == "500")
+                else if(res.status == "400")
                 {
                     message.error("You have entered an invalid username/password.");
                 }

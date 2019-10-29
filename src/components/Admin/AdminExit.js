@@ -27,13 +27,9 @@ class AdminExit extends React.Component {
         
     };
 
-    handleCancel = () => {
-        this.setState({ visible: false });
-    };
-
-    saveFormRef = formRef => {
-        this.formRef = formRef;
-    };
+    convertDateTime = dateTime => {
+        return new Date(dateTime).toLocaleString();
+    }
 
     render() {
         return (
@@ -45,9 +41,9 @@ class AdminExit extends React.Component {
                         <p>Parking Level: {this.props.exit.parkingLevel}</p>
                         <p>Parking Position: {this.props.exit.parkingPosition}</p>
                         <p>Price: Php {this.props.exit.price}</p>
-                        <p>Reservation Time: {this.props.exit.reserveTime}</p>
-                        <p>Arival Time: {this.props.exit.startTime}</p>
-                        <p>Departure Time: {this.props.exit.endTime === null ? 'Not Yet Departed': this.props.exit.endTime}</p>
+                        <p>Reservation Time: {this.convertDateTime(this.props.exit.reserveTime)}</p>
+                        <p>Arrival Time: {this.convertDateTime(this.props.exit.startTime)}</p>
+                        <p>Departure Time: {this.props.exit.endTime === null ? 'Not Yet Departed': this.convertDateTime(this.props.exit.endTime)}</p>
                         <p>Payment Status: {this.props.exit.isPaid ? 'Paid' : 'Not Yet Paid'}</p>
                     </div>
                     <div style={{ float: "right" }}>
