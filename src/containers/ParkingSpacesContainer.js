@@ -38,7 +38,8 @@ const mapDispatchToProps = dispatch => ({
             {id: id},
             parkingLotName);
         ParkingTransactionResource.addNewParkingTransaction(parkingLotName,
-            id, {username: username}).then(res => res.json())
+            id, {username: username})
+            .then(res => res.json())
             .then(res => {
                 console.log(res);
                 dispatch({

@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import {Row, Col, Card, Input, Icon, Button} from 'antd';
 import 'antd/dist/antd.css';
 import HeaderPage from '../Header/Header';
+import {connect} from "react-redux";
 import './user.css';
+import UserProfileResource from "../../api/UserProfileResource";
 
 const {Meta} = Card;
 
@@ -13,15 +15,37 @@ class UserProfile extends Component {
 
     state = {
         current: 'profile',
-        pic: this.props.userInfo.profilePicture
+        pic: this.props.userInfo.profilePicture,
+        profileValue: "",
+        disabled: true,
+        lastName: this.props.userInfo.lastName,
+        firstName: this.props.userInfo.firstName,
+        email: this.props.userInfo.email,
+        mobileNumber: this.props.userInfo.mobileNumber,
     };
-
 
     handleClick = e => {
         console.log('click ', e);
         this.setState({
             current: e.key,
         });
+    };
+
+    handleChangeEmail = (event) => {
+        this.setState({email: event.target.value});
+
+    };
+
+    handleChangeMobileNumber = (event) => {
+        this.setState({mobileNumber: event.target.value});
+    };
+
+    handleChangeFirstName = (event) => {
+        this.setState({firstName: event.target.value});
+    };
+
+    handleChangeLastName = (event) => {
+        this.setState({lastName: event.target.value});
     };
 
     onError = () => {
@@ -33,12 +57,32 @@ class UserProfile extends Component {
     }
 
     editProfile = () => {
+        this.setState({disabled: !this.state.disabled});
+    }
 
+    saveProfile = () => {
+        this.props.editProfileDetail(this.props.userInfo.loginUser, this.state);
+        console.log("tessssssssssssssst", this.props.editProfileDetail(this.props.userInfo.loginUser, this.state))
+    }
+
+    cancelProfile = () => {
+        this.setState({
+            lastName: this.props.userInfo.lastName,
+            firstName: this.props.userInfo.firstName,
+            email: this.props.userInfo.email,
+            mobileNumber: this.props.userInfo.mobileNumber
+        });
     }
 
 
-
     render() {
+        const emailStatus = this.props.userInfo.is_verified ?
+            <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a"
+                  style={{fontSize: "30px", float: "left"}}/> :
+            <Icon type="check-circle"
+                  style={{fontSize: "30px", float: "left"}}/> ;
+        console.log("status",emailStatus);
+        console.log("statussssssssssssss", this.props.userInfo.is_verified);
         return (
             <div>
                 <HeaderPage/>
@@ -46,8 +90,8 @@ class UserProfile extends Component {
                     <Row>
                         <Col span={10} style={{marginRight: "50px"}}>
                             <Card
-                                style={{ width: "380px", marginTop: "30px"}}
-                                cover={<img alt="profile" src={this.state.pic} onError={this.onError} />}>
+                                style={{width: "380px", marginTop: "30px"}}
+                                cover={<img alt="profile" src={this.state.pic} onError={this.onError}/>}>
                                 <button>Upload</button>
                             </Card>
                         </Col>
@@ -56,63 +100,46 @@ class UserProfile extends Component {
                                 <p style={{textAlign: "left"}}>Username</p>
                                 <Input value={this.props.userInfo.loginUser} disabled></Input>
                                 <p style={{textAlign: "left"}}>First Name</p>
-                                <Input value={this.props.userInfo.firstName} disabled></Input>
+                                <Input value={this.state.firstName}
+                                       onChange={this.handleChangeFirstName}
+                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
                                 <p style={{textAlign: "left"}}>Last Name</p>
-                                <Input value={this.props.userInfo.lastName} disabled></Input>
+                                <Input value={this.state.lastName}
+                                       onChange={this.handleChangeLastName}
+                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
                                 <p style={{textAlign: "left"}}>Mobile Number</p>
-                                <Input value={this.props.userInfo.mobileNumber} disabled></Input>
+                                <Input value={this.state.mobileNumber}
+                                       onChange={this.handleChangeMobileNumber}
+                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
                                 <p style={{textAlign: "left"}}>Email Address</p>
-                                <Input value={this.props.userInfo.email} disabled></Input>
+                                <Input value={this.state.email}
+                                       onChange={this.handleChangeEmail}
+                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
                                 <p style={{textAlign: "left"}}>Email Verification status</p>
-                                <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a" style={{fontSize: "30px", float: "left"}} /><br/>
-                                <Button style={{float: "right"}} onClick={this.editProfile}>Edit Profile</Button>
+                                {emailStatus}<br/>
+                                <Button id={"editBtn"} style={{float: "right"}} onClick={this.editProfile.bind(this)}>Edit
+                                    Profile</Button>
+                                <Button id={"cancelBtn"} style={{float: "right"}}
+                                        onClick={this.cancelProfile}>Cancel</Button>
+                                <Button id={"saveBtn"} style={{float: "right"}}
+                                        onClick={this.saveProfile.bind(this)}>Save</Button>
                             </Card>
                         </Col>
-
                     </Row>
-
-
-
                 </div>
-
-                {/*<div style={{textAlign: "center", margin: "auto" }}>*/}
-
-                {/*<div className="center">*/}
-                {/*    <Card title="Username" bordered={true}>*/}
-                {/*        {this.props.userInfo.loginUser}*/}
-                {/*    </Card>*/}
-                {/*</div>*/}
-
-                {/*<div className="center">*/}
-                {/*    <Card title="Name" bordered={true}>*/}
-                {/*        {this.props.userInfo.firstName} {this.props.userInfo.lastName}*/}
-                {/*    </Card>*/}
-                {/*</div>*/}
-
-                {/*<div className="center">*/}
-                {/*    <Card title="Mobile Number" bordered={false}>*/}
-                {/*        {this.props.userInfo.mobileNumber}*/}
-                {/*    </Card>*/}
-                {/*</div>*/}
-
-                {/*<div className="center">*/}
-                {/*    <Card title="E-Mail Address" bordered={false}>*/}
-                {/*        {this.props.userInfo.email}*/}
-                {/*    </Card>*/}
-                {/*</div>*/}
-
-                {/*<div className="center">*/}
-                {/*    <Card title="E-Mail Verification Status" bordered={false}>*/}
-                {/*        {this.props.userInfo.emailVerificationStatus}*/}
-                {/*    </Card>*/}
-                {/*</div>*/}
-
-
-                {/*</div>*/}
-
             </div>
         )
     }
 }
 
-export default UserProfile;
+const mapStateToProps = state => ({
+    username: state.logInResource.userName
+});
+
+const mapDispatchToProps = dispatch => ({
+    editProfileDetail: (username, profileEdit) => {
+        UserProfileResource.editUserProfile(username, profileEdit)
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
