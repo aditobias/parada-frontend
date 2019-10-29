@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
-import {Menu, Icon} from 'antd';
+import {Icon, Menu} from 'antd';
 import {connect} from "react-redux";
 import 'antd/dist/antd.css';
 import './Header.css';
 import Parada from './logoHeader.png';
 import {Link} from 'react-router-dom';
-import 'antd/dist/antd.css';
 
 const {SubMenu} = Menu;
 
@@ -21,7 +20,6 @@ class HeaderPage extends Component {
             current: e.key,
         });
     };
-
 
     render() {
         const header = this.props.driver.driverType === "admin" ? this.adminHeader : this.userHeader;
@@ -51,8 +49,10 @@ class HeaderPage extends Component {
                 <Menu.Item key="editProfile">Edit Profile</Menu.Item>
             </SubMenu>
             <Menu.Item key="history">
+                <Link to="/userTransactionHistory"/>
                 <Icon type="unordered-list"/>
                 Transaction History
+                {/*<Redirect to={{pathname: "/parkingSpaces", state: {parkingLot: parkingLotFromProps}}}/>*/}
             </Menu.Item>
         </Menu>
     );
@@ -87,8 +87,10 @@ class HeaderPage extends Component {
                 <Menu.Item key="editProfile">Edit Profile</Menu.Item>
             </SubMenu>
             <Menu.Item key="history">
+                <Link to="/userTransactionHistory"/>
                 <Icon type="unordered-list"/>
                 Transaction History
+                {/*<Redirect to={{pathname: "/parkingSpaces", state: {parkingLot: parkingLotFromProps}}}/>*/}
             </Menu.Item>
         </Menu>
     )

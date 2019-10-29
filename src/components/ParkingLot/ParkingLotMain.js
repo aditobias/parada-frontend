@@ -42,17 +42,13 @@ class ParkingLotMain extends Component {
 
                 <div className="parkingLot">{
                     listParkingLot.map((parkingLot, index) =>
-                        <ParkingLot key={index}
-                                    id={index}
-                                    parkingLot={parkingLot}
-                        />
+                    <ParkingLot key={index}
+                    id={index}
+                    parkingLot={parkingLot}
+                    />
                     )
                 }
                 </div>
-                {/*<div className="pagination">*/}
-                {/*    <a href="#">❮</a>*/}
-                {/*    <a href="#">❯</a>*/}
-                {/*</div>*/}
             </div>
         )
     }
