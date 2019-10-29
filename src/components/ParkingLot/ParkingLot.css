@@ -21,7 +21,7 @@
 
 .parkingLot {
     padding-top: 20px;
-    width: 1100px;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: row;
@@ -31,7 +31,7 @@
 
 .steps{
     padding-top: 40px;
-    width: 1100px;
+    width: 100%;
     flex-direction: row;
     margin: auto;
     display: flex;
@@ -65,7 +65,8 @@
 }
 
 .cardSteps {
-    width: 1100px;
+    margin: auto;
+    width: 70%;
 }
 
 .pagination a {
