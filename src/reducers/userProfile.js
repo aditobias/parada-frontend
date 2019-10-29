@@ -24,6 +24,18 @@ const initialState = {
                 profilePicture: payload.profilePicture,
                 driverType: payload.driverType
             };
+        case "GET_PROFILE_TO_EDIT":
+            return {
+                ...state,
+                username: payload.username,
+                firstName: payload.firstName,
+                lastName: payload.lastName,
+                email: payload.email,
+                verified: payload.verified,
+                mobileNumber: payload.mobileNumber,
+                profilePicture: payload.profilePicture,
+                driverType: payload.driverType
+            };
         default:
             return state
     }
