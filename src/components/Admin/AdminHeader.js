@@ -33,6 +33,16 @@ class AdminHeader extends React.Component {
                         <Icon type="plus-square" />
                         Add Parking Lot Space
                     </Menu.Item>
+                    <Menu.Item key="payment">
+                        <Link to="/adminPayment"/>
+                        <Icon type="plus-square" />
+                        Payment
+                    </Menu.Item>
+                    <Menu.Item key="exit">
+                        <Link to="/adminExit"/>
+                        <Icon type="plus-square" />
+                        Exit
+                    </Menu.Item>
                 </Menu>
            </div>
        )
