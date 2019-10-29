@@ -22,6 +22,7 @@ class UserProfile extends Component {
         firstName: this.props.userInfo.firstName,
         email: this.props.userInfo.email,
         mobileNumber: this.props.userInfo.mobileNumber,
+        userAction: "view"
     };
 
     handleClick = e => {
@@ -83,6 +84,7 @@ class UserProfile extends Component {
                   style={{fontSize: "30px", float: "left"}}/> ;
         console.log("status",emailStatus);
         console.log("statussssssssssssss", this.props.userInfo.verified);
+
         return (
             <div>
                 <HeaderPage/>
@@ -98,31 +100,35 @@ class UserProfile extends Component {
                         <Col span={12} style={{fontcolor: "black"}}>
                             <Card bordered={true}>
                                 <p style={{textAlign: "left"}}>Username</p>
-                                <Input value={this.props.userInfo.loginUser} disabled></Input>
+                                <Input value={this.props.userInfo.loginUser} disabled/>
                                 <p style={{textAlign: "left"}}>First Name</p>
                                 <Input value={this.state.firstName}
                                        onChange={this.handleChangeFirstName}
-                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
+                                       disabled={(this.state.disabled) ? "disabled" : ""}/>
                                 <p style={{textAlign: "left"}}>Last Name</p>
                                 <Input value={this.state.lastName}
                                        onChange={this.handleChangeLastName}
-                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
+                                       disabled={(this.state.disabled) ? "disabled" : ""}/>
                                 <p style={{textAlign: "left"}}>Mobile Number</p>
                                 <Input value={this.state.mobileNumber}
                                        onChange={this.handleChangeMobileNumber}
-                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
+                                       disabled={(this.state.disabled) ? "disabled" : ""}/>
                                 <p style={{textAlign: "left"}}>Email Address</p>
                                 <Input value={this.state.email}
                                        onChange={this.handleChangeEmail}
-                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
+                                       disabled={(this.state.disabled) ? "disabled" : ""}/>
                                 <p style={{textAlign: "left"}}>Email Verification status</p>
-                                {emailStatus}<br/>
-                                <Button id={"editBtn"} style={{float: "right"}} onClick={this.editProfile.bind(this)}>Edit
+
+                                {emailStatus}
+
+                                <br/>
+
+                                <Button id={"editBtn"} style={{float: "right"}} onClick={this.editProfile}>Edit
                                     Profile</Button>
                                 <Button id={"cancelBtn"} style={{float: "right"}}
                                         onClick={this.cancelProfile}>Cancel</Button>
                                 <Button id={"saveBtn"} style={{float: "right"}}
-                                        onClick={this.saveProfile.bind(this)}>Save</Button>
+                                        onClick={this.saveProfile}>Save</Button>
                             </Card>
                         </Col>
                     </Row>
