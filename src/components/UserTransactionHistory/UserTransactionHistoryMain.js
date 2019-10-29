@@ -1,14 +1,28 @@
 import React from 'react'
-import {Button, Table} from 'antd';
+import { Button, Table, Modal } from 'antd';
 import HeaderPage from '../Header/Header';
-import {Popconfirm, message } from 'antd';
-import {connect} from "react-redux";
+import Receipt from '../Receipt/Receipt'
+import { Popconfirm, message, Card, Row, Col } from 'antd';
+import { connect } from "react-redux";
+import 'tachyons';
 import UserTransactionHistoryResource from "../../api/UserTransactionHistoryResource";
+var QRCode = require('qrcode.react');
 
 class UserTransactionHistoryMain extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {transactionList: []}
+        this.state = {
+            transactionList: [],
+            visible: false,
+            selectedTransaction:
+            { id: 1,
+                parkingLotName: "",
+                parkingLevel:"",
+                parkingPosition:"",
+                reserveTime:"",
+                price:""
+            }
+        }
     }
 
     componentDidMount() {
@@ -75,24 +89,50 @@ class UserTransactionHistoryMain extends React.Component {
             })
     };
 
+    showModal = transaction => {
+        // const updatedSelectedTransaction = this.state.transactionList
+        //     .map(transaction => {
+        //         if (transaction.id === transaction.id) {
+        //             return transaction;
+        //         }
+        //         else {
+        //             return transaction;
+        //         }
+        //     });
+
+        // console.log(transaction.target.id)
+        this.setState({
+            visible: true,
+            selectedTransaction: transaction
+        });
+
+        // console.log(this.state.selectedTransaction);
+    }
+
+    handleOk = () => {
+        this.setState({
+            visible: false,
+        });
+    }
+
     render() {
         console.log("state.userTransaction.userTransactionList ", this.state);
         const columns = [
-            {title: 'Parking Lot Name', dataIndex: 'name'},
-            {title: 'Price', dataIndex: 'price'},
-            {title: 'Reserve Date', dataIndex: 'reserveTime'},
-            {title: 'Start Date', dataIndex: 'startTime'},
-            {title: 'End Date', dataIndex: 'endTime'},
-            {title: 'Status', dataIndex: 'status'},
-            {title: 'Action', dataIndex: 'action'},
-            {title: 'Show Receipt', dataIndex: 'showReceipt'},
+            { title: 'Parking Lot Name', dataIndex: 'name' },
+            { title: 'Price', dataIndex: 'price' },
+            { title: 'Reserve Date', dataIndex: 'reserveTime' },
+            { title: 'Start Date', dataIndex: 'startTime' },
+            { title: 'End Date', dataIndex: 'endTime' },
+            { title: 'Status', dataIndex: 'status' },
+            { title: 'Action', dataIndex: 'action' },
+            { title: 'Show Receipt', dataIndex: 'showReceipt' },
         ];
 
         const dataList = [];
         this.state.transactionList
             .map((transaction) => {
                 const {
-                    id, parkingLotName, parkingLevel, parkingPosition, price, reserveTime, startTime,endTime, status
+                    id, parkingLotName, parkingLevel, parkingPosition, price, reserveTime, startTime, endTime, status
                 } = transaction;
 
 
@@ -123,11 +163,41 @@ class UserTransactionHistoryMain extends React.Component {
         // return (<div/>);
         return (
             <div className="header">
-                <HeaderPage/>
-                <div style={{width: "1100px", margin: "auto", paddingTop: "20px"}}>
-                    <Table columns={columns} dataSource={dataList} size="middle" style={{background: "white"}}/>
+                <HeaderPage />
+                <div style={{ width: "1100px", margin: "auto", paddingTop: "20px" }}>
+                    <Table columns={columns} dataSource={dataList} size="middle" style={{ background: "white" }} />
                 </div>
                 ,
+                <Modal
+                    visible={this.state.visible}
+                    onOk={this.handleOk}
+                >
+                    <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+                        <Card title="Parada Reservation Receipt" bordered={false} style={{ width: "100%" }}>
+                            <span>
+                                <QRCode value={this.state.selectedTransaction.id.toString()} /><br />
+                                <h1 style={{ margin: "0", paddingBottom: "3%" }}>Receipt ID : {this.state.selectedTransaction.id}</h1>
+                                Parking Lot <h1 style={{ margin: "0", paddingBottom: "3%" }}>{this.state.selectedTransaction.parkingLotName}</h1>
+                                <div style={{ paddingBottom: "3%" }}>
+                                    <Row >
+                                        <Col span={6}>
+                                            Parking Level <h3 style={{ margin: "0", paddingBottom: "3%" }}>{this.state.selectedTransaction.parkingLevel}</h3>
+                                        </Col>
+                                        <Col span={6}>
+                                            Parking Position <h3 style={{ margin: "0", paddingBottom: "3%" }}>{this.state.selectedTransaction.parkingPosition}</h3>
+                                        </Col>
+                                        <Col span={12}>
+                                            Reservation Date / Time <h3 style={{ margin: "0", paddingBottom: "3%" }}>{new Date(this.state.selectedTransaction.reserveTime).toLocaleString()}</h3>
+                                        </Col>
+                                    </Row>
+                                </div>
+                                <h1 style={{ margin: "0", paddingBottom: "3%" }}>Price : Php {this.state.selectedTransaction.price}</h1>
+                            </span>
+                            <hr />
+                        </Card>
+
+                    </article>
+                </Modal>
             </div>
         )
     }
