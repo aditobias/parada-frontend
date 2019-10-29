@@ -2,11 +2,8 @@ import React from 'react'
 import { Button, Card, message } from "antd";
 import AdminResource from "../../api/AdminResource";
 
-
-
 class AdminPayment extends React.Component {
 
-    
     state = {
         visible: false,
         transactionID: this.props.payment.id
@@ -15,11 +12,11 @@ class AdminPayment extends React.Component {
     confirmPayment = () => {
 
         AdminResource.updateTransaction(this.state.transactionID)
-        .then(res => {
-            res.json();
-            console.log("Console this:"); console.log(+ res);
-        }
-        );
+            .then(res => {
+                res.json();
+                console.log("Console this:"); console.log(+ res);
+            }
+            );
         message.success('Payment confirmed for Receipt ID:');
     };
 
@@ -42,10 +39,12 @@ class AdminPayment extends React.Component {
                         <p>Parking Position: {this.props.payment.parkingPosition}</p>
                         <p>Price: Php {this.props.payment.price}</p>
                         <p>Reservation Time: {this.props.payment.reserveTime}</p>
+                        <p>Arrival Time: {this.props.payment.startTime === null ? 'Waiting for Arrival...': this.props.payment.startTime}</p>
+                        <p>Departure Time: {this.props.payment.endTime === null ? 'Not Yet Departed': this.props.payment.endTime}</p>
                         <p>Payment Status: {this.props.payment.isPaid ? 'Paid' : 'Not yet paid'}</p>
                     </div>
                     <div style={{ float: "right" }}>
-                    <Button type="primary" style={{ height: "50px" }} onClick={this.confirmPayment}>Confirm</Button>
+                        <Button type="primary" style={{ height: "50px" }} onClick={this.confirmPayment}>Confirm</Button>
                     </div>
                 </Card>
             </div>
