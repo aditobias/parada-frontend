@@ -23,6 +23,19 @@ class UserTransactionHistoryMain extends React.Component {
             })
     }
 
+    handleConversion = (milliseconds) => {
+        if(milliseconds===null){
+            return "";
+        }
+
+        const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        const date = new Date(milliseconds);
+        const minutes = `${date.getMinutes()}`.length===1? `0${date.getMinutes()}`: date.getMinutes();
+
+        return `${months[date.getMonth()]} ${date.getDate()} ${date.getFullYear()} ${date.getHours()}:${minutes}`;
+    };
+
     render() {
         console.log("state.userTransaction.userTransactionList ", this.state);
         const columns = [
@@ -35,8 +48,16 @@ class UserTransactionHistoryMain extends React.Component {
                 dataIndex: 'price',
             },
             {
-                title: 'Creation Date',
-                dataIndex: 'creationDate',
+                title: 'Reserve Date',
+                dataIndex: 'reserveTime',
+            },
+            {
+                title: 'Start Date',
+                dataIndex: 'startTime',
+            },
+            {
+                title: 'End Date',
+                dataIndex: 'endTime',
             },
             {
                 title: 'Status',
@@ -52,14 +73,17 @@ class UserTransactionHistoryMain extends React.Component {
         this.state.transactionList
             .map((transaction) => {
                 const {
-                    id, parkingLotName, parkingLevel, parkingPosition, price, creationDateTime, voided
+                    id, parkingLotName, parkingLevel, parkingPosition, price, reserveTime, startTime,endTime, voided
                 } = transaction;
+
 
                 dataList.push({
                     key: id,
                     name: parkingLotName + parkingLevel + parkingPosition,
                     price: price,
-                    creationDate: creationDateTime,
+                    reserveTime: this.handleConversion(reserveTime),
+                    startTime: this.handleConversion(startTime),
+                    endTime: this.handleConversion(endTime),
                     status: voided,
                     button:  <Popconfirm title="Are you going to cancel this reservation?" >
                                  <a>Cancel</a>
