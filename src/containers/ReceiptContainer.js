@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
     parkingLevel: state.receiptResource.parkingLevel,
     parkingPosition: state.receiptResource.parkingPosition,
     price: state.receiptResource.price,
-    creationDate: state.receiptResource.creationDateTime
+    creationDate: state.receiptResource.creationDate
 });
 
 

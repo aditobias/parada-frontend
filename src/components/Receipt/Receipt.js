@@ -37,60 +37,34 @@ class Receipt extends React.Component {
                 <div>
                     &nbsp;
                 </div>
-                <div>
-                    &nbsp;
-                </div>
-                <div>
-                    &nbsp;
-                </div>
+
                 <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
-                    <Card title="Reservation Receipt" bordered={false} style={{ width: 500 }}>
-                    <Row>
-                    <div align = "right">
-                    <Col span={8}>
-                    <h1>Receipt ID :</h1>
-                        Username :
-                        <br/>
-                        <br/>
-                        Parking Lot :
-                        <br/>
-                        <br/>
-                        Parking Level :
-                        <br/>
-                        <br/>
-                        Parking Position :
-                        <br/>
-                        <br/>
-                        <h2>Price :</h2>
+                    <Card title="Parada Reservation Receipt" bordered={false} style={{ width: "100%" }}>
+                    <span>
+                    <QRCode value={this.props.receiptInfo.receiptID.toString()}/><br/>
+                    <h1 style={{margin: "0", paddingBottom: "3%"}}>Receipt ID : {this.props.receiptInfo.receiptID}</h1>   
+                    Parking Lot <h1 style={{margin: "0", paddingBottom: "3%"}}>{this.props.receiptInfo.parkingLotName}</h1>
+                    <div style={{paddingBottom: "3%"}}>
+                    <Row >
+                        <Col span={6}>
+                    Parking Level <h3 style={{margin: "0", paddingBottom: "3%"}}>{this.props.receiptInfo.parkingLevel}</h3> 
                     </Col>
-                    </div>
-                    <div align = "left">
-                    <Col span={16}>
-                    <h1>{this.props.receiptInfo.receiptID}</h1>
-                    {this.props.receiptInfo.username}
-                    <br/>
-                    <br/>
-                    {this.props.receiptInfo.parkingLotName}
-                    <br/>
-                    <br/>
-                    {this.props.receiptInfo.parkingLevel}
-                    <br/>
-                    <br/>
-                    {this.props.receiptInfo.parkingPosition}
-                    <br/>
-                    <br/>
-                    <h2>PHP {this.props.receiptInfo.price}</h2>
+                    <Col span={6}>
+                    Parking Position <h3 style={{margin: "0", paddingBottom: "3%"}}>{this.props.receiptInfo.parkingPosition}</h3>
                     </Col>
-                    </div>
+                    <Col span={12}>
+                    Reservation Date / Time <h3 style={{margin: "0", paddingBottom: "3%"}}>{ new Date(this.props.receiptInfo.creationDate).toLocaleString()}</h3>
+                    </Col>
                     </Row>
-                    </Card>
-                    <hr></hr>
-                    <QRCode value={this.props.receiptInfo.receiptID.toString()}/>
-                    <div align="right">
+                    </div>
+                    <h1 style={{margin: "0", paddingBottom: "3%"}}>Price : Php {this.props.receiptInfo.price}</h1>
+                    </span>
+                    <hr/>
                     <Button type="primary" htmlType="submit" onClick={this.handleOk}>
                     Confirm
                     </Button>
-                    </div>
+                    </Card>
+                    
                 </article>
             </div>
         )
