@@ -33,7 +33,7 @@ class ParkingLotMain extends Component {
         const listParkingLot = this.props.parkingLotAvailableList;
         return (
             <div className="header">
-                <HeaderPage/>
+                <HeaderPage current={"reserve"}/>
 
                 <ReservationSteps current={0}/>
 

@@ -35,7 +35,7 @@ class UserProfile extends Component {
     render() {
         return (
             <div>
-                <HeaderPage/>
+                <HeaderPage current={"viewProfile"}/>
 
                 <div style={{textAlign: "center", margin: "auto" }}>
 
