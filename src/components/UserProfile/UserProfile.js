@@ -70,6 +70,12 @@ class UserProfile extends Component {
                 </div>
 
                 <div className="center">
+                    <Card title="Driver type" bordered={false}>
+                        {this.props.userInfo.driverType}
+                    </Card>
+                </div>
+
+                <div className="center">
                     <Card
                         style={{ width: 380}}
                         cover={<img alt="profile" src={this.state.pic} onError={this.onError} />}>

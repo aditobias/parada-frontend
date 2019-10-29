@@ -5,14 +5,15 @@ const initialState = {
     email: "",
     emailVerificationStatus: "", 
     mobileNumber: "",
-    profilePicture: ""
+    profilePicture: "",
+    driverType: ""
   };
 
   export default (state = initialState, { type, payload }) => {
   
     switch (type) {
         case "GET_PROFILE":
-            return{
+            return {
                 ...state,
                 username: payload.username,
                 firstName: payload.firstName,
@@ -20,8 +21,9 @@ const initialState = {
                 email: payload.email,
                 emailVerificationStatus: payload.emailVerificationStatus,
                 mobileNumber: payload.mobileNumber,
-                profilePicture: payload.profilePicture
-            }
+                profilePicture: payload.profilePicture,
+                driverType: payload.driverType
+            };
         default:
             return state
     }

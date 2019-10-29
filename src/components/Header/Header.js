@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Menu, Icon} from 'antd';
+import {connect} from "react-redux";
 import 'antd/dist/antd.css';
 import './Header.css';
 import Parada from './logoHeader.png';
@@ -23,9 +24,10 @@ class HeaderPage extends Component {
 
 
     render() {
+        const header = this.props.driver.driverType === "admin" ? this.adminHeader : this.userHeader;
         return (
             <div className="mainHeader">
-                {this.adminHeader}
+                {header}
             </div>
         )
     }
@@ -91,4 +93,7 @@ class HeaderPage extends Component {
     )
 }
 
-export default HeaderPage;
+const mapStateToProps = state=>({
+    driver: state.userProfileResource
+});
+export default connect(mapStateToProps)(HeaderPage);
