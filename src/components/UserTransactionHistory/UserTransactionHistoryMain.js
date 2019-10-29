@@ -164,16 +164,16 @@ class UserTransactionHistoryMain extends React.Component {
         return (
             <div className="header">
                 <HeaderPage />
-                <div style={{ width: "1100px", margin: "auto", paddingTop: "20px" }}>
+                <div style={{ width: "80%", margin: "auto", paddingTop: "20px" }}>
                     <Table columns={columns} dataSource={dataList} size="middle" style={{ background: "white" }} />
                 </div>
                 ,
-                <Modal
+                <Modal style={{ width: "100%", margin: "auto", paddingTop: "20px" }}
                     visible={this.state.visible}
                     onOk={this.handleOk}
                 >
-                    <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
                         <Card title="Parada Reservation Receipt" bordered={false} style={{ width: "100%" }}>
+                            <div align = "center">
                             <span>
                                 <QRCode value={this.state.selectedTransaction.id.toString()} /><br />
                                 <h1 style={{ margin: "0", paddingBottom: "3%" }}>Receipt ID : {this.state.selectedTransaction.id}</h1>
@@ -194,9 +194,9 @@ class UserTransactionHistoryMain extends React.Component {
                                 <h1 style={{ margin: "0", paddingBottom: "3%" }}>Price : Php {this.state.selectedTransaction.price}</h1>
                             </span>
                             <hr />
+                            </div>
                         </Card>
 
-                    </article>
                 </Modal>
             </div>
         )
