@@ -44,7 +44,7 @@ class AdminExit extends React.Component {
                         <p>Reservation Time: {this.convertDateTime(this.props.exit.reserveTime)}</p>
                         <p>Arrival Time: {this.convertDateTime(this.props.exit.startTime)}</p>
                         <p>Departure Time: {this.props.exit.endTime === null ? 'Not Yet Departed': this.convertDateTime(this.props.exit.endTime)}</p>
-                        <p>Payment Status: {this.props.exit.isPaid ? 'Paid' : 'Not Yet Paid'}</p>
+                        <p>Status: {this.props.exit.status}</p>
                     </div>
                     <div style={{ float: "right" }}>
                         <Button type="primary" style={{ height: "50px" }} onClick={this.confirmExit}>Confirm</Button>
