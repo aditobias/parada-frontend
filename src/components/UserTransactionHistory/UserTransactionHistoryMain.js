@@ -8,7 +8,7 @@ import UserTransactionHistoryResource from "../../api/UserTransactionHistoryReso
 class UserTransactionHistoryMain extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {transactionList:[], myNum:3}
+        this.state = {transactionList:[]}
     }
 
     componentDidMount() {
@@ -25,7 +25,6 @@ class UserTransactionHistoryMain extends React.Component {
     }
 
     render () {
-        // return (<div/>);
         console.log("state.userTransaction.userTransactionList ", this.props.parkingTransactionList);
         const transactionList = this.props.parkingTransactionList;
         const columns = [

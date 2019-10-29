@@ -64,6 +64,9 @@
     alignment: center;
 }
 
+.cardSteps {
+    width: 1100px;
+}
 
 .pagination a {
     color: black;

@@ -9,7 +9,7 @@ import 'antd/dist/antd.css';
 
 const { SubMenu } = Menu;
 
-class UserProfile extends Component {
+class HeaderPage extends Component {
     constructor(props) {
         super(props)
     }
@@ -42,7 +42,7 @@ class UserProfile extends Component {
                         title={<span className="submenu-title-wrapper"><Icon type="user"/>My Profile</span>}>
                             <Menu.Item key="viewProfile"><Link to="/userProfile"/>View Profile</Menu.Item>
                             <Menu.Item key="editProfile">Edit Profile</Menu.Item>
-                            <Menu.Item key="editProfile"><Link to="/admin"/>Administrator Features</Menu.Item>
+                            <Menu.Item key="adminMenu"><Link to="/admin"/>Administrator Features</Menu.Item>
                     </SubMenu>
                     <Menu.Item key="history">
                         <Link to="/userTransactionHistory"/>Transaction History
@@ -57,4 +57,4 @@ class UserProfile extends Component {
     }
 }
 
-export default UserProfile;
+export default HeaderPage;
