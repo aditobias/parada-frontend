@@ -36,7 +36,8 @@ class HeaderPage extends Component {
         <Menu onClick={this.handleClick} selectedKeys={[this.state.current || "reserve"]} mode="horizontal" theme="dark">
             <Menu.Item>
                 <Link to="/"/>
-                <img alt="text" src={Parada}/>
+                PARADA
+                {/* <img alt="text" src={Parada}/> */}
             </Menu.Item>
 
             <Menu.Item key="reserve">

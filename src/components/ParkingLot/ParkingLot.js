@@ -31,8 +31,7 @@ class ParkingLot extends React.Component {
                     state: {parkingLot: parkingLotFromProps}
                 }}/> : false}
 
-                <Row gutter={20}>
-                    <Col span={12}>
+                
                         <Card onClick={this.updateRedirectState} className="parkingCards"
                               title={<span>{this.props.parkingLot.parkingLotName}<br/>
                                       <p>PHP: {this.props.parkingLot.flatRate}</p></span>}
@@ -41,8 +40,7 @@ class ParkingLot extends React.Component {
                             <p>Capacity: {this.props.parkingLot.capacity}</p>
                             <p>Available Slots: {this.props.parkingLot.availableSpaces}</p>
                         </Card>
-                    </Col>
-                </Row>
+             
             </div>
         )
     }
