@@ -42,6 +42,18 @@ class UserTransactionHistoryMain extends React.Component {
             .then(res=>{
                 console.log(res); //update this.state.transactionList based on the res. Find by ID, then update
                 message.success("Cancelled reservation from "+parkingLotName);
+
+                const updatedTransactionList = this.state.transactionList
+                    .map(transaction=>{
+                        if(transaction.id===res.id){
+                            return res;
+                        }
+                        else{
+                            return transaction;
+                        }
+                    });
+
+                this.setState({transactionList: updatedTransactionList});
             })
             .catch(e => {
                 message.error("Unable to cancel reservation from "+parkingLotName);
