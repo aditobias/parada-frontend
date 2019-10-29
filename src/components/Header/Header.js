@@ -63,7 +63,11 @@ class HeaderPage extends Component {
                 <Link to="/"/>
                 <img alt="text" src={Parada}/>
             </Menu.Item>
-
+            <Menu.Item key="adminUser">
+                <Link to="/adminUser"/>
+                <Icon type="export" />
+                Change Admin User
+            </Menu.Item>
             <Menu.Item key="addParking">
                 <Link to="/adminParkingLot"/>
                 <Icon type="car"/>
@@ -84,8 +88,6 @@ class HeaderPage extends Component {
                 <Icon type="export" />
                 Confirm Driver Exit
             </Menu.Item>
-
-
 
             <Menu.Item key="reserve">
                 <Link to="/parkingLots"/>

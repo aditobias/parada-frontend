@@ -40,6 +40,22 @@ export default {
             mode: 'cors',
             method: 'PATCH'
         }
-    )
+    ),
 
+    updateToAdmin: (username) =>
+        fetch(
+            "http://localhost:8080/admin/driver/toAdmin/" + username,
+            {
+                mode: 'cors',
+                method: 'PATCH',
+            }
+        ),
+    updateToUser: (username) =>
+        fetch(
+            "http://localhost:8080/admin/driver/toUser/" + username,
+            {
+                mode: 'cors',
+                method: 'PATCH'
+            }
+        )
 }

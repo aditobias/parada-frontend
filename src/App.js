@@ -17,6 +17,7 @@ import AdminAddLot from "./components/Admin/AdminAddLot";
 import AdminWrapper from "./components/Admin/AdminWrapper";
 import AdminPaymentWrapper from './components/Admin/AdminPaymentWrapper';
 import AdminExitWrapper from './components/Admin/AdminExitWrapper';
+import AdminUserAccessWrapper from "./components/Admin/AdminUserAccessWrapper";
 
 function App() {
     return (
@@ -49,7 +50,9 @@ function App() {
                 <Route exact path="/adminPayment">
                     <AdminPaymentWrapper/>
                 </Route>
-
+                <Route exact path="/adminUser">
+                    <AdminUserAccessWrapper/>
+                </Route>
                 {/*<Route exact path="/parkingSpaces" component={ParkingSpacesContainer}/>*/}
                 <Route exact path="/parkingSpaces" render={(props) => <ParkingSpacesContainer {...props}/>}/>
 
