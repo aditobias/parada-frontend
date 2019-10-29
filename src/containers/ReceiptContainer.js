@@ -17,10 +17,10 @@ const mapDispatchToProps = dispatch => ({
     getReceiptInformation: (receiptInfo) => {
         ReceiptResource.getReceiptInfo(receiptInfo)
             .then(res => res.json())
-            .then(({ username, firstName, lastName, email, mobileNumber, emailVerificationStatus, profilePicture }) => {
+            .then(({ username, firstName, lastName, email, mobileNumber, isVerified, profilePicture }) => {
                 dispatch({
                     type: 'POST_TRANSACTION',
-                    payload: { username, firstName, lastName, email, mobileNumber, emailVerificationStatus, profilePicture }
+                    payload: { username, firstName, lastName, email, mobileNumber, isVerified, profilePicture }
                 })
             })
     }
