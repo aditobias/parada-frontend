@@ -15,14 +15,15 @@ class ParkingLot extends React.Component {
     }
 
     updateRedirectState = () => {
-        this.setState({
-            redirectTo: true
-        })
+        if(this.props.parkingLot.availableSpaces !== 0){
+            this.setState({
+                redirectTo: true
+            })
+        }
     };
 
     render() {
         const parkingLotFromProps = this.props.parkingLot;
-        console.log("parkingLotFromProps ", parkingLotFromProps);
         return (
             <div className="divStyle">
                 {this.state.redirectTo ? <Redirect to={{
@@ -35,7 +36,7 @@ class ParkingLot extends React.Component {
                         <Card onClick={this.updateRedirectState} className="parkingCards"
                               title={<span>{this.props.parkingLot.parkingLotName}<br/>
                                       <p>PHP: {this.props.parkingLot.flatRate}</p></span>}
-                              bordered={true} hoverable={true}>
+                              bordered={true} hoverable={true} >
                             <p>Location: {this.props.parkingLot.location}</p>
                             <p>Capacity: {this.props.parkingLot.capacity}</p>
                             <p>Available Slots: {this.props.parkingLot.availableSpaces}</p>
