@@ -5,13 +5,12 @@ import AdminResource from "../../api/AdminResource";
 class AdminPayment extends React.Component {
 
     state = {
-        visible: false,
-        transactionID: this.props.payment.id
+        visible: false
     };
 
-    confirmPayment = () => {
+    confirmPayment = (transactionID) => {
 
-        AdminResource.updateTransaction(this.state.transactionID)
+        AdminResource.updateTransaction(transactionID)
             .then(res => {
                 res.json();
                 console.log("Console this:"); console.log(+ res);
@@ -40,7 +39,7 @@ class AdminPayment extends React.Component {
                         <p>Status: {this.props.payment.status}</p>
                     </div>
                     <div style={{ float: "right" }}>
-                        <Button type="primary" style={{ height: "50px" }} onClick={this.confirmPayment}>Confirm</Button>
+                        <Button type="primary" style={{ height: "50px" }} onClick={() => this.confirmPayment(this.props.payment.id)}>Confirm</Button>
                     </div>
                 </Card>
             </div>
