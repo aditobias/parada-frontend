@@ -16,7 +16,7 @@ class AdminPayment extends React.Component {
                 console.log("Console this:"); console.log(+ res);
             }
             );
-        message.success('Payment confirmed for Receipt ID:');
+        message.success('Payment confirmed for Receipt ID:' + this.props.payment.id);
     };
 
     convertDateTime = dateTime => {
