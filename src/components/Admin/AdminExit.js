@@ -6,12 +6,12 @@ class AdminExit extends React.Component {
 
     state = {
         visible: false,
-        transactionID: this.props.exit.id,
+        transactionID: this.props.exit.id
     };
 
-    confirmExit = () => {
+    confirmExit = (transactionID) => {
 
-        AdminResource.updateDepartureTime(this.state.transactionID)
+        AdminResource.updateDepartureTime(transactionID)
         .then(res => {res.json();
             if(res.status == '200')
             {
@@ -47,7 +47,7 @@ class AdminExit extends React.Component {
                         <p>Status: {this.props.exit.status}</p>
                     </div>
                     <div style={{ float: "right" }}>
-                        <Button type="primary" style={{ height: "50px" }} onClick={this.confirmExit}>Confirm</Button>
+                        <Button type="primary" style={{ height: "50px" }} onClick={() => this.confirmExit(this.props.exit.id)}>Confirm</Button>
                     </div>
                 </Card>
             </div>
