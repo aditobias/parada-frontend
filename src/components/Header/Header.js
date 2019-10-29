@@ -68,7 +68,7 @@ class HeaderPage extends Component {
             <SubMenu
                 title={<span className="submenu-title-wrapper"><Icon type="setting" />Administrator Features</span>}>
                 <Menu.Item key="adminUser"><Link to="/adminUser"/>
-                    <Icon type="export"/>Change Admin User
+                    <Icon type="idcard" />Change Admin User
                 </Menu.Item>
                 <Menu.Item key="addParking"><Link to="/adminParkingLot"/>
                     <Icon type="car"/>Add Parking Lot
