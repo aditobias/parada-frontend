@@ -6,6 +6,7 @@ import AdminHeader from "./AdminHeader";
 import HeaderPage from '../Header/Header';
 import AdminPayment from './AdminPayment';
 
+
 class AdminPaymentWrapper extends React.Component {
     constructor(props) {
         super(props);
@@ -28,6 +29,8 @@ class AdminPaymentWrapper extends React.Component {
 
 
 
+
+
     render(){
         const { Search } = Input;
         return (
@@ -37,7 +40,7 @@ class AdminPaymentWrapper extends React.Component {
                 <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '50vh'}}>
                     <Card style={{ width: 600, justifyContent: "center" }}>
                         <Search placeholder="Input Receipt ID Here" onSearch={value => this.handleOnClickSearch(value)} enterButton />
-                        {this.state.payment === null ? '' : <AdminPayment payment={this.state.payment} />}
+                        {this.state.payment === null ? '' : <AdminPayment  payment={this.state.payment} />}
                     </Card>
                 </div>
             </div>

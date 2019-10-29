@@ -22,6 +22,15 @@ export default {
             mode: 'cors',
             method: 'GET'
         }
-        
+    ),
+    
+    updateTransaction: (transactionID) =>
+    fetch(
+        "http://localhost:8080/admin/transaction/" + transactionID + "/enter",
+        {
+            mode: 'cors',
+            method: 'PATCH'
+        }
     )
+
 }
