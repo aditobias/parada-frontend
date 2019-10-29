@@ -1,7 +1,7 @@
 .parkingLotSpaceButton {
     height: 140px;
     width: 90px;
-    background-color: green;
+    background-color: #38930b  ;
     color: black;
     margin: 10px;
 }
@@ -15,7 +15,7 @@
 .parkingLotSpaceButtonOccupied {
     height: 140px;
     width: 90px;
-    background-color: red;
+    background-color:  #f97d7d    ;
     color: white;
     margin: 10px;
 }

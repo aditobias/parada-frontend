@@ -23,8 +23,6 @@ class AdminAddSpaceWrapper extends React.Component {
             })
     };
 
-
-
     render(){
         const { Search } = Input;
         return (

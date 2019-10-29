@@ -5,7 +5,7 @@ const initialState = {
     parkingLevel:"",
     parkingPosition:"",
     price:"",
-    creationDateTime:""
+    creationDate:""
 
 };
 
@@ -20,7 +20,7 @@ export default (state = initialState, { type, payload }) => {
                 parkingLevel:payload.parkingLevel,
                 parkingPosition:payload.parkingPosition,
                 price:payload.price,
-                creationDateTime:payload.creationDateTime
+                creationDate:payload.reserveTime
             };
         // case 'UPDATE_SELECTED_PARKING_LOT':
         //     return {

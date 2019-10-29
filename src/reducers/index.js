@@ -12,7 +12,6 @@ const rootReducer = combineReducers({
   parkingLotReducer : parkingLotReducer,
   parkingSpaceResource: parkingSpacesReducer,
   receiptResource: receiptReducer
-  // userTransaction: userTransaction
 });
 
 export default rootReducer;

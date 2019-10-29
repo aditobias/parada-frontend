@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
     lastName: state.userProfileResource.lastName,
     email:  state.userProfileResource.email,
     mobileNumber: state.userProfileResource.mobileNumber,
-    emailVerificationStatus: state.userProfileResource.emailVerificationStatus,
+    verified: state.userProfileResource.verified,
     profilePicture: state.userProfileResource.profilePicture,
     driverType: state.userProfileResource.driverType
 });

@@ -23,7 +23,7 @@ class RegistrationForm extends React.Component {
     firstName:"",
     lastName:"",
     mobileNumber:"",
-    emailVerificationStatus: "Not yet Verified"
+    verified: false
   };
 
   componentDidMount() {

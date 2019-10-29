@@ -5,19 +5,18 @@ import AdminResource from "../../api/AdminResource";
 class AdminPayment extends React.Component {
 
     state = {
-        visible: false,
-        transactionID: this.props.payment.id
+        visible: false
     };
 
-    confirmPayment = () => {
+    confirmPayment = (transactionID) => {
 
-        AdminResource.updateTransaction(this.state.transactionID)
+        AdminResource.updateTransaction(transactionID)
             .then(res => {
                 res.json();
                 console.log("Console this:"); console.log(+ res);
             }
             );
-        message.success('Payment confirmed for Receipt ID:');
+        message.success('Payment confirmed for Receipt ID:' + this.props.payment.id);
     };
 
     convertDateTime = dateTime => {
@@ -37,10 +36,10 @@ class AdminPayment extends React.Component {
                         <p>Reservation Time: {this.convertDateTime(this.props.payment.reserveTime)}</p>
                         <p>Arrival Time: {this.props.payment.startTime === null ? 'Waiting for Arrival...': this.convertDateTime(this.props.payment.startTime)}</p>
                         <p>Departure Time: {this.props.payment.endTime === null ? 'Not Yet Departed': this.convertDateTime(this.props.payment.endTime)}</p>
-                        <p>Payment Status: {this.props.payment.isPaid ? 'Paid' : 'Not yet paid'}</p>
+                        <p>Status: {this.props.payment.status}</p>
                     </div>
                     <div style={{ float: "right" }}>
-                        <Button type="primary" style={{ height: "50px" }} onClick={this.confirmPayment}>Confirm</Button>
+                        <Button type="primary" style={{ height: "50px" }} onClick={() => this.confirmPayment(this.props.payment.id)}>Confirm</Button>
                     </div>
                 </Card>
             </div>

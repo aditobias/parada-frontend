@@ -1,30 +1,27 @@
 import React from 'react'
-import { Button, Card, message } from "antd";
+import {Button, Card, message} from "antd";
 import AdminResource from "../../api/AdminResource";
 
 class AdminExit extends React.Component {
 
     state = {
         visible: false,
-        transactionID: this.props.exit.id,
+        transactionID: this.props.exit.id
     };
 
-    confirmExit = () => {
+    confirmExit = (transactionID) => {
 
-        AdminResource.updateDepartureTime(this.state.transactionID)
-        .then(res => {res.json();
-            if(res.status == '200')
-            {
-                    message.success("You have successfully updated the transaction!");
+        AdminResource.updateDepartureTime(transactionID)
+            .then(res => {
+                    res.json();
+                    if (res.status == '200') {
+                        message.success("You have successfully updated the transaction!");
+                    } else {
+                        message.error("Failed to update the transaction!");
+                    }
+                }
+            );
 
-            }
-            else
-            {
-                message.error("Failed to update the transaction!");
-            }
-        }
-        );
-        
     };
 
     convertDateTime = dateTime => {
@@ -34,8 +31,8 @@ class AdminExit extends React.Component {
     render() {
         return (
             <div>
-                <Card >
-                    <div style={{ float: "left" }} >
+                <Card>
+                    <div style={{float: "left"}}>
                         <p>Receipt ID: {this.props.exit.id}</p>
                         <p>Parking Lot: {this.props.exit.parkingLotName}</p>
                         <p>Parking Level: {this.props.exit.parkingLevel}</p>
@@ -43,15 +40,18 @@ class AdminExit extends React.Component {
                         <p>Price: Php {this.props.exit.price}</p>
                         <p>Reservation Time: {this.convertDateTime(this.props.exit.reserveTime)}</p>
                         <p>Arrival Time: {this.convertDateTime(this.props.exit.startTime)}</p>
-                        <p>Departure Time: {this.props.exit.endTime === null ? 'Not Yet Departed': this.convertDateTime(this.props.exit.endTime)}</p>
-                        <p>Payment Status: {this.props.exit.isPaid ? 'Paid' : 'Not Yet Paid'}</p>
+                        <p>Departure
+                            Time: {this.props.exit.endTime === null ? 'Not Yet Departed' : this.convertDateTime(this.props.exit.endTime)}</p>
+                        <p>Status: {this.props.exit.status}</p>
                     </div>
-                    <div style={{ float: "right" }}>
-                        <Button type="primary" style={{ height: "50px" }} onClick={this.confirmExit}>Confirm</Button>
+                    <div style={{float: "right"}}>
+                        <Button type="primary" style={{height: "50px"}}
+                                onClick={() => this.confirmExit(this.props.exit.id)}>Confirm</Button>
                     </div>
                 </Card>
             </div>
         )
     }
 }
+
 export default AdminExit;
