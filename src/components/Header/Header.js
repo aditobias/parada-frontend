@@ -66,7 +66,7 @@ class HeaderPage extends Component {
 
             <Menu.Item key="addParking">
                 <Link to="/adminParkingLot"/>
-                <Icon type="car" theme="twoTone"/>
+                <Icon type="car"/>
                 Add Parking Lot
             </Menu.Item>
             <Menu.Item key="addParkingSpace">
@@ -74,6 +74,17 @@ class HeaderPage extends Component {
                 <Icon type="plus-square"/>
                 Add Parking Lot Space
             </Menu.Item>
+            <Menu.Item key="adminPayment">
+                <Link to="/adminPayment"/>
+                <Icon type="dollar" />
+                Confirm Payment
+            </Menu.Item>
+            <Menu.Item key="adminExit">
+                <Link to="/adminExit"/>
+                <Icon type="export" />
+                Confirm Driver Exit
+            </Menu.Item>
+
 
 
             <Menu.Item key="reserve">

@@ -29,8 +29,7 @@ class AdminExitWrapper extends React.Component {
         const { Search } = Input;
         return (
             <div>
-                <HeaderPage/>
-                <AdminHeader current='adminExit'/>
+                <HeaderPage current='adminExit'/>
                 <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '50vh'}}>
                     <Card style={{ width: 600, justifyContent: "center" }}>
                         <Search placeholder="Input Receipt ID Here" onSearch={value => this.handleOnClickSearch(value)} enterButton />
