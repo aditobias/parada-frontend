@@ -3,7 +3,7 @@ const initialState = {
     firstName: "",
     lastName: "",
     email: "",
-    isVerified: false,
+    verified: false,
     mobileNumber: "",
     profilePicture: "",
     driverType: ""
@@ -19,7 +19,7 @@ const initialState = {
                 firstName: payload.firstName,
                 lastName: payload.lastName,
                 email: payload.email,
-                isVerified: payload.isVerified,
+                verified: payload.verified,
                 mobileNumber: payload.mobileNumber,
                 profilePicture: payload.profilePicture,
                 driverType: payload.driverType
