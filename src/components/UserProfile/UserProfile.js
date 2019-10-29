@@ -76,13 +76,13 @@ class UserProfile extends Component {
 
 
     render() {
-        const emailStatus = this.props.userInfo.is_verified ?
+        const emailStatus = this.props.userInfo.verified ?
             <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a"
                   style={{fontSize: "30px", float: "left"}}/> :
             <Icon type="check-circle"
                   style={{fontSize: "30px", float: "left"}}/> ;
         console.log("status",emailStatus);
-        console.log("statussssssssssssss", this.props.userInfo.is_verified);
+        console.log("statussssssssssssss", this.props.userInfo.verified);
         return (
             <div>
                 <HeaderPage/>

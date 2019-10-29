@@ -31,7 +31,7 @@ const initialState = {
                 firstName: payload.firstName,
                 lastName: payload.lastName,
                 email: payload.email,
-                emailVerificationStatus: payload.emailVerificationStatus,
+                verified: payload.verified,
                 mobileNumber: payload.mobileNumber,
                 profilePicture: payload.profilePicture,
                 driverType: payload.driverType
