@@ -15,11 +15,9 @@ const mapDispatchToProps = dispatch => ({
         LoginResource.getCredentials(credentials)
             .then(res => {
                 res.json();
-                console.log(res);
                 if(res.status == "200")
                 {
-                    message.loading('You are logging in...',1)
-                    .then(()=> message.success('You are now logged in',1));
+                    message.success('You are now logged in',1)
                     dispatch({
                         type: 'LOG_IN',
                         payload: credentials
