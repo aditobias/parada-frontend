@@ -163,7 +163,7 @@ class UserTransactionHistoryMain extends React.Component {
         // return (<div/>);
         return (
             <div className="header">
-                <HeaderPage />
+                <HeaderPage current="history"/>
                 <div style={{ width: "80%", margin: "auto", paddingTop: "20px" }}>
                     <Table columns={columns} dataSource={dataList} size="middle" style={{ background: "white" }} />
                 </div>
@@ -171,6 +171,8 @@ class UserTransactionHistoryMain extends React.Component {
                 <Modal style={{ width: "100%", margin: "auto", paddingTop: "20px" }}
                     visible={this.state.visible}
                     onOk={this.handleOk}
+                    footer={ [<Button onClick={this.handleOk}>Done</Button>]}
+                       className={{display: "none"}}
                 >
                         <Card title="Parada Reservation Receipt" bordered={false} style={{ width: "100%" }}>
                             <div align = "center">
