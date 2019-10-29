@@ -55,34 +55,67 @@ class UserProfile extends Component {
                 pic: "https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
             });
         }
-    }
+    };
+
 
     editProfile = () => {
-        this.setState({disabled: !this.state.disabled});
-    }
+        this.setState({
+            disabled: false,
+            userAction: "edit"
+        });
+    };
 
     saveProfile = () => {
         this.props.editProfileDetail(this.props.userInfo.loginUser, this.state);
-        console.log("tessssssssssssssst", this.props.editProfileDetail(this.props.userInfo.loginUser, this.state))
-    }
+        this.setState({
+            disabled: true,
+            userAction: "view"
+        });
+    };
 
     cancelProfile = () => {
         this.setState({
+            disabled: true,
             lastName: this.props.userInfo.lastName,
             firstName: this.props.userInfo.firstName,
             email: this.props.userInfo.email,
-            mobileNumber: this.props.userInfo.mobileNumber
+            mobileNumber: this.props.userInfo.mobileNumber,
+            userAction: "view",
         });
-    }
 
+    };
+    renderBtn = () => {
+        const buttonsWhenViewing =
+            <div>
+                <Button id={"editBtn"} style={{float: "right"}} onClick={this.editProfile}>
+                    Edit Profile
+                </Button>
+            </div>;
+
+        const buttonsWhenEditing =
+            <div>
+                <Button id={"cancelBtn"} style={{float: "right"}} onClick={this.cancelProfile}>
+                    Cancel
+                </Button>
+                <Button id={"saveBtn"} style={{float: "right"}} onClick={this.saveProfile}>
+                    Save
+                </Button>
+            </div>;
+
+        if (this.state.userAction === "view") {
+            return buttonsWhenViewing;
+        } else {
+            return buttonsWhenEditing;
+        }
+    };
 
     render() {
         const emailStatus = this.props.userInfo.verified ?
             <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a"
                   style={{fontSize: "30px", float: "left"}}/> :
-            <Icon type="check-circle"
-                  style={{fontSize: "30px", float: "left"}}/> ;
-        console.log("status",emailStatus);
+            <Icon type="close-circle"
+                  style={{fontSize: "30px", float: "left"}}/>;
+        console.log("status", emailStatus);
         console.log("statussssssssssssss", this.props.userInfo.verified);
 
         return (
@@ -123,12 +156,7 @@ class UserProfile extends Component {
 
                                 <br/>
 
-                                <Button id={"editBtn"} style={{float: "right"}} onClick={this.editProfile}>Edit
-                                    Profile</Button>
-                                <Button id={"cancelBtn"} style={{float: "right"}}
-                                        onClick={this.cancelProfile}>Cancel</Button>
-                                <Button id={"saveBtn"} style={{float: "right"}}
-                                        onClick={this.saveProfile}>Save</Button>
+                                {this.renderBtn()}
                             </Card>
                         </Col>
                     </Row>
@@ -145,7 +173,16 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     editProfileDetail: (username, profileEdit) => {
         UserProfileResource.editUserProfile(username, profileEdit)
+            .then(res=>{
+                this.setState({
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    email: this.state.email,
+                    mobileNumber: this.state.mobileNumber
+                })
+            })
+            .catch(e=>console.log(e));
     }
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
