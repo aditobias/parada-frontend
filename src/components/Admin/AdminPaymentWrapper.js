@@ -28,8 +28,7 @@ class AdminPaymentWrapper extends React.Component {
         const { Search } = Input;
         return (
             <div>
-                <HeaderPage />
-                <AdminHeader current='adminPayment' />
+                <HeaderPage current='adminPayment'/>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
                     <Card style={{ width: 600, justifyContent: "center" }}>
                         <Search placeholder="Input Receipt ID Here" onSearch={value => this.handleOnClickSearch(value)} enterButton />
