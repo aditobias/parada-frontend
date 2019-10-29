@@ -37,7 +37,7 @@ class AdminPayment extends React.Component {
                         <p>Reservation Time: {this.convertDateTime(this.props.payment.reserveTime)}</p>
                         <p>Arrival Time: {this.props.payment.startTime === null ? 'Waiting for Arrival...': this.convertDateTime(this.props.payment.startTime)}</p>
                         <p>Departure Time: {this.props.payment.endTime === null ? 'Not Yet Departed': this.convertDateTime(this.props.payment.endTime)}</p>
-                        <p>Payment Status: {this.props.payment.isPaid ? 'Paid' : 'Not yet paid'}</p>
+                        <p>Payment Status: {this.props.payment.status === 'Paid' ? 'Paid' : 'Not yet paid'}</p>
                     </div>
                     <div style={{ float: "right" }}>
                         <Button type="primary" style={{ height: "50px" }} onClick={this.confirmPayment}>Confirm</Button>
