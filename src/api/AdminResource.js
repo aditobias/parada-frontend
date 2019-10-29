@@ -31,6 +31,15 @@ export default {
             mode: 'cors',
             method: 'PATCH'
         }
+    ),
+
+    updateDepartureTime: (transactionID) =>
+    fetch(
+        "http://localhost:8080/admin/transaction/"+ transactionID + "/exit",
+        {
+            mode: 'cors',
+            method: 'PATCH'
+        }
     )
 
 }

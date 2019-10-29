@@ -15,7 +15,7 @@ import AdminAddSpaceWrapper from "./components/Admin/AdminAddSpaceWrapper";
 import AdminAddLot from "./components/Admin/AdminAddLot";
 import AdminWrapper from "./components/Admin/AdminWrapper";
 import AdminPaymentWrapper from './components/Admin/AdminPaymentWrapper';
-import {Provider} from "react-redux";
+import AdminExitWrapper from './components/Admin/AdminExitWrapper';
 
 function App() {
     return (
@@ -38,6 +38,9 @@ function App() {
                 </Route>
                 <Route exact path="/adminSpace">
                     <AdminAddSpaceWrapper />
+                </Route>
+                <Route exact path="/adminExit">
+                    <AdminExitWrapper />
                 </Route>
                 <Route exact path="/adminPayment">
                     <AdminPaymentWrapper/>

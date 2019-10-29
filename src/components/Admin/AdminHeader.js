@@ -39,7 +39,7 @@ class AdminHeader extends React.Component {
                         Payment
                     </Menu.Item>
                     <Menu.Item key="exit">
-                        <Link to="/"/>
+                        <Link to="/adminExit"/>
                         <Icon type="plus-square" />
                         Exit
                     </Menu.Item>
