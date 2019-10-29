@@ -145,7 +145,7 @@ class UserTransactionHistoryMain extends React.Component {
                     endTime: this.handleConversion(endTime),
                     status: status,
                     action:  this.createCancelButton(status, parkingLotName, id),
-                    showReceipt: <Button>Show Receipt</Button>
+                    showReceipt: <Button id = {id} onClick={()=>this.showModal(transaction)}>Show Receipt</Button>
                 })
             });
 
