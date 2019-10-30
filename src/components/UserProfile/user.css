@@ -1,0 +1,21 @@
+.center {
+    text-align: center;
+    margin: auto; 
+    width: 50%;
+  }
+.flex {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+  }
+
+.cards {
+    padding: 50px;
+    margin-bottom: 100px;
+}
+
+.centerpic {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}

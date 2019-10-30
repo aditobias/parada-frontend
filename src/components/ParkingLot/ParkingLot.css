@@ -1,0 +1,89 @@
+#components-layout-demo-top .logo {
+    width: 180px;
+    height: 31px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px 24px 16px 0;
+    float: left;
+}
+
+.main-parkingLot{
+    /*margin: auto;*/
+    /*display: flex;*/
+    /*flexDirection: row;*/
+    /*justifyContent: space-around;*/
+    /*flexWrap: wrap;*/
+
+}
+
+.header{
+    margin-bottom: 50px;
+}
+
+.parkingLot {
+    padding-top: 20px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.steps{
+    padding-top: 2%;
+    width: 100%;
+    flex-direction: row;
+    margin: auto;
+    display: flex;
+}
+
+.parkingLotButton {
+    padding: 20px;
+    height: 200px;
+    width: 300px;
+    margin-bottom: 40px;
+}
+
+.parkingCards{
+    width: 300px;
+    padding: 20px;
+}
+
+.divStyle{
+    border-radius: 15px;
+    background:    #e7e9ef   ;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px;
+    margin-top: 20px;
+}
+
+.pagination {
+    margin: auto;
+    justify-content: space-around;
+    height: 200px;
+    width: 300px;
+}
+
+.cardSteps {
+    margin: auto;
+    width: 70%;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+
+.pagination a:hover:not(.active) {background-color: #ddd;}

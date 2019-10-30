@@ -1,0 +1,23 @@
+.mainHeader {
+     width: 100%;
+}
+.center {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    margin-bottom:10px;
+}
+.flex {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+    margin-bottom:10px;
+}
+
+.centerp {
+    text-align: center;
+    margin: auto;
+}
+
