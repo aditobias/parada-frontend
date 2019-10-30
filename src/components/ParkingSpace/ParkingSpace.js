@@ -6,17 +6,19 @@ import ParkingTransactionResource from "../../api/ParkingTransactionResource";
 import {Redirect} from "react-router-dom";  
 import receipt from '../../reducers/receipt';
 import UserTransactionHistoryResource from "../../api/UserTransactionHistoryResource";
+import UserProfileResource from "../../api/UserProfileResource";
 
 class ParkingSpace extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             visible: false,
             errorOccupied: false,
             errorMaxReserve: false,
             redirect: false,
-            transactionList: []
+            transactionList: [],
+            userProfile: null
         };
 
         UserTransactionHistoryResource.getUserTransactionHistory(this.props.username)
@@ -24,15 +26,22 @@ class ParkingSpace extends Component {
             .then(userTransactionList => {
                 this.setState({transactionList: userTransactionList});
             });
+        UserProfileResource.getUserProfile(this.props.username)
+            .then(res => res.json())
+            .then(userProfileFromResource => {
+                this.setState({userProfile: userProfileFromResource});
+            });
     }
 
     showModal = () => {
 
         if(!this.props.parkingSpace.occupied){
-            if(this.state.transactionList.filter((transaction) => transaction.status === "Reserved").length < 5){
-                this.setState({
-                visible: true,
-                });
+            if(this.state.transactionList
+                    .filter((transaction) => transaction.status === "Reserved").length < 5 ||
+                this.state.userProfile.driverType === 'admin'){
+                    this.setState({
+                    visible: true,
+                    });
             }
             else{
                 this.setState({
