@@ -22,6 +22,7 @@ class UserProfile extends Component {
         firstName: this.props.userInfo.firstName,
         email: this.props.userInfo.email,
         mobileNumber: this.props.userInfo.mobileNumber,
+        userAction: "view"
     };
 
     handleClick = e => {
@@ -49,37 +50,68 @@ class UserProfile extends Component {
                 pic: "https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
             });
         }
-    }
+    };
 
     editProfile = () => {
-        this.setState({disabled: !this.state.disabled});
-    }
+        this.setState({
+            disabled: false,
+            userAction: "edit"
+        });
+    };
 
     saveProfile = () => {
         this.props.editProfileDetail(this.props.userInfo.loginUser, this.state);
+        this.setState({
+            disabled: true,
+            userAction: "view",
+        });
+
         message.success("Update Profile completed!");
         console.log("tessssssssssssssst", this.props.editProfileDetail(this.props.userInfo.loginUser, this.state))
-    }
+    };
 
     cancelProfile = () => {
         this.setState({
+            disabled: true,
             lastName: this.props.userInfo.lastName,
             firstName: this.props.userInfo.firstName,
-            email: this.props.userInfo.email,
-            mobileNumber: this.props.userInfo.mobileNumber
+            mobileNumber: this.props.userInfo.mobileNumber,
+            userAction: "view",
         });
         message.info("Profile editing cancelled");
     }
 
+    renderBtn = () => {
+        const buttonsWhenViewing =
+            <div>
+                <Button id={"editBtn"} style={{float: "right"}} onClick={this.editProfile}>
+                    Edit Profile
+                </Button>
+            </div>;
+
+        const buttonsWhenEditing =
+            <div>
+                <Button id={"cancelBtn"} style={{float: "right"}} onClick={this.cancelProfile}>
+                    Cancel
+                </Button>
+                <Button id={"saveBtn"} style={{float: "right"}} onClick={this.saveProfile}>
+                    Save
+                </Button>
+            </div>;
+
+        if (this.state.userAction === "view") {
+            return buttonsWhenViewing;
+        } else {
+            return buttonsWhenEditing;
+        }
+    };
 
     render() {
         const emailStatus = this.props.userInfo.verified ?
             <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a"
                   style={{fontSize: "30px", float: "left"}}/> :
-            <Icon type="check-circle"
-                  style={{fontSize: "30px", float: "left"}}/> ;
-        console.log("status",emailStatus);
-        console.log("statussssssssssssss", this.props.userInfo.verified);
+            <Icon type="close-circle"
+                  style={{fontSize: "30px", float: "left"}}/>;
         return (
             <div>
                 <HeaderPage current="viewProfile"/>
@@ -95,31 +127,30 @@ class UserProfile extends Component {
                         <Col span={12} style={{fontcolor: "black"}}>
                             <Card bordered={true}>
                                 <p style={{textAlign: "left"}}>Username</p>
-                                <Input value={this.props.userInfo.loginUser} disabled></Input>
+                                <Input value={this.props.userInfo.loginUser} disabled/>
                                 <p style={{textAlign: "left"}}>First Name</p>
                                 <Input value={this.state.firstName}
                                        onChange={this.handleChangeFirstName}
-                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
+                                       disabled={(this.state.disabled) ? "disabled" : ""}/>
                                 <p style={{textAlign: "left"}}>Last Name</p>
                                 <Input value={this.state.lastName}
                                        onChange={this.handleChangeLastName}
-                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
+                                       disabled={(this.state.disabled) ? "disabled" : ""}/>
                                 <p style={{textAlign: "left"}}>Mobile Number</p>
                                 <Input value={this.state.mobileNumber}
                                        onChange={this.handleChangeMobileNumber}
-                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
+                                       disabled={(this.state.disabled) ? "disabled" : ""}/>
                                 <p style={{textAlign: "left"}}>Email Address</p>
                                 <Input value={this.state.email}
                                        onChange={this.handleChangeEmail}
-                                       disabled ></Input>
+                                       disabled/>
                                 <p style={{textAlign: "left"}}>Email Verification status</p>
-                                {emailStatus}<br/>
-                                <Button id={"editBtn"} style={{float: "right"}} onClick={this.editProfile.bind(this)}>Edit
-                                    Profile</Button>
-                                <Button id={"cancelBtn"} style={{float: "right"}}
-                                        onClick={this.cancelProfile}>Cancel</Button>
-                                <Button id={"saveBtn"} style={{float: "right"}}
-                                        onClick={this.saveProfile.bind(this)}>Save</Button>
+
+                                {emailStatus}
+
+                                <br/>
+
+                                {this.renderBtn()}
                             </Card>
                         </Col>
                     </Row>
@@ -136,7 +167,17 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     editProfileDetail: (username, profileEdit) => {
         UserProfileResource.editUserProfile(username, profileEdit)
+            .then(res=>{
+                this.setState({
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    email: this.state.email,
+                    mobileNumber: this.state.mobileNumber,
+                    verified: this.state.verified
+                })
+            })
+            .catch(e=>console.log(e));
     }
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
