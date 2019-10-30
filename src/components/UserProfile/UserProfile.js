@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Row, Col, Card, Input, Icon, Button, message} from 'antd';
+import {Button, Card, Col, Icon, Input, message, Row} from 'antd';
 import 'antd/dist/antd.css';
 import HeaderPage from '../Header/Header';
 import {connect} from "react-redux";
@@ -60,9 +60,7 @@ class UserProfile extends Component {
             disabled: true,
             userAction: "view",
         });
-
         message.success("Update Profile completed!");
-        console.log("tessssssssssssssst", this.props.editProfileDetail(this.props.userInfo.loginUser, this.state))
     };
 
     cancelProfile = () => {
@@ -79,17 +77,17 @@ class UserProfile extends Component {
     renderBtn = () => {
         const buttonsWhenViewing =
             <div>
-                <Button id={"editBtn"} style={{float: "right"}} onClick={this.editProfile}>
+                <Button id={"editBtn"} onClick={this.editProfile}>
                     Edit Profile
                 </Button>
             </div>;
 
         const buttonsWhenEditing =
             <div>
-                <Button id={"cancelBtn"} style={{float: "right"}} onClick={this.cancelProfile}>
+                <Button id={"cancelBtn"} onClick={this.cancelProfile}>
                     Cancel
                 </Button>
-                <Button id={"saveBtn"} style={{float: "right"}} onClick={this.saveProfile}>
+                <Button id={"saveBtn"} onClick={this.saveProfile}>
                     Save
                 </Button>
             </div>;
@@ -119,11 +117,10 @@ class UserProfile extends Component {
         return (
             <div>
                 <HeaderPage current="viewProfile"/>
-                <div className="center" style={{width: "900px", background: "white", marginTop: "20px"}}>
+                <div className="center">
                     <Row>
                         <Col span={10} style={{marginRight: "50px"}}>
-                            <Card
-                                style={{width: "380px", marginTop: "30px"}}
+                            <Card style={{width: "380px", marginTop: "30px"}}
                                 cover={<img alt="profile" src={this.state.pic} onError={this.onError}/>}>
                                 <button>Upload</button>
 
@@ -131,30 +128,30 @@ class UserProfile extends Component {
                         </Col>
                         <Col span={12} style={{fontcolor: "black"}}>
                             <Card bordered={true}>
-                                <p style={{textAlign: "left"}}>Username
+                                <p>Username
                                     <Input value={this.props.userInfo.loginUser} disabled/>
                                 </p>
-                                <p style={{textAlign: "left"}}>First Name
+                                <p>First Name
                                     <Input value={this.state.firstName}
                                            onChange={this.handleChangeFirstName}
                                            disabled={(this.state.disabled) ? "disabled" : ""}/>
                                 </p>
-                                <p style={{textAlign: "left"}}>Last Name
+                                <p>Last Name
                                     <Input value={this.state.lastName}
                                            onChange={this.handleChangeLastName}
                                            disabled={(this.state.disabled) ? "disabled" : ""}/>
                                 </p>
-                                <p style={{textAlign: "left"}}>Mobile Number
+                                <p>Mobile Number
                                     <Input value={this.state.mobileNumber}
                                            onChange={this.handleChangeMobileNumber}
                                            disabled={(this.state.disabled) ? "disabled" : ""}/>
                                 </p>
-                                <p style={{textAlign: "left"}}>Email Address
+                                <p>Email Address
                                     <Input value={this.state.email}
                                            onChange={this.handleChangeEmail}
                                            disabled/>
                                 </p>
-                                <p style={{textAlign: "left"}}>
+                                <p>
                                     Email Verification status<br/>
                                     {emailStatus}
                                 </p>
