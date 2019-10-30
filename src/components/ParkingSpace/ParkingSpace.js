@@ -1,6 +1,10 @@
-import React, {Component} from 'react';
-import {Button, Modal} from 'antd';
-import {Redirect} from "react-router-dom";
+import React, { Component } from 'react';
+import { Button } from 'antd';
+import { Modal } from 'antd';
+import ParkingSpaceResource from "../../api/ParkingSpaceResource";
+import ParkingTransactionResource from "../../api/ParkingTransactionResource";
+import {Redirect} from "react-router-dom";  
+import receipt from '../../reducers/receipt';
 import UserTransactionHistoryResource from "../../api/UserTransactionHistoryResource";
 import UserProfileResource from "../../api/UserProfileResource";
 
@@ -31,19 +35,20 @@ class ParkingSpace extends Component {
 
     showModal = () => {
 
-        if (!this.props.parkingSpace.occupied) {
-            if (this.state.transactionList
+        if(!this.props.parkingSpace.occupied){
+            if(this.state.transactionList
                     .filter((transaction) => transaction.status === "Reserved").length < 5 ||
-                this.state.userProfile.driverType === 'admin') {
-                this.setState({
+                this.state.userProfile.driverType === 'admin'){
+                    this.setState({
                     visible: true,
-                });
-            } else {
+                    });
+            }
+            else{
                 this.setState({
                     errorMaxReserve: true
                 })
             }
-        } else {
+        }else{
             this.setState({
                 errorOccupied: true
             })
@@ -54,11 +59,11 @@ class ParkingSpace extends Component {
         console.log(e);
         this.setState({
             visible: false,
-            redirect: true
+            redirect : true
         });
         console.log(this.props);
-        this.props.generateReceipt(this.props.parkingSpace.id, this.props.parkingSpace.parkingLotName, this.props.username);
-
+        this.props.generateReceipt(this.props.parkingSpace.id,this.props.parkingSpace.parkingLotName, this.props.username);
+        
     };
 
     handleCancel = e => {
@@ -77,15 +82,14 @@ class ParkingSpace extends Component {
                 {
                     this.state.redirect ?
                         <Redirect to={{
-                            pathname: "/parkingReceipt",
+                            pathname:"/parkingReceipt",
                             state: {parkingLot: this.props.location.state.parkingLot}
                         }}
                         />
                         : false
                 }
-                <Button
-                    className={this.props.parkingSpace.occupied ? 'parkingLotSpaceButtonOccupied' : 'parkingLotSpaceButton'}
-                    onClick={this.showModal}>
+                <Button className={this.props.parkingSpace.occupied ? 'parkingLotSpaceButtonOccupied' : 'parkingLotSpaceButton'}
+                        onClick={this.showModal}>
                     <div className="parkingButtonContent">
                         {this.props.parkingSpace.parkingPosition}
                     </div>

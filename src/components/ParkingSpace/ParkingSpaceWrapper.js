@@ -22,8 +22,8 @@ export default class ParkingSpaceWrapper extends Component {
                                   price={this.props.location.state.parkingLot.flatRate}/>
 
                 <div className={"main-parkingLotSpaceLegend"}>
-                    AVAILABLE <p className={"parkingLotSpaceButtonLegend"}/>
-                    OCCUPIED <p className={"parkingLotSpaceOccupiedLegend"}/>
+                    AVAILABLE <p className={"parkingLotSpaceButtonLegend"} />
+                    OCCUPIED <p className={"parkingLotSpaceOccupiedLegend"} />
                 </div>
                 <div className="main-parkingLotSpace">
                     <div className="parkingLotSpace">
