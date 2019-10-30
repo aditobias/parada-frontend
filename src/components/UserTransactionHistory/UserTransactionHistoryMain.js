@@ -90,23 +90,10 @@ class UserTransactionHistoryMain extends React.Component {
     };
 
     showModal = transaction => {
-        // const updatedSelectedTransaction = this.state.transactionList
-        //     .map(transaction => {
-        //         if (transaction.id === transaction.id) {
-        //             return transaction;
-        //         }
-        //         else {
-        //             return transaction;
-        //         }
-        //     });
-
-        // console.log(transaction.target.id)
         this.setState({
             visible: true,
             selectedTransaction: transaction
         });
-
-        // console.log(this.state.selectedTransaction);
     }
 
     handleOk = () => {
@@ -149,18 +136,6 @@ class UserTransactionHistoryMain extends React.Component {
                 })
             });
 
-        // const dataList = [{
-        //     key: '1',
-        //     name: 'SAMPLE',
-        //     price: 'P'+ 50,
-        //     date: '28 Oct 2019',
-        //     status: 'not paid',
-        //     button:  <Popconfirm title="Are you going to cancel this reservation?" >
-        //         <a>Cancel</a>
-        //     </Popconfirm>
-        // }
-        // ];
-        // return (<div/>);
         return (
             <div className="header">
                 <HeaderPage current="history"/>
@@ -208,8 +183,6 @@ class UserTransactionHistoryMain extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    // parkingTransactionList: state.userTransaction.transaction,
-    // parkingTransactionList: state.logInResource.transaction,
     username: state.logInResource.userName,
 });
 
