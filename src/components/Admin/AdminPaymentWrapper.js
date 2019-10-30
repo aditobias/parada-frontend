@@ -62,6 +62,8 @@ class AdminPaymentWrapper extends React.Component {
                             <Card title="Confirm Payment"
                                   style={{width: "80%", justifyContent: "center"}}>
                                 <Search placeholder="Input Receipt ID Here"
+                                        onChange={e => this.setState({ result: e.target.value })}
+                                        value={this.state.result}
                                         onSearch={value => this.handleOnClickSearch(value)} enterButton/>
                                 {(this.state.payment === null || this.state.payment.status === 404 || this.state.payment.message === "No transaction found!") ? '' :
                                     <AdminPayment payment={this.state.payment}/>}
@@ -76,7 +78,6 @@ class AdminPaymentWrapper extends React.Component {
                             onScan={this.handleScan}
                             style={{width: '60%', alignItems: 'center', margin: "5%"}}
                         />
-                        <h2 style={{marginLeft: "5%"}}>{this.state.result === null ? '' : "QR Code Reading: " + this.state.result}</h2>
                     </Col>
                 </Row>
             </div>

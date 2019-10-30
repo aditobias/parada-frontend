@@ -55,6 +55,8 @@ class AdminExitWrapper extends React.Component {
                             <Card title="Confirm Exit"
                                   style={{width: "80%", justifyContent: "center"}}>
                                 <Search placeholder="Input Receipt ID Here"
+                                        onChange={e => this.setState({ result: e.target.value })}
+                                        value={this.state.result}
                                         onSearch={value => this.handleOnClickSearch(value)} enterButton/>
                                 {this.state.exit === null ? '' : <AdminExit exit={this.state.exit}/>}
                             </Card>
@@ -68,7 +70,6 @@ class AdminExitWrapper extends React.Component {
                             onScan={this.handleScan}
                             style={{width: '60%', alignItems: 'center', margin: "5%"}}
                         />
-                        <h2 style={{marginLeft: "5%"}}>{this.state.result === null ? '' : "QR Code Reading: " + this.state.result}</h2>
                     </Col>
                 </Row>
             </div>
