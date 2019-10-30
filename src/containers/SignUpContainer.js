@@ -15,7 +15,6 @@ const mapDispatchToProps = dispatch => ({
         SignUpResource.createUser(credentials)
             .then(res => {
                 res.json();
-                console.log(res);
                 if(res.status == "201")
                 {
                     message.success('Your account was successfully created')
@@ -24,7 +23,7 @@ const mapDispatchToProps = dispatch => ({
                         payload: credentials
                     })  
                 }
-                else if(res.status == "500")
+                else if(res.status == "400")
                 {
                     message.error("Username is already taken");
                 }

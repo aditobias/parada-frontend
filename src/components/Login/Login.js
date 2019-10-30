@@ -47,7 +47,7 @@ class Login extends Component {
             <div>
             &nbsp;
             </div>
-            <article class="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10" style={{
+            <article className="mw6 center shadow-5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10" style={{
                 position: 'absolute', left: '50%', top: '50%',
                 transform: 'translate(-50%, -50%)'}}>
                 <div align="center">
@@ -59,7 +59,7 @@ class Login extends Component {
                             })(
                                 <Input
                                     size="large"
-                                    setFieldsValue={this.state.username} 
+                                    setfieldsvalue={this.state.username} 
                                     onChange={this.handleUserNameChange}
                                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Username"
@@ -73,7 +73,7 @@ class Login extends Component {
                             })(
                                 <Input
                                     size="large"
-                                    setFieldsValue={this.state.password}
+                                    setfieldsvalue={this.state.password}
                                     onChange={this.handlePasswordChange}
                                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     type="password"
