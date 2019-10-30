@@ -10,8 +10,7 @@ export default class ParkingSpaceWrapper extends Component {
             <div>
                 <HeaderPage/>
                 <ReservationSteps current={3} name={this.props.parkingLotName} level={this.props.parkingLevel}
-                                  position={this.props.parkingPosition} price={this.props.price}
-                                  receipt={this.props.receiptID}/>
+                                  position={this.props.parkingPosition} price={this.props.price} receipt={this.props.receiptID}/>
                 <Receipt
                     receiptInfo={this.props}
                     {...this.props}
