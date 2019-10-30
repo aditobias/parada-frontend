@@ -48,10 +48,11 @@ class HeaderPage extends Component {
                 <Icon type="car"/>
                 Reserve Parking
             </Menu.Item>
-            <SubMenu
-                title={<span className="submenu-title-wrapper"><Icon type="user"/>My Profile</span>}>
-                <Menu.Item key="viewProfile"><Link to="/userProfile"/>View Profile</Menu.Item>
-            </SubMenu>
+            <Menu.Item key="viewProfile">
+                <Link to="/userProfile"/>
+                <Icon type="user"/>
+                My Profile
+            </Menu.Item>
             <Menu.Item key="history">
                 <Link to="/userTransactionHistory"/>
                 <Icon type="unordered-list"/>
@@ -97,10 +98,13 @@ class HeaderPage extends Component {
                 <Icon type="car"/>
                 Reserve Parking
             </Menu.Item>
-            <SubMenu
-                title={<span className="submenu-title-wrapper"><Icon type="user"/>My Profile</span>}>
-                <Menu.Item key="viewProfile"><Link to="/userProfile"/>View Profile</Menu.Item>
-            </SubMenu>
+
+            <Menu.Item key="viewProfile">
+                <Link to="/userProfile"/>
+                <Icon type="user"/>
+                My Profile
+            </Menu.Item>
+
             <Menu.Item key="history">
                 <Link to="/userTransactionHistory"/>
                 <Icon type="unordered-list"/>
