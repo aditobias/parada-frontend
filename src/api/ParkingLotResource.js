@@ -1,4 +1,4 @@
-const parkingLotApi = "http://localhost:8080/parkingLots" ;
+const parkingLotApi = "http://localhost:8080/parkingLots";
 
 export default {
     getAllAvailableParkingLot: () =>

@@ -6,7 +6,7 @@ export default {
             userProfileApi + profile,
             {
                 mode: 'cors',
-                headers: new Headers({ 'Content-Type': 'application/json' })
+                headers: new Headers({'Content-Type': 'application/json'})
             }),
 
     editUserProfile: (username, profileEdit) =>
@@ -15,7 +15,7 @@ export default {
             {
                 mode: 'cors',
                 method: 'PATCH',
-                headers: new Headers({ 'Content-Type': 'application/json' }),
+                headers: new Headers({'Content-Type': 'application/json'}),
                 body: JSON.stringify(profileEdit)
             }),
 }

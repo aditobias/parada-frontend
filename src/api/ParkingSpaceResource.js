@@ -1,4 +1,3 @@
-
 export default {
     getAllAvailableParkingSpace: (id) =>
         fetch(
@@ -17,13 +16,4 @@ export default {
                 headers: new Headers({'Content-Type': 'application/json'}),
                 body: JSON.stringify(parkingSpace)
             }),
-
-    // saveParkingSpaceReservation: (parkingLot) =>
-    //     save(
-    //         "http://localhost:8080/parkingLots/" + id,
-    //         {
-    //             mode: 'cors',
-    //             method: 'GET'
-    //         }),
-
 }
