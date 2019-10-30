@@ -1,7 +1,7 @@
 .parkingLotSpaceButton {
     height: 140px;
     width: 90px;
-    background-color: #38930b  ;
+    background-color: #38930b;
     color: black;
     margin: 10px;
 }
@@ -15,12 +15,35 @@
 .parkingLotSpaceButtonOccupied {
     height: 140px;
     width: 90px;
-    background-color:  #f97d7d    ;
+    background-color: #f97d7d;
     color: white;
     margin: 10px;
 }
 
-.main-parkingLotSpace{
+.main-parkingLotSpaceLegend {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: medium;
+    font-style: italic;
+}
+
+.parkingLotSpaceOccupiedLegend {
+    height: 25px;
+    width: 25px;
+    background-color: #f97d7d;
+    margin: 10px;
+}
+
+.parkingLotSpaceButtonLegend {
+    height: 25px;
+    width: 25px;
+    background-color: #38930b;
+    margin: 10px;
+}
+
+.main-parkingLotSpace {
     margin: auto;
     display: flex;
     flexDirection: row;
@@ -31,6 +54,7 @@
 .parkingLotSpace {
     width: 1100px;
     margin: auto;
+    margin-top: 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
