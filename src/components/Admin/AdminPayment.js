@@ -13,10 +13,13 @@ class AdminPayment extends React.Component {
         AdminResource.updateTransaction(transactionID)
             .then(res => {
                 res.json();
-                console.log("Console this:"); console.log(+ res);
+                if (res.status == '200') {
+                    message.success('Payment confirmed for Receipt ID:' + transactionID);
+                } else {
+                    message.error("Failed to confirm payment!");
+                }
             }
             );
-        message.success('Payment confirmed for Receipt ID:' + transactionID);
     };
 
     convertDateTime = dateTime => {
