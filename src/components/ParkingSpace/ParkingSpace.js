@@ -5,28 +5,48 @@ import ParkingSpaceResource from "../../api/ParkingSpaceResource";
 import ParkingTransactionResource from "../../api/ParkingTransactionResource";
 import {Redirect} from "react-router-dom";  
 import receipt from '../../reducers/receipt';
+import UserTransactionHistoryResource from "../../api/UserTransactionHistoryResource";
 
 class ParkingSpace extends Component {
-    state = {
-        visible: false,
-        errorVisible: false,
-        redirect: false
-    };
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            visible: false,
+            errorOccupied: false,
+            errorMaxReserve: false,
+            redirect: false,
+            transactionList: []
+        };
+
+        UserTransactionHistoryResource.getUserTransactionHistory(this.props.username)
+            .then(res => res.json())
+            .then(userTransactionList => {
+                this.setState({transactionList: userTransactionList});
+            });
+    }
 
     showModal = () => {
+
         if(!this.props.parkingSpace.occupied){
-            this.setState({
+            if(this.state.transactionList.filter((transaction) => transaction.status === "Reserved").length < 5){
+                this.setState({
                 visible: true,
-            });
+                });
+            }
+            else{
+                this.setState({
+                    errorMaxReserve: true
+                })
+            }
         }else{
             this.setState({
-                errorVisible: true
+                errorOccupied: true
             })
         }
     };
 
     handleOk = e => {
-        
         console.log(e);
         this.setState({
             visible: false,
@@ -41,7 +61,8 @@ class ParkingSpace extends Component {
         console.log(e);
         this.setState({
             visible: false,
-            errorVisible: false
+            errorOccupied: false,
+            errorMaxReserve: false
         });
     };
 
@@ -66,7 +87,7 @@ class ParkingSpace extends Component {
                 </Button>
                 <Modal
                     title="Occupied Space"
-                    visible={this.state.errorVisible}
+                    visible={this.state.errorOccupied}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
                     footer={[
@@ -76,6 +97,19 @@ class ParkingSpace extends Component {
                     ]}
                 >
                     <h1>This space has already been occupied!</h1>
+                </Modal>
+                <Modal
+                    title="Max Reservation"
+                    visible={this.state.errorMaxReserve}
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                    footer={[
+                        <Button key="cancel" onClick={this.handleCancel}>
+                            Cancel
+                        </Button>
+                    ]}
+                >
+                    <h1>You exceeded your max reservation of 5!</h1>
                 </Modal>
                 <Modal
                     title="Reserve parking"
