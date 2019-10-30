@@ -16,7 +16,7 @@ class AdminUserAccess extends React.Component {
                     }
                     else
                     {
-                        message.error("Failed to update the transaction!");
+                        message.error("Failed to update user type!");
                     }
                 }
             );
@@ -29,11 +29,11 @@ class AdminUserAccess extends React.Component {
                     {
                         message.success("You have successfully made "
                             + this.props.userProfile.username
-                            + " as Admin!");
+                            + " as User!");
                     }
                     else
                     {
-                        message.error("Failed to update the transaction!");
+                        message.error("Failed to update user type!");
                     }
                 }
             );

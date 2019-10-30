@@ -21,6 +21,10 @@ class HeaderPage extends Component {
         });
     };
 
+    handleOnLogOut = () => {
+        window.location.reload();
+    }
+
     render() {
         const header = this.props.driver.driverType === "admin" ? this.adminHeader : this.userHeader;
         return (
@@ -47,13 +51,17 @@ class HeaderPage extends Component {
             <SubMenu
                 title={<span className="submenu-title-wrapper"><Icon type="user"/>My Profile</span>}>
                 <Menu.Item key="viewProfile"><Link to="/userProfile"/>View Profile</Menu.Item>
-                <Menu.Item key="editProfile">Edit Profile</Menu.Item>
             </SubMenu>
             <Menu.Item key="history">
                 <Link to="/userTransactionHistory"/>
                 <Icon type="unordered-list"/>
                 Transaction History
                 {/*<Redirect to={{pathname: "/parkingSpaces", state: {parkingLot: parkingLotFromProps}}}/>*/}
+            </Menu.Item>
+            <Menu.Item key="logout" onClick={this.handleOnLogOut}>
+                <Link to= "/" />
+                <Icon type="logout"/>
+                Log Out
             </Menu.Item>
         </Menu>
     );
@@ -92,13 +100,17 @@ class HeaderPage extends Component {
             <SubMenu
                 title={<span className="submenu-title-wrapper"><Icon type="user"/>My Profile</span>}>
                 <Menu.Item key="viewProfile"><Link to="/userProfile"/>View Profile</Menu.Item>
-                <Menu.Item key="editProfile">Edit Profile</Menu.Item>
             </SubMenu>
             <Menu.Item key="history">
                 <Link to="/userTransactionHistory"/>
                 <Icon type="unordered-list"/>
                 Transaction History
                 {/*<Redirect to={{pathname: "/parkingSpaces", state: {parkingLot: parkingLotFromProps}}}/>*/}
+            </Menu.Item>
+            <Menu.Item key="logout" onClick={this.handleOnLogOut}>
+                <Link to= "/" />
+                <Icon type="logout"/>
+                Log Out
             </Menu.Item>
         </Menu>
     )

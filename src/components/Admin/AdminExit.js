@@ -15,9 +15,9 @@ class AdminExit extends React.Component {
             .then(res => {
                     res.json();
                     if (res.status == '200') {
-                        message.success("You have successfully updated the transaction!");
+                        message.success("You have successfully confirmed the exit of :" + transactionID);
                     } else {
-                        message.error("Failed to update the transaction!");
+                        message.error("Failed to confirm exit!");
                     }
                 }
             );
