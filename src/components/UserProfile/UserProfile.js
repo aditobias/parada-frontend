@@ -31,11 +31,6 @@ class UserProfile extends Component {
         });
     };
 
-    handleChangeEmail = (event) => {
-        this.setState({email: event.target.value});
-
-    };
-
     handleChangeMobileNumber = (event) => {
         this.setState({mobileNumber: event.target.value});
     };
@@ -116,7 +111,7 @@ class UserProfile extends Component {
                                 <p style={{textAlign: "left"}}>Email Address</p>
                                 <Input value={this.state.email}
                                        onChange={this.handleChangeEmail}
-                                       disabled={(this.state.disabled) ? "disabled" : ""}></Input>
+                                       disabled ></Input>
                                 <p style={{textAlign: "left"}}>Email Verification status</p>
                                 {emailStatus}<br/>
                                 <Button id={"editBtn"} style={{float: "right"}} onClick={this.editProfile.bind(this)}>Edit
