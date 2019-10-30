@@ -27,7 +27,6 @@ class Login extends Component {
 
     dispatch = () => {
         this.props.onLogin(this.state);
-        this.setState({username: '', password: ''});
     };
 
     keyPressed = (event) => {
