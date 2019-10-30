@@ -5,6 +5,7 @@ import AdminResource from "../../api/AdminResource";
 import HeaderPage from '../Header/Header';
 import AdminPayment from './AdminPayment';
 import QrReader from 'react-qr-reader'
+import {message } from 'antd';
 
 class AdminPaymentWrapper extends React.Component {
     constructor(props) {
@@ -22,6 +23,14 @@ class AdminPaymentWrapper extends React.Component {
                 this.setState({
                     payment: res
                 })
+                if(res.message === "No transaction found!")
+                {
+                    message.error("No receipt found!");
+                }
+                else if (res.message === "No message available")
+                {
+                    message.warning("Please input receipt info!");
+                }
             })
     };
 
@@ -47,7 +56,7 @@ class AdminPaymentWrapper extends React.Component {
                     <Card title="Confirm Payment"
                      style={{ width: "35%", justifyContent: "center" }}>
                         <Search placeholder="Input Receipt ID Here" onSearch={value => this.handleOnClickSearch(value)} enterButton />
-                        {this.state.payment === null ? '' : <AdminPayment payment={this.state.payment} />}
+                        {(this.state.payment === null || this.state.payment.status === 404 || this.state.payment.message === "No transaction found!") ? '' : <AdminPayment payment={this.state.payment} />}
                     </Card>
                 </div>
 
