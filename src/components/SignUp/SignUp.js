@@ -35,7 +35,6 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         this.props.onSignUp(this.state);
-        this.setState({username:"",password:"",email:"",firstName:"",lastName:"",mobileNumber:""});
       }
     });
   };
