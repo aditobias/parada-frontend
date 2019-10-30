@@ -106,11 +106,7 @@ class HeaderPage extends Component {
                     <Link to="/userTransactionHistory"/>
                     <h3 className="parada-title "><Icon type="unordered-list"/>Transaction History</h3>
                 </Menu.Item>
-                <Menu.Item key="logout" onClick={this.handleOnLogOut}>
-                    <Link to="/"/>
-                    <h3 className="parada-title "><Icon type="logout"/>Log Out</h3>
-                </Menu.Item>
-                <Menu.Item key="logout">
+                <Menu.Item >
                     <h3 className="parada-title">Welcome Admin! {username} </h3>
                 </Menu.Item>
             </Menu>
