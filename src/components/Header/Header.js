@@ -3,14 +3,12 @@ import {Icon, Menu} from 'antd';
 import {connect} from "react-redux";
 import 'antd/dist/antd.css';
 import './Header.css';
-import Parada from './logoHeader.png';
 import {Link} from 'react-router-dom';
 
 const {SubMenu} = Menu;
 
 class HeaderPage extends Component {
     state = {
-        // current: 'reserve',
         current: this.props.current,
     };
 
@@ -26,7 +24,8 @@ class HeaderPage extends Component {
     }
 
     render() {
-        const header = this.props.driver.driverType === "admin" ? this.adminHeader : this.userHeader;
+        const username = this.props.driver.username;
+        const header = this.props.driver.driverType === "admin" ? this.adminHeader(username) : this.userHeader(username);
         return (
             <div className="mainHeader">
                 {header}
@@ -34,93 +33,93 @@ class HeaderPage extends Component {
         )
     }
 
-    userHeader = (
-        <Menu onClick={this.handleClick} selectedKeys={[this.state.current || "reserve"]} mode="horizontal"
-              theme="dark">
-            <Menu.Item>
-                <Link to="/"/>
-                PARADA
-                {/* <img alt="text" src={Parada}/> */}
-            </Menu.Item>
-
-            <Menu.Item key="reserve">
-                <Link to="/parkingLots"/>
-                <Icon type="car"/>
-                Reserve Parking
-            </Menu.Item>
-            <Menu.Item key="viewProfile">
-                <Link to="/userProfile"/>
-                <Icon type="user"/>
-                My Profile
-            </Menu.Item>
-            <Menu.Item key="history">
-                <Link to="/userTransactionHistory"/>
-                <Icon type="unordered-list"/>
-                Transaction History
-                {/*<Redirect to={{pathname: "/parkingSpaces", state: {parkingLot: parkingLotFromProps}}}/>*/}
-            </Menu.Item>
-            <Menu.Item key="logout" onClick={this.handleOnLogOut}>
-                <Link to= "/" />
-                <Icon type="logout"/>
-                Log Out
-            </Menu.Item>
-        </Menu>
-    );
-
-    adminHeader = (
-        <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" theme="dark">
-            <Menu.Item>
-                <Link to="/"/>
-                PARADA
-            </Menu.Item>
-
-            <SubMenu
-                title={<span className="submenu-title-wrapper"><Icon type="setting" />Administrator Features</span>}>
-                <Menu.Item key="adminUser"><Link to="/adminUser"/>
-                    <Icon type="idcard" />Change Admin User
+    userHeader = (username) => {
+        return (
+            <Menu onClick={this.handleClick} selectedKeys={[this.state.current || "reserve"]} mode="horizontal"
+                  theme="dark">
+                <Menu.Item>
+                    <Link to="/"/>
+                    <h2 className="parada-title">PARADA</h2>
                 </Menu.Item>
-                <Menu.Item key="addParking"><Link to="/adminParkingLot"/>
-                    <Icon type="car"/>Add Parking Lot
-                </Menu.Item>
-                <Menu.Item key="addParkingSpace"><Link to="/adminSpace"/>
-                    <Icon type="plus-square"/>Add Parking Lot Space
-                </Menu.Item>
-                <Menu.Item key="adminPayment"><Link to="/adminPayment"/>
-                    <Icon type="dollar"/>Confirm Payment
-                </Menu.Item>
-                <Menu.Item key="adminExit"><Link to="/adminExit"/>
-                    <Icon type="export"/>Confirm Driver Exit
-                </Menu.Item>
-            </SubMenu>
 
-            <Menu.Item key="reserve">
-                <Link to="/parkingLots"/>
-                <Icon type="car"/>
-                Reserve Parking
-            </Menu.Item>
+                <Menu.Item key="reserve">
+                    <Link to="/parkingLots"/>
+                    <h3 className="parada-title "><Icon type="car"/>Reserve Parking</h3>
+                </Menu.Item>
+                <Menu.Item key="viewProfile">
+                    <Link to="/userProfile"/>
+                    <h3 className="parada-title "><Icon type="user"/>My Profile</h3>
+                </Menu.Item>
+                <Menu.Item key="history">
+                    <Link to="/userTransactionHistory"/>
+                    <h3 className="parada-title "><Icon type="unordered-list"/>Transaction History</h3>
+                </Menu.Item>
+                <Menu.Item key="logout" onClick={this.handleOnLogOut}>
+                    <Link to="/"/>
+                    <h3 className="parada-title"><Icon type="logout"/>Log Out</h3>
+                </Menu.Item>
+                <Menu.Item key="logout">
+                    <h3 className="parada-title">Welcome User! {username} </h3>
+                </Menu.Item>
+            </Menu>
+        )
+    };
 
-            <Menu.Item key="viewProfile">
-                <Link to="/userProfile"/>
-                <Icon type="user"/>
-                My Profile
-            </Menu.Item>
+    adminHeader = (username) => {
+        return (
+            <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" theme="dark">
+                <Menu.Item>
+                    <Link to="/"/>
+                    <h3 className="parada-title ">Change Admin User</h3>
+                </Menu.Item>
 
-            <Menu.Item key="history">
-                <Link to="/userTransactionHistory"/>
-                <Icon type="unordered-list"/>
-                Transaction History
-                {/*<Redirect to={{pathname: "/parkingSpaces", state: {parkingLot: parkingLotFromProps}}}/>*/}
-            </Menu.Item>
-            <Menu.Item key="logout" onClick={this.handleOnLogOut}>
-                <Link to= "/" />
-                <Icon type="logout"/>
-                Log Out
-            </Menu.Item>
-        </Menu>
-    )
-}
+                <SubMenu
+                    title={<span className="submenu-title-wrapper"><Icon type="setting"/>Administrator Features</span>}>
+                    <Menu.Item key="adminUser"><Link to="/adminUser"/>
+                        <h3 className="parada-title "><Icon type="idcard"/>Change Admin User</h3>
+                    </Menu.Item>
+                    <Menu.Item key="addParking"><Link to="/adminParkingLot"/>
+                        <h3 className="parada-title "><Icon type="car"/>Add Parking Lot</h3>
+                    </Menu.Item>
+                    <Menu.Item key="addParkingSpace"><Link to="/adminSpace"/>
+                        <h3 className="parada-title "><Icon type="plus-square"/>Add Parking Lot Space</h3>
+                    </Menu.Item>
+                    <Menu.Item key="adminPayment"><Link to="/adminPayment"/>
+                        <h3 className="parada-title "><Icon type="dollar"/>Confirm Payment</h3>
+                    </Menu.Item>
+                    <Menu.Item key="adminExit"><Link to="/adminExit"/>
+                        <h3 className="parada-title "><Icon type="export"/>Confirm Driver Exit</h3>
+                    </Menu.Item>
+                </SubMenu>
+
+                <Menu.Item key="reserve">
+                    <Link to="/parkingLots"/>
+                    <h3 className="parada-title "><Icon type="car"/>Reserve Parking</h3>
+                </Menu.Item>
+
+                <Menu.Item key="viewProfile">
+                    <Link to="/userProfile"/>
+                    <h3 className="parada-title "><Icon type="user"/>My Profile</h3>
+                </Menu.Item>
+
+                <Menu.Item key="history">
+                    <Link to="/userTransactionHistory"/>
+                    <h3 className="parada-title "><Icon type="unordered-list"/>Transaction History</h3>
+                </Menu.Item>
+                <Menu.Item key="logout" onClick={this.handleOnLogOut}>
+                    <Link to="/"/>
+                    <h3 className="parada-title "><Icon type="logout"/>Log Out</h3>
+                </Menu.Item>
+                <Menu.Item key="logout">
+                    <h3 className="parada-title">Welcome Admin! {username} </h3>
+                </Menu.Item>
+            </Menu>
+        )
+    };
+};
 
 const mapStateToProps = state => ({
     driver: state.userProfileResource
 });
+
 export default connect(mapStateToProps)(HeaderPage);
