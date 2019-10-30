@@ -6,7 +6,7 @@
     float: left;
 }
 
-.main-parkingLot{
+.main-parkingLot {
     /*margin: auto;*/
     /*display: flex;*/
     /*flexDirection: row;*/
@@ -15,7 +15,7 @@
 
 }
 
-.header{
+.header {
     margin-bottom: 50px;
 }
 
@@ -29,7 +29,7 @@
     flex-wrap: wrap;
 }
 
-.steps{
+.steps {
     padding-top: 2%;
     width: 100%;
     flex-direction: row;
@@ -44,14 +44,14 @@
     margin-bottom: 40px;
 }
 
-.parkingCards{
+.parkingCards {
     width: 300px;
     padding: 20px;
 }
 
-.divStyle{
+.divStyle {
     border-radius: 15px;
-    background:    #e7e9ef   ;
+    background: #e7e9ef;
     padding: 15px;
     margin-bottom: 10px;
     box-shadow: 2px 2px;
@@ -85,5 +85,11 @@
     border: 1px solid #4CAF50;
 }
 
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
 
-.pagination a:hover:not(.active) {background-color: #ddd;}
+.Card title span h2 {
+    margin: 0px;
+    padding: 0px;
+}
