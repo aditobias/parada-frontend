@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Row, Col, Card, Input, Icon, Button} from 'antd';
+import {Row, Col, Card, Input, Icon, Button, message} from 'antd';
 import 'antd/dist/antd.css';
 import HeaderPage from '../Header/Header';
 import {connect} from "react-redux";
@@ -62,6 +62,7 @@ class UserProfile extends Component {
 
     saveProfile = () => {
         this.props.editProfileDetail(this.props.userInfo.loginUser, this.state);
+        message.success("Update Profile completed!");
         console.log("tessssssssssssssst", this.props.editProfileDetail(this.props.userInfo.loginUser, this.state))
     }
 
@@ -72,6 +73,7 @@ class UserProfile extends Component {
             email: this.props.userInfo.email,
             mobileNumber: this.props.userInfo.mobileNumber
         });
+        message.info("Profile editing cancelled");
     }
 
 
@@ -85,7 +87,7 @@ class UserProfile extends Component {
         console.log("statussssssssssssss", this.props.userInfo.verified);
         return (
             <div>
-                <HeaderPage/>
+                <HeaderPage current="viewProfile"/>
                 <div className="center" style={{width: "900px", background: "white", marginTop: "20px"}}>
                     <Row>
                         <Col span={10} style={{marginRight: "50px"}}>
