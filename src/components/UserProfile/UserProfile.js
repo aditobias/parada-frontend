@@ -5,7 +5,6 @@ import HeaderPage from '../Header/Header';
 import {connect} from "react-redux";
 import './user.css';
 import UserProfileResource from "../../api/UserProfileResource";
-import ImageUploader from 'react-images-upload';
 
 const {Meta} = Card;
 
@@ -113,17 +112,6 @@ class UserProfile extends Component {
 
 
     render() {
-
-
-        let {imagePreviewUrl} = this.state;
-        let $imagePreview = null;
-        if (imagePreviewUrl) {
-            $imagePreview = (<img src={imagePreviewUrl} />);
-        } else {
-            $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-        }
-
-
 
         const emailStatus = this.props.userInfo.verified ?
             <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a"
