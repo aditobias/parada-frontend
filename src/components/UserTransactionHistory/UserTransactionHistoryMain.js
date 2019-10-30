@@ -123,9 +123,9 @@ class UserTransactionHistoryMain extends React.Component {
                 } = transaction;
 
 
-                dataList.push({
+                dataList.unshift({
                     key: id,
-                    name: parkingLotName + parkingLevel + parkingPosition,
+                    name: `${parkingLotName} - ${parkingLevel}${parkingPosition}`,
                     price: price,
                     reserveTime: this.handleConversion(reserveTime),
                     startTime: this.handleConversion(startTime),
