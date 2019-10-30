@@ -23,6 +23,7 @@ class ParkingLotMain extends Component {
             .then(res => res.json())
             .then(res => {
                 console.log("Res is", res);
+                // this.props.getAllParkingLots(res.parkingLot)
                 this.props.getAllParkingLots(res.content)
             })
             .catch(e => {
@@ -41,10 +42,10 @@ class ParkingLotMain extends Component {
 
                 <div className="parkingLot">{
                     listParkingLot.map((parkingLot, index) =>
-                        <ParkingLot key={index}
-                                    id={index}
-                                    parkingLot={parkingLot}
-                        />
+                    <ParkingLot key={index}
+                    id={index}
+                    parkingLot={parkingLot}
+                    />
                     )
                 }
                 </div>
