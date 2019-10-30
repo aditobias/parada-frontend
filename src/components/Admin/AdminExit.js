@@ -33,16 +33,16 @@ class AdminExit extends React.Component {
             <div>
                 <Card>
                     <div style={{float: "left"}}>
-                        <p>Receipt ID: {this.props.exit.id}</p>
-                        <p>Parking Lot: {this.props.exit.parkingLotName}</p>
-                        <p>Parking Level: {this.props.exit.parkingLevel}</p>
-                        <p>Parking Position: {this.props.exit.parkingPosition}</p>
-                        <p>Price: Php {this.props.exit.price}</p>
-                        <p>Reservation Time: {this.convertDateTime(this.props.exit.reserveTime)}</p>
-                        <p>Arrival Time: {this.convertDateTime(this.props.exit.startTime)}</p>
-                        <p>Departure
-                            Time: {this.props.exit.endTime === null ? 'Not Yet Departed' : this.convertDateTime(this.props.exit.endTime)}</p>
-                        <p>Status: {this.props.exit.status}</p>
+                        <h2>Receipt ID: {this.props.exit.id}</h2>
+                        <h2>Parking Lot: {this.props.exit.parkingLotName}</h2>
+                        <h2>Parking Level: {this.props.exit.parkingLevel}</h2>
+                        <h2>Parking Position: {this.props.exit.parkingPosition}</h2>
+                        <h2>Price: Php {this.props.exit.price}</h2>
+                        <h2>Reservation Time: {this.convertDateTime(this.props.exit.reserveTime)}</h2>
+                        <h2>Arrival Time: {this.convertDateTime(this.props.exit.startTime)}</h2>
+                        <h2>Departure
+                            Time: {this.props.exit.endTime === null ? 'Not Yet Departed' : this.convertDateTime(this.props.exit.endTime)}</h2>
+                        <h2>Status: {this.props.exit.status}</h2>
                     </div>
                     <div style={{float: "right"}}>
                         <Button type="primary" style={{height: "50px"}}

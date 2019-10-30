@@ -109,7 +109,7 @@ class AdminAddLot extends React.Component {
                     </div>
                 </Card>
                 <Modal
-                    title="Basic Modal"
+                    title="Add New Parking Lot"
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
