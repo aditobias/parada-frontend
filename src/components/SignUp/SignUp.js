@@ -1,6 +1,8 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import 'tachyons';
+import { Redirect } from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import {message } from 'antd';
 
 import {
@@ -23,7 +25,8 @@ class RegistrationForm extends React.Component {
     firstName:"",
     lastName:"",
     mobileNumber:"",
-    verified: false
+    verified: false,
+    redirect: false
   };
 
   componentDidMount() {
@@ -95,6 +98,10 @@ class RegistrationForm extends React.Component {
     this.setState({ mobileNumber: event.target.value });
   };
 
+  redirectToLogIn = ()=>
+  {
+    this.setState({ redirect:true });
+  }
 
 
   render() {
@@ -133,6 +140,7 @@ class RegistrationForm extends React.Component {
 
     return (
         <div>
+          {this.state.redirect ? <Redirect to="/" /> : null}
             <div>
             &nbsp;
             </div>
@@ -246,11 +254,15 @@ class RegistrationForm extends React.Component {
           )}
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit"
+          <Button style={{margin: "1%"}} type="primary" htmlType="submit"
           //  onClick = {this.dispatch}
            >
             Register
           </Button>
+          <Button type="primary" onClick={this.redirectToLogIn}>
+            Cancel
+          </Button>
+          
         </Form.Item>
         </div>
       </Form>
