@@ -156,7 +156,7 @@ class RegistrationForm extends React.Component {
         >
           {getFieldDecorator('username', {
             rules: [{ required: true, message: 'Please input your username!', whitespace: true }],
-          })(<Input setFieldsValue={this.state.username}
+          })(<Input setfieldsvalue={this.state.username}
                     onChange={this.handleUserNameChange}
                     />)}
         </Form.Item>
@@ -169,7 +169,7 @@ class RegistrationForm extends React.Component {
         >
           {getFieldDecorator('firstname', {
             rules: [{ required: true, message: 'Please input your firstname!', whitespace: true }],
-          })(<Input setFieldsValue={this.state.firstname} 
+          })(<Input setfieldsvalue={this.state.firstname} 
                     onChange={this.handleFirstNameChange}/>)}
         </Form.Item>
         <Form.Item
@@ -181,7 +181,7 @@ class RegistrationForm extends React.Component {
         >
           {getFieldDecorator('lastname', {
             rules: [{ required: true, message: 'Please input your lastname!', whitespace: true }],
-          })(<Input setFieldsValue={this.state.lastname} 
+          })(<Input setfieldsvalue={this.state.lastname} 
                     onChange={this.handleLastNameChange}/>)}
         </Form.Item>
         <Form.Item label="E-mail">
@@ -196,7 +196,7 @@ class RegistrationForm extends React.Component {
                 message: 'Please input your E-mail!',
               },
             ],
-          })(<Input setFieldsValue={this.state.email} 
+          })(<Input setfieldsvalue={this.state.email} 
                     onChange={this.handleEmailChange}/>)}
         </Form.Item>
         <Form.Item label="Password" hasFeedback>
@@ -210,7 +210,7 @@ class RegistrationForm extends React.Component {
                 validator: this.validateToNextPassword,
               },
             ],
-          })(<Input.Password setFieldsValue={this.state.password} 
+          })(<Input.Password setfieldsvalue={this.state.password} 
                              onChange={this.handlePasswordChange}/>)}
         </Form.Item>
         <Form.Item label="Confirm Password" hasFeedback>
@@ -230,14 +230,14 @@ class RegistrationForm extends React.Component {
           {getFieldDecorator('phone', {
             rules: [{ required: true, message: 'Please input your phone number!' }],
           })(<Input 
-            setFieldsValue={this.state.phoneNumber} 
+            setfieldsvalue={this.state.phoneNumber} 
             onChange={this.handlePhoneNumChange}
             addonBefore={prefixSelector} 
             style={{ width: '100%' }} />)}
         </Form.Item>
         <div align="left">
         <Form.Item {...tailFormItemLayout}>
-          {getFieldDecorator('agreement', {
+          {getFieldDecorator('agreement', {valuePropName: 'checked',
              rules: [{ required: true, message: 'Please confirm the agreement!' }],
           })(
             <Checkbox>

@@ -15,7 +15,6 @@ const mapDispatchToProps = dispatch => ({
         SignUpResource.createUser(credentials)
             .then(res => {
                 res.json();
-                console.log(res);
                 if(res.status == "201")
                 {
                     message.success('Your account was successfully created')
