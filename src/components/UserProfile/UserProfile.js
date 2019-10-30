@@ -14,8 +14,6 @@ class UserProfile extends Component {
 
     }
 
-
-
     state = {
         current: 'profile',
         pic: this.props.userInfo.profilePicture,
@@ -28,16 +26,9 @@ class UserProfile extends Component {
         userAction: "view"
     };
 
-    handleClick = e => {
-        console.log('click ', e);
-        this.setState({
-            current: e.key,
-        });
-    };
-
     handleChangeMobileNumber = (event) => {
 
-        this.setState({mobileNumber:  event.target.value.replace(/\D/, '')});
+        this.setState({mobileNumber: event.target.value.replace(/\D/, '')});
     };
 
     handleChangeFirstName = (event) => {
@@ -112,6 +103,13 @@ class UserProfile extends Component {
 
 
     render() {
+        let {imagePreviewUrl} = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl) {
+            $imagePreview = (<img src={imagePreviewUrl}/>);
+        } else {
+            $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+        }
 
         const emailStatus = this.props.userInfo.verified ?
             <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a"
@@ -119,8 +117,6 @@ class UserProfile extends Component {
             <Icon type="close-circle"
                   style={{fontSize: "30px", float: "left"}}/>;
         return (
-
-
             <div>
                 <HeaderPage current="viewProfile"/>
                 <div className="center" style={{width: "900px", background: "white", marginTop: "20px"}}>
@@ -135,30 +131,34 @@ class UserProfile extends Component {
                         </Col>
                         <Col span={12} style={{fontcolor: "black"}}>
                             <Card bordered={true}>
-                                <p style={{textAlign: "left"}}>Username</p>
-                                <Input value={this.props.userInfo.loginUser} disabled/>
-                                <p style={{textAlign: "left"}}>First Name</p>
-                                <Input value={this.state.firstName}
-                                       onChange={this.handleChangeFirstName}
-                                       disabled={(this.state.disabled) ? "disabled" : ""}/>
-                                <p style={{textAlign: "left"}}>Last Name</p>
-                                <Input value={this.state.lastName}
-                                       onChange={this.handleChangeLastName}
-                                       disabled={(this.state.disabled) ? "disabled" : ""}/>
-                                <p style={{textAlign: "left"}}>Mobile Number</p>
-                                <Input value={this.state.mobileNumber}
-                                       onChange={this.handleChangeMobileNumber}
-                                       disabled={(this.state.disabled) ? "disabled" : ""}/>
-                                <p style={{textAlign: "left"}}>Email Address</p>
-                                <Input value={this.state.email}
-                                       onChange={this.handleChangeEmail}
-                                       disabled/>
-                                <p style={{textAlign: "left"}}>Email Verification status</p>
-
-                                {emailStatus}
-
+                                <p style={{textAlign: "left"}}>Username
+                                    <Input value={this.props.userInfo.loginUser} disabled/>
+                                </p>
+                                <p style={{textAlign: "left"}}>First Name
+                                    <Input value={this.state.firstName}
+                                           onChange={this.handleChangeFirstName}
+                                           disabled={(this.state.disabled) ? "disabled" : ""}/>
+                                </p>
+                                <p style={{textAlign: "left"}}>Last Name
+                                    <Input value={this.state.lastName}
+                                           onChange={this.handleChangeLastName}
+                                           disabled={(this.state.disabled) ? "disabled" : ""}/>
+                                </p>
+                                <p style={{textAlign: "left"}}>Mobile Number
+                                    <Input value={this.state.mobileNumber}
+                                           onChange={this.handleChangeMobileNumber}
+                                           disabled={(this.state.disabled) ? "disabled" : ""}/>
+                                </p>
+                                <p style={{textAlign: "left"}}>Email Address
+                                    <Input value={this.state.email}
+                                           onChange={this.handleChangeEmail}
+                                           disabled/>
+                                </p>
+                                <p style={{textAlign: "left"}}>
+                                    Email Verification status<br/>
+                                    {emailStatus}
+                                </p>
                                 <br/>
-
                                 {this.renderBtn()}
                             </Card>
                         </Col>
@@ -176,7 +176,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     editProfileDetail: (username, profileEdit) => {
         UserProfileResource.editUserProfile(username, profileEdit)
-            .then(res=>{
+            .then(res => {
                 this.setState({
                     firstName: this.state.firstName,
                     lastName: this.state.lastName,
@@ -185,7 +185,7 @@ const mapDispatchToProps = dispatch => ({
                     verified: this.state.verified
                 })
             })
-            .catch(e=>console.log(e));
+            .catch(e => console.log(e));
     }
 });
 
