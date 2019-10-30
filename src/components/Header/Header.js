@@ -87,9 +87,6 @@ class HeaderPage extends Component {
                     <Menu.Item key="addParking"><Link to="/adminParkingLot"/>
                         <h4 className="parada-title "><Icon type="car"/>Add Parking Lot</h4>
                     </Menu.Item>
-                    <Menu.Item key="addParkingSpace"><Link to="/adminSpace"/>
-                        <h4 className="parada-title "><Icon type="plus-square"/>Add Parking Lot Space</h4>
-                    </Menu.Item>
                     <Menu.Item key="adminPayment"><Link to="/adminPayment"/>
                         <h4 className="parada-title "><Icon type="dollar"/>Confirm Payment</h4>
                     </Menu.Item>
