@@ -55,7 +55,7 @@ class HeaderPage extends Component {
                     <h4 className="parada-title "><Icon type="unordered-list"/>Transaction History</h4>
                 </Menu.Item>
 
-                <Menu.Item disabled={true} style={{width: "40%"}}/>
+                <Menu.Item disabled={true} style={{width: "35%"}}/>
 
                 <Menu.Item key="user">
                     <h4 className="parada-title">Welcome User,  {username} </h4>
@@ -73,13 +73,14 @@ class HeaderPage extends Component {
     adminHeader = (username) => {
         return (
             <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" theme="dark">
+                <Menu.Item disabled={true}/>
                 <Menu.Item>
                     <Link to="/"/>
-                    <h2 className="parada-title ">Change Admin User</h2>
+                    <h2 className="parada-title ">PARADA</h2>
                 </Menu.Item>
 
                 <SubMenu
-                    title={<span className="submenu-title-wrapper"><Icon type="setting"/>Administrator Features</span>}>
+                    title={<span className="submenu-title-wrapper"><h4 className="parada-title"><Icon type="setting"/>Administrator Features</h4></span>}>
                     <Menu.Item key="adminUser"><Link to="/adminUser"/>
                         <h4 className="parada-title "><Icon type="idcard"/>Change Admin User</h4>
                     </Menu.Item>
@@ -111,8 +112,15 @@ class HeaderPage extends Component {
                     <Link to="/userTransactionHistory"/>
                     <h4 className="parada-title "><Icon type="unordered-list"/>Transaction History</h4>
                 </Menu.Item>
+
+                <Menu.Item disabled={true} style={{width: "35%"}}/>
+
                 <Menu.Item >
                     <h4 className="parada-title">Welcome Admin! {username} </h4>
+                </Menu.Item>
+                <Menu.Item key="logout" onClick={this.handleOnLogOut}>
+                    <Link to="/"/>
+                    <h4 className="parada-title"><Icon type="logout"/>Log Out</h4>
                 </Menu.Item>
             </Menu>
         )
