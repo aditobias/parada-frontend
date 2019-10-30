@@ -171,7 +171,7 @@ class UserTransactionHistoryMain extends React.Component {
                 <Modal style={{ width: "100%", margin: "auto", paddingTop: "20px" }}
                     visible={this.state.visible}
                     onOk={this.handleOk}
-                    footer={ [<Button onClick={this.handleOk}>Done</Button>]}
+                    footer={null}
                        closable={false}
                        className={{display: "none"}}
                 >
@@ -197,6 +197,7 @@ class UserTransactionHistoryMain extends React.Component {
                                 <h1 style={{ margin: "0", paddingBottom: "3%" }}>Price : Php {this.state.selectedTransaction.price}</h1>
                             </span>
                             <hr />
+                                <Button onClick={this.handleOk}>Done</Button>
                             </div>
                         </Card>
 
