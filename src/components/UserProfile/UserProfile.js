@@ -5,13 +5,17 @@ import HeaderPage from '../Header/Header';
 import {connect} from "react-redux";
 import './user.css';
 import UserProfileResource from "../../api/UserProfileResource";
+import ImageUploader from 'react-images-upload';
 
 const {Meta} = Card;
 
 class UserProfile extends Component {
     constructor(props) {
         super(props)
+
     }
+
+
 
     state = {
         current: 'profile',
@@ -33,7 +37,8 @@ class UserProfile extends Component {
     };
 
     handleChangeMobileNumber = (event) => {
-        this.setState({mobileNumber: event.target.value});
+
+        this.setState({mobileNumber:  event.target.value.replace(/\D/, '')});
     };
 
     handleChangeFirstName = (event) => {
@@ -106,13 +111,28 @@ class UserProfile extends Component {
         }
     };
 
+
     render() {
+
+
+        let {imagePreviewUrl} = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl) {
+            $imagePreview = (<img src={imagePreviewUrl} />);
+        } else {
+            $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+        }
+
+
+
         const emailStatus = this.props.userInfo.verified ?
             <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a"
                   style={{fontSize: "30px", float: "left"}}/> :
             <Icon type="close-circle"
                   style={{fontSize: "30px", float: "left"}}/>;
         return (
+
+
             <div>
                 <HeaderPage current="viewProfile"/>
                 <div className="center" style={{width: "900px", background: "white", marginTop: "20px"}}>
@@ -122,6 +142,7 @@ class UserProfile extends Component {
                                 style={{width: "380px", marginTop: "30px"}}
                                 cover={<img alt="profile" src={this.state.pic} onError={this.onError}/>}>
                                 <button>Upload</button>
+
                             </Card>
                         </Col>
                         <Col span={12} style={{fontcolor: "black"}}>
